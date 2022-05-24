@@ -1,1 +1,3 @@
-//this is a test for Ivan Yeung
+void setup(){
+  size(1400,900);
+}
