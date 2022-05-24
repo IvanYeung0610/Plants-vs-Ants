@@ -11,5 +11,13 @@ public class TileMap{
        tileArray[row][col] = tile;
        return true;
     }
-  }  
+  }
+  
+  void displayAll(){
+    for (Tile t: tileArray){
+      if (t != null) {
+        t.display();
+      }
+    }
+  }
 }
