@@ -20,11 +20,18 @@ public class Sprite{
   }
   
   boolean checkCollision(Sprite other){
-    if((x + Width > other.x) && (x + Width < other.x + other.Width)){
-      if((y + Height > other.y) && (y + Height) < (other.y + other.Height)){
+    if(( (x + Width >= other.x) && (x + Width <= other.x + other.Width) ) || ( (x >= other.x) && (x <= other.x + other.Width) )){
+      if(( (y + Height >= other.y) && (y + Height)  <= (other.y + other.Height) ) || ( (y >= other.y) && (y <= other.y + other.Height) )){
         return true;
       }
     }
     return false;
   }
+  void setX(int X){
+    x = X;
+  }
+  void setY(int Y){
+    y = Y;
+  }
+  
 }
