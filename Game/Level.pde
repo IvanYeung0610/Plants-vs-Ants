@@ -19,7 +19,7 @@ public class Level{
     while (index < sceneButtons.size()) {
       if (sceneButtons.get(index).overButton()) {
         sceneButtons.get(index).clickButton();
-        println(sceneButtons.get(index).isClicked());
+        //println(sceneButtons.get(index).isClicked());
       }
       index++;
     }
