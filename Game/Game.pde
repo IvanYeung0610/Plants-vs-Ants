@@ -1,18 +1,26 @@
-Sun test0;
-Sun test1;
-
+Level test;
+Button d;
 void setup(){
   size(1400,900);
-  test0 = new Sun("ProjectilePea.png", 100,-100,"");
-  test1 = new Sun("ProjectilePea.png", 300,-100,"");
-  test0.setXVel(10);
-  println(test0.bottomLevel);
-  print(test0.y);
+  
+  Button a, b, c;
+  a = new Button("ProjectilePea.png", 100, 100, 70, 70, "test");
+  b = new Button("ProjectilePea.png", 200, 200, 70, 70, "test");
+  c = new Button("ProjectilePea.png", 300, 300, 70, 70, "test");
+  d = new Button("ProjectilePea.png", 400, 400, 70, 70, "test");
+  ArrayList<Button> testList = new ArrayList<Button>();
+  testList.add(a);
+  testList.add(b);
+  testList.add(c);
+  test = new Level(testList);
 }
 void draw(){
   background(100);
-  test0.display();
-  test1.display();
-  test0.move();
-  test1.move();
+  test.displayAllButtons();
+  //d.display();
+  //println(d.overButton());
+}
+
+void mouseClicked(){
+  test.handleMouseClicked();
 }
