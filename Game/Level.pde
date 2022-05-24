@@ -1,8 +1,10 @@
 public class Level{
   ArrayList<Button> sceneButtons;
+  boolean levelComplete;
   
   public Level(ArrayList<Button> sceneButtons){
     this.sceneButtons = sceneButtons;
+    levelComplete = false;
   }
   
   void displayAllButtons(){
