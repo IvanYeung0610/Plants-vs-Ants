@@ -1,8 +1,10 @@
 public class Level{
   ArrayList<Button> sceneButtons;
+  boolean levelComplete;
   
   public Level(ArrayList<Button> sceneButtons){
     this.sceneButtons = sceneButtons;
+    levelComplete = false;
   }
   
   void displayAllButtons(){
@@ -19,7 +21,7 @@ public class Level{
     while (index < sceneButtons.size()) {
       if (sceneButtons.get(index).overButton()) {
         sceneButtons.get(index).clickButton();
-        println(sceneButtons.get(index).isClicked());
+        //println(sceneButtons.get(index).isClicked());
       }
       index++;
     }
