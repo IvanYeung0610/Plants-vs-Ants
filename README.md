@@ -11,8 +11,9 @@ The project that we will be working on is a Plants vs. Zombies-esque game. Inste
 
 LOG: 
 ---
-5/23
-Joshua Liu:
+5/23 
 
----
+Joshua Liu:
+I created the Sprite class and the Sun class. I tested them.
+
 Ivan Yeung:
