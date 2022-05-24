@@ -1,17 +1,18 @@
-Sprite test0;
-Sprite test1;
+Sun test0;
+Sun test1;
 
 void setup(){
   size(1400,900);
-  test0 = new Sprite("ProjectilePea.png", 100,100,100,100);
-  test1 = new Sprite("ProjectilePea.png", 300,100,100,100);
-  
+  test0 = new Sun("ProjectilePea.png", 100,-100,"");
+  test1 = new Sun("ProjectilePea.png", 300,-100,"");
+  test0.setXVel(10);
+  println(test0.bottomLevel);
+  print(test0.y);
 }
 void draw(){
   background(100);
-  test0.setX(mouseX);
-  test0.setY(mouseY);
   test0.display();
   test1.display();
-  println(test0.checkCollision(test1));
+  test0.move();
+  test1.move();
 }
