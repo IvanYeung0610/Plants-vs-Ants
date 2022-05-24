@@ -16,13 +16,14 @@ public class Level{
   //runs through sceneButtons to check if any buttons have been clicked
   void handleMouseClicked(){
     int index = 0;
-    while (sceneButtons.get(index).isClicked() != true && index < sceneButtons.size()) {
+    while (index < sceneButtons.size()) {
+      if (sceneButtons.get(index).overButton()) {
+        sceneButtons.get(index).clickButton();
+        println(sceneButtons.get(index).isClicked());
+      }
       index++;
     }
     
-    if (sceneButtons.get(index).isClicked() == true){
-      sceneButtons.get(index).clickButton();
-    }
   } 
   
 }
