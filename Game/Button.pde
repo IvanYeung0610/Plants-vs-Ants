@@ -3,7 +3,7 @@ public class Button extends Sprite {
   String type;
   
   public Button(String img, int xcoor, int ycoor, int Width, int Height, String type) {
-    super(img, xcoor, ycoor, Width, Height, type);
+    super(img, xcoor, ycoor, Width, Height);
     this.type = type;
     clicked = false;
   }
