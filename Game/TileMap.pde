@@ -20,4 +20,14 @@ public class TileMap{
       }
     }
   }
+  
+  void runAll(){
+    for (Tile t: tileArray){
+       if (t != null) {
+        t.runPlant();
+      }
+    }
+  }
+  
+  
 }
