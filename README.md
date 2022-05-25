@@ -14,7 +14,7 @@ LOG:
 5/23
 
 Joshua Liu:
-I created the Sprite class and the Sun class. I tested them.
+I created the Sprite class and the Sun class. They are tested.
 
 Ivan Yeung:
 I created the Button class, PlantButton class, the Level class, and the LevelManager class. I also tested all classes other than the Level Manager
@@ -22,6 +22,6 @@ I created the Button class, PlantButton class, the Level class, and the LevelMan
 5/24
 
 Joshua Liu:
-
+I created the Plant, Ant, and AntList classes. The methods are complete but not tested yet.
 Ivan Yeung:
 I created the Tile, TileMap, Bullet, and the BulletList class. Completed the required methods for the classes but I was not able to test them today.
