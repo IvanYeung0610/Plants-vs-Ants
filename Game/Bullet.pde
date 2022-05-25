@@ -6,4 +6,15 @@ public class Bullet extends Sprite{
     super(img, xcoor, ycoor, Width, Height);
     damage = dmg;
   }
+  
+  void move(){
+    super.x += velocity;
+  }
+  
+  //display() in Sprite super class is adequate
+  //void display(){}
+  
+  int getDamage(){
+    return damage;
+  }
 }
