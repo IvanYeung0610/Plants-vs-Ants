@@ -18,3 +18,10 @@ I created the Sprite class and the Sun class. I tested them.
 
 Ivan Yeung:
 I created the Button class, PlantButton class, the Level class, and the LevelManager class. I also tested all classes other than the Level Manager
+
+5/24
+
+Joshua Liu:
+
+Ivan Yeung:
+I created the Tile, TileMap, Bullet, and the BulletList class. Completed the required methods for the classes but I was not able to test them today.
