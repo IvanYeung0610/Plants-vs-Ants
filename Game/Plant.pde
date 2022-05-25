@@ -6,7 +6,7 @@ public class Plant extends Sprite{
     this.cost = cost;
   }
   void action(){
-    
+    // Individually determined.
   }
   
   void takeDamage(int damg){
