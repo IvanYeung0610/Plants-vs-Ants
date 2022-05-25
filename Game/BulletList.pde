@@ -11,6 +11,12 @@ public class BulletList{
     }
   }
   
+  void displayAll(){
+    for (Bullet b : bullets){
+      b.display();
+    }
+  }
+  
   void remove(int index){
     bullets.remove(index);
   }

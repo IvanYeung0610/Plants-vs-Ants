@@ -1,6 +1,7 @@
 Level test;
 Button d;
 Bullet pea;
+BulletList peas;
 void setup(){
   size(1400,900);
   
@@ -16,14 +17,27 @@ void setup(){
   //testList.add(c);
   //test = new Level(testList);
   
-  //TEST for Bullet
+  //TEST for Bullet and BulletList
   pea = new Bullet("ProjectilePea.png", 0, 200, 50, 50, 1);
+  Bullet pea2 = new Bullet("ProjectilePea.png", 0, 200, 50, 50, 1);
+  Bullet pea3 = new Bullet("ProjectilePea.png", 0, 300, 50, 50, 1);
+  Bullet pea4 = new Bullet("ProjectilePea.png", 0, 400, 50, 50, 1);
+  Bullet pea5 = new Bullet("ProjectilePea.png", 0, 500, 50, 50, 1);
+  ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+  peas = new BulletList(bullets);
+  peas.add(pea);
+  peas.add(pea2);
+  peas.add(pea3);
+  peas.add(pea4);
+  peas.add(pea5);
 }
 void draw(){
   background(100);
-  pea.display();
-  pea.move();
+  //pea.display();
+  //pea.move();
   //print(pea.getDamage());
+  peas.displayAll();
+  peas.moveAll();
 }
 
 void mouseClicked(){
