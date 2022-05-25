@@ -17,13 +17,13 @@ void setup(){
   //test = new Level(testList);
   
   //TEST for Bullet
-  pea = new Bullet("ProjectilePEA.png", 0, 200, 50, 50, 1);
+  pea = new Bullet("ProjectilePea.png", 0, 200, 50, 50, 1);
 }
 void draw(){
   background(100);
   pea.display();
   pea.move();
-  print(pea.getDamage());
+  //print(pea.getDamage());
 }
 
 void mouseClicked(){

@@ -11,20 +11,25 @@ public class TileMap{
        tileArray[row][col] = tile;
        return true;
     }
+    return false;
   }
   
   void displayAll(){
-    for (Tile t: tileArray){
-      if (t != null) {
-        t.display();
+    for (Tile[] t: tileArray){
+      for (Tile tile: t){
+        if (tile != null) {
+          tile.display();
+        }
       }
     }
   }
   
   void runAll(){
-    for (Tile t: tileArray){
-       if (t != null) {
-        t.runPlant();
+    for (Tile[] t: tileArray){
+      for(Tile tile: t){
+         if (tile != null) {
+          tile.runPlant();
+        }
       }
     }
   }
