@@ -5,8 +5,9 @@ public class Plant extends Sprite{
     this.health = health;
     this.cost = cost;
   }
-  void action(){
+  Sprite action(){
     // Individually determined.
+    return null;
   }
   
   void takeDamage(int damg){
