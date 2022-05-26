@@ -23,5 +23,12 @@ I created the Button class, PlantButton class, the Level class, and the LevelMan
 
 Joshua Liu:
 I created the Plant, Ant, and AntList classes. The methods are complete but not tested yet.
+
 Ivan Yeung:
 I created the Tile, TileMap, Bullet, and the BulletList class. Completed the required methods for the classes but I was not able to test them today.
+
+5/25:
+
+Joshua Liu: I created the SunList and fixed some kinks with how AntList will work and the function of Tiles. I also created the Tile image and tested TileMap.
+
+Ivan Yeung:
