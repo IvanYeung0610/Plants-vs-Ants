@@ -6,8 +6,12 @@ public class BulletList{
   }
   
   void moveAll(){
-    for (Bullet b : bullets){
-      b.move();
+    for (int i = 0; i < bullets.size(); i++){
+      if (bullets.get(i).x > width) {
+        bullets.remove(i);
+      } else {
+        bullets.get(i).move();
+      }
     }
   }
   

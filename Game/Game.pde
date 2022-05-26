@@ -38,6 +38,7 @@ void draw(){
   //print(pea.getDamage());
   peas.displayAll();
   peas.moveAll();
+  println(peas.bullets);
 }
 
 void mouseClicked(){
