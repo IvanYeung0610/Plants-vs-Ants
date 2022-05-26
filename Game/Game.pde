@@ -9,6 +9,7 @@ void setup(){
     }
   }
 }
+
 void draw(){
   background(100);
   tiles.displayAll();
