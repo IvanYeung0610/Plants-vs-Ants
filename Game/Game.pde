@@ -9,8 +9,8 @@ void setup(){
   size(1400,900);
   
   //TEST for peashooter
-  shooter = new Peashooter("ProjectilePea.png", 100, 100);
-  shooter2 = new Peashooter("ProjectilePea.png", 100, 200);
+  shooter = new Peashooter("ProjectilePea.png", 100, 200);
+  shooter2 = new Peashooter("ProjectilePea.png", 100, 100);
   shooter3 = new Peashooter("ProjectilePea.png", 100, 300);
   
   //TEST for Button and Level 
@@ -50,18 +50,18 @@ void draw(){
   Sprite holder = shooter.action();
   Sprite holder2 = shooter2.action();
   Sprite holder3 = shooter3.action();
+  if(holder2 != null){
+    peas.add((Bullet)holder2);
+  }
   if(holder != null){
     peas.add((Bullet)holder);
   }
-  if(holder2 != null){
-    //peas.add((Bullet)holder2);
-  }
   if(holder3 != null){
-    //peas.add((Bullet)holder3);
+    peas.add((Bullet)holder3);
   }
-  peas.displayAll();
   peas.moveAll();
-  //println(peas.bullets);
+  peas.displayAll();
+  println(peas.bullets);
 }
 
 void mouseClicked(){
