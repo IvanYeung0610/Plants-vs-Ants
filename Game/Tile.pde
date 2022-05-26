@@ -13,14 +13,15 @@ public class Tile extends Button{
       plant.display();
     }
   }
-  void runPlant(){
+  Sprite runPlant(){
     if (plant.health <= 0){
       plant = null;
     }
     
     if (plant != null) {
-      plant.action();
+      return plant.action();
     }
+    return null;
   }
   
   
