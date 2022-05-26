@@ -10,7 +10,7 @@ public class Peashooter extends Plant{
   Sprite action(){
     if (timer == 0){
       timer = 90;
-      return new Bullet("ProjectilePea.png", this.x, this.y, this.Width, this.Height, 1);     
+      return new Bullet("ProjectilePea.png", this.x, this.y, 50, 50, 1);     
     } else {
       timer--;
       return null;
