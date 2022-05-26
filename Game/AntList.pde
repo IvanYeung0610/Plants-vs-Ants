@@ -9,14 +9,18 @@ public class AntList{
     ants.add(newAnt);
   }
   
-  void remove(int index){
-    ants.remove(index);
+  Ant remove(int index){
+    return ants.remove(index);
   }
   
   void moveAll(){
     for(Ant x : ants){
       x.move();
     }
+  }
+  
+  int size(){
+    return ants.size();
   }
   
   void displayAll(){
