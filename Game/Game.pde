@@ -4,14 +4,14 @@ void setup(){
   tiles = new TileMap();
   for(int i = 0; i < 5; i++){
     for(int j = 0; j < 9; j++){
-      Tile t = new Tile("Tile.png", 100 + (j * 144), 90 + (i * 144), 144, 144);
+      Tile t = new Tile("Tile.png", 104 + (j * 144), 130 + (i * 144), 144, 144);
       tiles.add(t, i, j);
     }
   }
 }
 
 void draw(){
-  background(100);
+  background(45, 162, 204);
   tiles.displayAll();
 }
 
