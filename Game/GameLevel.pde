@@ -58,13 +58,30 @@ public class GameLevel extends Level {
     for(int i = 0; i < sceneButtons.size(); i++){
       if (sceneButtons.get(i).overButton()) {
         sceneButtons.get(i).clickButton();
+        // UNCHECK ALL OTHER SCENE BUTTONS;
       }
     }
-    for(int i = 0; i < tiles.size(); i++){
-      if (sceneButtons.get(i).overButton()) {
-        sceneButtons.get(i).clickButton();
+    for(int i = 0; i < 5; i++){
+      for(int j = 0; j < 9; j++){
+        Tile currentTile = tiles.get(i,j);
+        if(currentTile.overButton()){
+          if(currentTile.plant == null){
+            for(int x = 0; x < sceneButtons.size(); x++){
+              if(sceneButtons.get(x).getType().equals("PlantButton")){
+                // DO THIS LATER.
+              }
+            }
+            
+          }
+        }
       }
     }
+    for(int i = 0; i < suns.size(); i++){
+      if (suns.get(i).overButton()) {
+        suns.get(i).clickButton();
+      }
+    }
+    
   }
   
   void setCurrentAnts(){
