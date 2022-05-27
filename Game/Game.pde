@@ -6,13 +6,16 @@ BulletList peas;
 Peashooter shooter;
 Peashooter shooter2;
 Peashooter shooter3;
+Sunflower flower;
+SunList suns;
 void setup(){
   size(1400,900);
   
   //TEST for peashooter
-  shooter = new Peashooter("ProjectilePea.png", 100, 200);
-  shooter2 = new Peashooter("ProjectilePea.png", 100, 100);
-  shooter3 = new Peashooter("ProjectilePea.png", 100, 300);
+  shooter = new Peashooter("Peashooter.png", 100, 200);
+  shooter2 = new Peashooter("Peashooter.png", 100, 100);
+  shooter3 = new Peashooter("Peashooter.png", 100, 300);
+  flower = new Sunflower("Sunflower.png", 100, 400);
   
   //TEST for Button and Level 
   //Button a, b, c;
@@ -34,6 +37,7 @@ void setup(){
   //Bullet pea5 = new Bullet("ProjectilePea.png", 0, 500, 50, 50, 1);
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
   peas = new BulletList(bullets);
+  suns = new SunList();
   //peas.add(pea);
   //peas.add(pea2);
   //peas.add(pea3);
@@ -57,12 +61,15 @@ void draw(){
   //pea.display();
   //pea.move();
   //print(pea.getDamage());
+  peas.displayAll();
   shooter.display();
   shooter2.display();
   shooter3.display();
+  flower.display();
   Sprite holder = shooter.action();
   Sprite holder2 = shooter2.action();
   Sprite holder3 = shooter3.action();
+  Sprite holder4 = flower.action();
   if(holder2 != null){
     peas.add((Bullet)holder2);
   }
@@ -72,9 +79,14 @@ void draw(){
   if(holder3 != null){
     peas.add((Bullet)holder3);
   }
+  if(holder4 != null){
+    suns.add((Sun)holder4);
+  }
   peas.moveAll();
-  peas.displayAll();
-  println(peas.bullets);
+  suns.moveAll();
+  suns.processAll();
+  suns.displayAll();
+  //println(peas.bullets);
 }
 
 void mouseClicked(){
