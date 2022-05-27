@@ -56,9 +56,13 @@ public class GameLevel extends Level {
   
   void handleMouseClicked(){
     for(int i = 0; i < sceneButtons.size(); i++){
-      if (sceneButtons.get(i).overButton()) {
-        sceneButtons.get(i).clickButton();
-        // UNCHECK ALL OTHER SCENE BUTTONS;
+      Button current = sceneButtons.get(i);
+      if (current.isClicked()){
+        current.clickButton();
+      }
+      if (current.overButton()) {
+        current.clickButton();
+        // UNCHECK ALL OTHER SCENE BUTTONS; DONE(needs to be checked)
       }
     }
     for(int i = 0; i < 5; i++){
