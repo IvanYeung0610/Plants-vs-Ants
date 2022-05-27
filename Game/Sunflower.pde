@@ -10,10 +10,10 @@ public class Sunflower extends Plant{
     if (timer == 0){
       timer = 1440; //suns after the first one take 24 secs
       Sun returnSprite = new Sun("Sun.png", this.x + this.Width/2, this.y, "Sun");
-      returnSprite.setBottomLevel(this.y + this.Height); //will experiment and change this
-      returnSprite.setXVel(3); //Will change/experiment
-      returnSprite.setYVel(4); // Will change/experiment
-      return returnSprite;     //Will replace with sun png REMEMBER
+      returnSprite.setBottomLevel(this.y + this.Height/2); //will experiment and change this
+      returnSprite.setXVel((int)(5 * Math.random()) - 2); //Will change/experiment
+      returnSprite.setYVel(-3); // Will change/experiment
+      return returnSprite;     
     } else {
       timer--;
       return null;
