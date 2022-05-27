@@ -107,7 +107,7 @@ public class GameLevel extends Level {
       if (sceneButtons.get(i).isClicked()){
         sceneButtons.get(i).clickButton();
       }
-    }
+    }""
   }
   
   void setCurrentAnts(){
