@@ -16,20 +16,62 @@ public class GameLevel extends Level {
     sun = 0;
     bullets = new BulletList(new ArrayList<Bullet>());
     suns = new SunList();
-    tiles = new TileMap();
     currentAnts = new AntList();
+    
+    tiles = new TileMap();
+    for(int i = 0; i < 5; i++){
+      for(int j = 0; j < 9; j++){
+        Tile t = new Tile("Tile.png", 104 + (j * 144), 130 + (i * 144), 144, 144);
+        tiles.add(t, i, j);
+      }
+    }
+    
   }
   
   void run() {
     // this ties all the classes together.
     
+    tiles.displayAll();
+    tiles.runAll();
+    
+    if(currentAnts.size() == 0){
+      nextWave();
+      //setCurrentAnts(); Doesnt work rn because Waves is empty.
+    }
+    
+    suns.displayAll();
+    suns.moveAll();
+    sun += suns.processAll() * 50;
+
+    
+    currentAnts.displayAll();
+    currentAnts.moveAll();
+    int bulletCount = bullets.size();
+    for(int i = 0; i < bulletCount; i++){
+      if(currentAnts.takeDamage(bullets.get(i))) {
+        bullets.remove(i);
+      }
+    }
+  }
+  
+  void handleMouseClicked(){
+    for(int i = 0; i < sceneButtons.size(); i++){
+      if (sceneButtons.get(i).overButton()) {
+        sceneButtons.get(i).clickButton();
+      }
+    }
+    for(int i = 0; i < tiles.size(); i++){
+      if (sceneButtons.get(i).overButton()) {
+        sceneButtons.get(i).clickButton();
+      }
+    }
   }
   
   void setCurrentAnts(){
-    
+    currentAnts = waves[currentWave].getIncomingAnts();
   }
   
   void nextWave(){
-  
+    currentWave++;
   }
 }
