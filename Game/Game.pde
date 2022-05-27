@@ -8,6 +8,7 @@ Peashooter shooter2;
 Peashooter shooter3;
 Sunflower flower;
 SunList suns;
+Wallnut nut;
 void setup(){
   size(1400,900);
   
@@ -16,6 +17,7 @@ void setup(){
   shooter2 = new Peashooter("Peashooter.png", 100, 100);
   shooter3 = new Peashooter("Peashooter.png", 100, 300);
   flower = new Sunflower("Sunflower.png", 100, 400);
+  nut = new Wallnut("Wallnut.png", 100, 500);
   
   //TEST for Button and Level 
   //Button a, b, c;
@@ -66,6 +68,7 @@ void draw(){
   shooter2.display();
   shooter3.display();
   flower.display();
+  nut.display();
   Sprite holder = shooter.action();
   Sprite holder2 = shooter2.action();
   Sprite holder3 = shooter3.action();
