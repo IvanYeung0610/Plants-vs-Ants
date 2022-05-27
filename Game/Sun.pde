@@ -13,12 +13,14 @@ public class Sun extends Button{
     }
     if(xVelocity != 0){ // increment xVel towards 0
       xVelocity -= (xVelocity * .07);
-    }
+    } 
     
     x += xVelocity;
     
     if(y < bottomLevel){ // if y hasnt reached the bottomLevel, move it.
       y += yVelocity;
+    } else {
+      xVelocity = 0;
     }
     
   }

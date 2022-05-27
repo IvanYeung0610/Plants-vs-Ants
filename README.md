@@ -37,3 +37,4 @@ Ivan Yeung: I tested Bullet, BulletList, Peashooters. Changed how some of the me
 
 Joshua Liu: I started working on GameLevel which ties every class together. I also worked some of the other classes that were not finished.
 
+Ivan Yeung: I added the sprites for peashooter, sun, sunflower, and wallnut. I also completed and tested the sunflower and wallnut class, while making minor changes to how peashooter spawns the projectile.
