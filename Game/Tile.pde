@@ -11,14 +11,18 @@ public class Tile extends Button{
     super.display();
     if (plant != null) {
       plant.display();
-    }
-  }
-  Sprite runPlant(){
-    if (plant.health <= 0){
-      plant = null;
+      // will be changed.
+      if(clicked){
+        rect(x,y,100,100);
+      }
     }
     
+  }
+  Sprite runPlant(){
     if (plant != null) {
+      if (plant.health <= 0){
+        plant = null;
+      }
       return plant.action();
     }
     return null;

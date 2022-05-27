@@ -12,6 +12,9 @@ public class AntList{
   Ant remove(int index){
     return ants.remove(index);
   }
+  Ant get(int index){
+    return ants.get(index);
+  }
   
   void moveAll(){
     for(Ant x : ants){

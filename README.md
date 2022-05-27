@@ -32,3 +32,8 @@ I created the Tile, TileMap, Bullet, and the BulletList class. Completed the req
 Joshua Liu: I created the SunList and fixed some kinks with how AntList will work and the function of Tiles. I also created the Tile image and tested TileMap.
 
 Ivan Yeung: I tested Bullet, BulletList, Peashooters. Changed how some of the methods worked in BulletList and Peashooters(added timer instance variable). Also tested Peashooters and found a bug that might just be related to processing.
+
+5/26:
+
+Joshua Liu: I started working on GameLevel which ties every class together. I also worked some of the other classes that were not finished.
+

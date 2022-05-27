@@ -20,6 +20,9 @@ public class BulletList{
       b.display();
     }
   }
+  Bullet get(int index){
+    return bullets.get(index);
+  }
   
   void remove(int index){
     bullets.remove(index);
@@ -27,5 +30,8 @@ public class BulletList{
   
   void add(Bullet bullet){
     bullets.add(bullet);
+  }
+  int size(){
+    return bullets.size();
   }
 }
