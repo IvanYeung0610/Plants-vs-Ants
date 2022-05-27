@@ -25,6 +25,13 @@ public class SunList {
     return counter;
   }
   
+  Sun get(int index){
+    return suns.get(index);
+  }
+  int size(){
+    return suns.size();
+  }
+  
   void remove(int index){
     suns.remove(index);
   }
