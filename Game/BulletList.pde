@@ -20,6 +20,9 @@ public class BulletList{
       b.display();
     }
   }
+  Bullet get(int index){
+    return bullets.get(index);
+  }
   
   void remove(int index){
     bullets.remove(index);
