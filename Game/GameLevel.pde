@@ -83,6 +83,17 @@ public class GameLevel extends Level {
     }
     
   }
+  void setPlant(Tile t, String name){
+    
+  }
+  
+  void unCheck(){ // unchecks all scenebuttons.
+    for(int i = 0; i < sceneButtons.size(); i++){
+      if (sceneButtons.get(i).isClicked()){
+        sceneButtons.get(i).clickButton();
+      }
+    }
+  }
   
   void setCurrentAnts(){
     currentAnts = waves[currentWave].getIncomingAnts();
