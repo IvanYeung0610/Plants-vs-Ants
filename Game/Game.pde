@@ -50,7 +50,7 @@ void setup(){
 //      tiles.add(t, i, j);
 //    }
 //  }
-//}
+}
 
 void draw(){
   background(100);
