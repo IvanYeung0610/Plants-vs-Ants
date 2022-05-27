@@ -6,8 +6,7 @@ public class GameLevel extends Level {
   SunList suns;
   TileMap tiles;
   AntList currentAnts;
-  
-  // HoverRectangle hover; will be added later.
+  HoverRectangle hover; 
   
   
   GameLevel(ArrayList<Button> sceneButtons){
@@ -17,6 +16,7 @@ public class GameLevel extends Level {
     bullets = new BulletList(new ArrayList<Bullet>());
     suns = new SunList();
     currentAnts = new AntList();
+    hover = new HoverRectangle(0, 0);
     
     tiles = new TileMap();
     for(int i = 0; i < 5; i++){
@@ -95,4 +95,19 @@ public class GameLevel extends Level {
   void nextWave(){
     currentWave++;
   }
+  
+  void updateHover(){
+    for (Tile[] t: tiles.tileArray) {
+      for (Tile tile: t) {
+        if (mouseX < tile.x && mouseX > tile.x + tile.Width && mouseY < tile.y && mouseY > tile.y + tile.Height) {
+          hover.x =  tile.x;
+          hover.y = tile.y;
+          hover.display(tile.Width, tile.Height);
+          return; //ends cuz it found the match
+        }
+      }
+    }
+    //for loop through plant buttons
+  }
+  
 }
