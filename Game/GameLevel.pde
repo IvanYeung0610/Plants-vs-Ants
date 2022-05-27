@@ -56,13 +56,9 @@ public class GameLevel extends Level {
   
   void handleMouseClicked(){
     for(int i = 0; i < sceneButtons.size(); i++){
-      Button current = sceneButtons.get(i);
-      if (current.isClicked()){
-        current.clickButton();
-      }
-      if (current.overButton()) {
-        current.clickButton();
-        // UNCHECK ALL OTHER SCENE BUTTONS; DONE(needs to be checked)
+      if (sceneButtons.get(i).overButton()) {
+        sceneButtons.get(i).clickButton();
+        // UNCHECK ALL OTHER SCENE BUTTONS;
       }
     }
     for(int i = 0; i < 5; i++){
@@ -71,11 +67,12 @@ public class GameLevel extends Level {
         if(currentTile.overButton()){
           if(currentTile.plant == null){
             for(int x = 0; x < sceneButtons.size(); x++){
-              if(sceneButtons.get(x).getType().equals("PlantButton")){
-                // DO THIS LATER.
+              Button currentButton = sceneButtons.get(x);
+              if(currentButton.getType().equals("PlantButton") && currentButton.isClicked()){
+                setPlant(currentTile, currentButton.getName());
+                unCheck();
               }
             }
-            
           }
         }
       }
@@ -88,7 +85,21 @@ public class GameLevel extends Level {
     
   }
   void setPlant(Tile t, String name){
-    
+    Plant p;
+    switch(name){
+      case "Peashooter":
+        p = new Peashooter("Peashooter.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+      case "Sunflower":
+        p = new Sunflower("Sunflower.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+      case "Wallnut":
+        p = new Wallnut("Wallnut.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+    }
   }
   
   void unCheck(){ // unchecks all scenebuttons.

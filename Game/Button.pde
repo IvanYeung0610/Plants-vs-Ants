@@ -19,6 +19,7 @@ public class Button extends Sprite {
     clicked = !clicked;
   }
   
+  
   boolean overButton(){
     if (mouseX >= super.x && mouseX <= super.x + super.Width && mouseY >= super.y && mouseY <= super.y + super.Height){
       //println("Over Button");
@@ -30,4 +31,8 @@ public class Button extends Sprite {
   String getType(){
     return type;
   }
+  String getName(){
+    return null;
+  }
+  
 }
