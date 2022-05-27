@@ -14,6 +14,10 @@ public class TileMap{
     return false;
   }
   
+  Tile get(int row, int col){
+    return tileArray[row][col];
+  }
+  
   void displayAll(){
     for (Tile[] t: tileArray){
       for (Tile tile: t){
