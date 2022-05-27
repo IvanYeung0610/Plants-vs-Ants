@@ -31,4 +31,7 @@ public class BulletList{
   void add(Bullet bullet){
     bullets.add(bullet);
   }
+  int size(){
+    return bullets.size();
+  }
 }
