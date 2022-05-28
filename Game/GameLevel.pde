@@ -107,6 +107,17 @@ public class GameLevel extends Level {
         }
       }
     }
+    
+    for(Button button: sceneButtons){
+      if ((button.type).equals("PlantButton")) {
+        if (mouseX < button.x && mouseX > button.x + button.Width && mouseY < button.y && mouseY > button.y + button.Height) {
+          hover.x = button.x;
+          hover.y = button.y;
+          hover.display(button.Width, button.Height);
+          return;
+        }
+      }
+    }
     //for loop through plant buttons
   }
   
