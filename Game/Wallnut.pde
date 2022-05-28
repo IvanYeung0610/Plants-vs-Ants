@@ -8,4 +8,7 @@ public class Wallnut extends Plant{
   Sprite action(){
     return null;
   }
+  String getType(){
+    return "Wallnut";
+  }
 }
