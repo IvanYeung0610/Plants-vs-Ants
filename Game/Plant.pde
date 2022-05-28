@@ -16,5 +16,7 @@ public class Plant extends Sprite{
   int getCost(){
     return cost;
   }
-  
+  String getType(){
+    return "";
+  }
 }

@@ -20,4 +20,8 @@ public class Peashooter extends Plant{
   void resetTimer(){
     timer = 90;
   }
+  
+  String getType(){
+    return "Peashooter";
+  }
 }
