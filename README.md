@@ -42,3 +42,5 @@ Ivan Yeung: I added the sprites for peashooter, sun, sunflower, and wallnut. I a
 5/27:
 
 Joshua Liu: I worked on GameLevel's run and handleMouseClicked methods. They are developed enough now to simulate plant placing and shooting.
+
+Ivan Yeung: I made the HoverRectangle class and created the updateHover() method in GameLevel. I also helped by consulting my partner during debugging. I also added the images for the plant buttons we have so far.

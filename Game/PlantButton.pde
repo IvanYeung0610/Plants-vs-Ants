@@ -9,4 +9,5 @@ public class PlantButton extends Button {
   String getName(){
     return name;
   }
+  //new display method that adds text on top as the price (using switch statement and basing it off the name that it was intialized with)
 }
