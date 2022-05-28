@@ -1,5 +1,9 @@
 public class SunList {
-  ArrayList<Sun> suns = new ArrayList<Sun>();
+  ArrayList<Sun> suns;
+  
+  SunList(){
+     suns = new ArrayList<Sun>();
+  }
   
   void moveAll(){
     for(Sun s : suns){
@@ -15,7 +19,7 @@ public class SunList {
     int counter = 0;
     int i = 0;
     while(i < suns.size()){
-      if(suns.get(i).collected == true){ 
+      if(suns.get(i).isClicked()){ 
         counter++;
         suns.remove(i);
       }

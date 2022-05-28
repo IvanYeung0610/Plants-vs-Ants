@@ -31,6 +31,7 @@ public class GameLevel extends Level {
   void run() {
     // this ties all the classes together.
     
+    
     tiles.displayAll();
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 9; j++){
@@ -51,7 +52,8 @@ public class GameLevel extends Level {
       //setCurrentAnts(); Doesnt work rn because Waves is empty.
     }
     
-    println(bullets.size());
+    println(suns.size());
+    
     bullets.displayAll();
     bullets.moveAll();
     
@@ -81,6 +83,11 @@ public class GameLevel extends Level {
         // UNCHECK ALL OTHER SCENE BUTTONS;
       }
     }
+    for(int i = 0; i < suns.size(); i++){
+      if (suns.get(i).overButton()) {
+        suns.get(i).clickButton();
+      }
+    }
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 9; j++){
         Tile currentTile = tiles.get(i,j);
@@ -97,11 +104,7 @@ public class GameLevel extends Level {
         }
       }
     }
-    for(int i = 0; i < suns.size(); i++){
-      if (suns.get(i).overButton()) {
-        suns.get(i).clickButton();
-      }
-    }
+    
     
   }
   void setPlant(Tile t, String name){
