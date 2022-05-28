@@ -32,17 +32,33 @@ public class GameLevel extends Level {
     // this ties all the classes together.
     
     tiles.displayAll();
-    tiles.runAll();
+    for(int i = 0; i < 5; i++){
+      for(int j = 0; j < 9; j++){
+        Tile currentTile = tiles.get(i,j);
+        Sprite projectile = currentTile.runPlant();
+        if(projectile != null){
+          if(currentTile.plant.getType() == "Sunflower"){
+            suns.add((Sun)projectile);
+          }  else {
+            bullets.add((Bullet)projectile);
+          }
+        }
+      }
+    }
     
     if(currentAnts.size() == 0){
       nextWave();
       //setCurrentAnts(); Doesnt work rn because Waves is empty.
     }
     
+    println(bullets.size());
+    bullets.displayAll();
+    bullets.moveAll();
+    
     suns.displayAll();
     suns.moveAll();
     sun += suns.processAll() * 50;
-
+    
     
     currentAnts.displayAll();
     currentAnts.moveAll();
@@ -52,6 +68,10 @@ public class GameLevel extends Level {
         bullets.remove(i);
       }
     }
+    for(int i = 0; i < sceneButtons.size(); i++){
+      sceneButtons.get(i).display();
+    }
+    
   }
   
   void handleMouseClicked(){
@@ -107,7 +127,7 @@ public class GameLevel extends Level {
       if (sceneButtons.get(i).isClicked()){
         sceneButtons.get(i).clickButton();
       }
-    }""
+    }
   }
   
   void setCurrentAnts(){

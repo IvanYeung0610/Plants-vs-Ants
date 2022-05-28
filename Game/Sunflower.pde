@@ -19,7 +19,9 @@ public class Sunflower extends Plant{
       return null;
     }
   }
-  
+  String getType(){
+    return "Sunflower";
+  }
   
 
 }
