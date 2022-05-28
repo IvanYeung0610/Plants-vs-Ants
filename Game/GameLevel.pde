@@ -32,17 +32,33 @@ public class GameLevel extends Level {
     // this ties all the classes together.
     
     tiles.displayAll();
-    tiles.runAll();
+    for(int i = 0; i < 5; i++){
+      for(int j = 0; j < 9; j++){
+        Tile currentTile = tiles.get(i,j);
+        Sprite projectile = currentTile.runPlant();
+        if(projectile != null){
+          if(currentTile.plant.getType() == "Sunflower"){
+            suns.add((Sun)projectile);
+          }  else {
+            bullets.add((Bullet)projectile);
+          }
+        }
+      }
+    }
     
     if(currentAnts.size() == 0){
       nextWave();
       //setCurrentAnts(); Doesnt work rn because Waves is empty.
     }
     
+    println(bullets.size());
+    bullets.displayAll();
+    bullets.moveAll();
+    
     suns.displayAll();
     suns.moveAll();
     sun += suns.processAll() * 50;
-
+    
     
     currentAnts.displayAll();
     currentAnts.moveAll();
@@ -52,17 +68,17 @@ public class GameLevel extends Level {
         bullets.remove(i);
       }
     }
+    for(int i = 0; i < sceneButtons.size(); i++){
+      sceneButtons.get(i).display();
+    }
+    
   }
   
   void handleMouseClicked(){
     for(int i = 0; i < sceneButtons.size(); i++){
-      Button current = sceneButtons.get(i);
-      if (current.isClicked()){
-        current.clickButton();
-      }
-      if (current.overButton()) {
-        current.clickButton();
-        // UNCHECK ALL OTHER SCENE BUTTONS; DONE(needs to be checked)
+      if (sceneButtons.get(i).overButton()) {
+        sceneButtons.get(i).clickButton();
+        // UNCHECK ALL OTHER SCENE BUTTONS;
       }
     }
     for(int i = 0; i < 5; i++){
@@ -71,11 +87,12 @@ public class GameLevel extends Level {
         if(currentTile.overButton()){
           if(currentTile.plant == null){
             for(int x = 0; x < sceneButtons.size(); x++){
-              if(sceneButtons.get(x).getType().equals("PlantButton")){
-                // DO THIS LATER.
+              Button currentButton = sceneButtons.get(x);
+              if(currentButton.getType().equals("PlantButton") && currentButton.isClicked()){
+                setPlant(currentTile, currentButton.getName());
+                unCheck();
               }
             }
-            
           }
         }
       }
@@ -86,6 +103,31 @@ public class GameLevel extends Level {
       }
     }
     
+  }
+  void setPlant(Tile t, String name){
+    Plant p;
+    switch(name){
+      case "Peashooter":
+        p = new Peashooter("Peashooter.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+      case "Sunflower":
+        p = new Sunflower("Sunflower.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+      case "Wallnut":
+        p = new Wallnut("Wallnut.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+    }
+  }
+  
+  void unCheck(){ // unchecks all scenebuttons.
+    for(int i = 0; i < sceneButtons.size(); i++){
+      if (sceneButtons.get(i).isClicked()){
+        sceneButtons.get(i).clickButton();
+      }
+    }
   }
   
   void setCurrentAnts(){
