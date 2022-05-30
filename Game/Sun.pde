@@ -2,7 +2,7 @@ public class Sun extends Button{
   boolean collected = false;
   float xVelocity, yVelocity, bottomLevel;
   
-  Sun(String img, int xcoor, int ycoor, String type){
+  Sun(String img, float xcoor, float ycoor, String type){
     super(img, xcoor, ycoor, 50, 50, type);
     bottomLevel = (random(500) + 200);
   }
@@ -28,7 +28,7 @@ public class Sun extends Button{
     collected = true;
   }
   
-  void setBottomLevel(int newLevel){
+  void setBottomLevel(float newLevel){
     bottomLevel = newLevel;
   }
   void setXVel(int newVal){

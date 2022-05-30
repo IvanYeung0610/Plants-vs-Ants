@@ -1,11 +1,11 @@
 public class Sprite{
   PImage image;
-  int x;
-  int y;
+  float x;
+  float y;
   int Width;
   int Height;
   
-  Sprite(String image_name, int x, int y, int Width, int Height){
+  Sprite(String image_name, float x, float y, int Width, int Height){
     PImage photo = loadImage(image_name);
     image = photo;
     this.x = x;
