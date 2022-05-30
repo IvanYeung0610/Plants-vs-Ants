@@ -20,6 +20,7 @@ public class BulletList{
       b.display();
     }
   }
+  
   Bullet get(int index){
     return bullets.get(index);
   }

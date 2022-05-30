@@ -53,7 +53,6 @@ public class GameLevel extends Level {
       nextWave();
     }
     
-    println(suns.size());
     
     bullets.displayAll();
     bullets.moveAll();
@@ -67,8 +66,10 @@ public class GameLevel extends Level {
     currentAnts.moveAll();
     int bulletCount = bullets.size();
     for(int i = 0; i < bulletCount; i++){
+      print(i);
       if(currentAnts.takeDamage(bullets.get(i))) {
         bullets.remove(i);
+        break;
       }
     }
     for(int i = 0; i < sceneButtons.size(); i++){
