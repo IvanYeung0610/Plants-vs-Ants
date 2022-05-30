@@ -2,6 +2,7 @@ public class GameLevel extends Level {
   Wave[] waves;
   int currentWave;
   int sun;
+  int timer;
   BulletList bullets;
   SunList suns;
   TileMap tiles;
@@ -13,6 +14,7 @@ public class GameLevel extends Level {
     super(sceneButtons);
     currentWave = 0;
     sun = 0;
+    timer = 600; //first sun is 10 secs
     bullets = new BulletList(new ArrayList<Bullet>());
     suns = new SunList();
     currentAnts = new AntList();
@@ -72,6 +74,15 @@ public class GameLevel extends Level {
       sceneButtons.get(i).display();
     }
     
+    //Sun that spawns from the sky
+    if (timer == 0) {
+      //(int)(Math.random() * (b - a + 1)) + a
+      Sun skySun = new Sun("Sun.png", (int)(Math.random() * (1000 - 200 + 1)) + 200, -10, "Sun");
+      suns.add(skySun);
+      timer = 900;
+    } else {
+      timer--;
+    }
   }
   
   void handleMouseClicked(){
