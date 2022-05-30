@@ -70,6 +70,12 @@ public class GameLevel extends Level {
         bullets.remove(i);
       }
     }
+    //Kills ants when health is below zero
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (currentAnts.get(i).getHealth() <= 0) {
+        currentAnts.remove(i);
+      }
+    }
     for(int i = 0; i < sceneButtons.size(); i++){
       sceneButtons.get(i).display();
     }

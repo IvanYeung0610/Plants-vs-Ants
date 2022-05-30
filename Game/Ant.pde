@@ -20,4 +20,8 @@ public class Ant extends Sprite {
   void takeDamage(int Damage){
     health -= Damage;
   }
+  
+  int getHealth(){
+    return health;
+  }
 }
