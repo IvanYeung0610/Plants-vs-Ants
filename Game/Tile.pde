@@ -2,7 +2,7 @@ public class Tile extends Button{
   final int size = 100;
   Plant plant;
   
-  public Tile(String img, int xcoor, int ycoor, int Width, int Height){
+  public Tile(String img, float xcoor, float ycoor, int Width, int Height){
     super(img, xcoor, ycoor, Width, Height, "Tile");
     this.plant = null;
   }

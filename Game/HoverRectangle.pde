@@ -1,12 +1,12 @@
 public class HoverRectangle{
   //CHANGE EVERYTHING TO FLOATS LATER
-  int x, y;
-  public HoverRectangle(int xcoor, int ycoor){
+  float x, y;
+  public HoverRectangle(float xcoor, float ycoor){
     x = xcoor;
     y = ycoor;
   }
   
-  void display(int Width, int Height){
+  void display(float Width, float Height){
     rect(x, y, Width, Height);
   }
 }

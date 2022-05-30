@@ -1,7 +1,7 @@
 public class Peashooter extends Plant{
   int timer;
   
-  public Peashooter(String img, int xcoor, int ycoor){
+  public Peashooter(String img, float xcoor, float ycoor){
     //width, height, health, and cost are predetermined
     super(img, xcoor, ycoor, 100, 100, 10, 100);
     timer = 90; //90 frames = 1.5 sec at 60 fps (Peashooter will shoot every 1.5 sec)
