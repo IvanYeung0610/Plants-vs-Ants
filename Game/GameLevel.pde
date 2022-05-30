@@ -75,10 +75,10 @@ public class GameLevel extends Level {
       sceneButtons.get(i).display();
     }
     
-<<<<<<< HEAD
+
     textSize(25);
     text("Sun: " + sun, 1200, 40);
-=======
+
     //Sun that spawns from the sky
     if (timer == 0) {
       //(int)(Math.random() * (b - a + 1)) + a
@@ -88,7 +88,6 @@ public class GameLevel extends Level {
     } else {
       timer--;
     }
->>>>>>> main
   }
   
   void handleMouseClicked(){
