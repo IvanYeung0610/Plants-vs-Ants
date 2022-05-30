@@ -1,13 +1,12 @@
 public class GameLevel extends Level {
-  Wave[] waves;
+  Wave[] waves = new Wave[1];
   int currentWave;
   int sun;
   BulletList bullets;
   SunList suns;
   TileMap tiles;
   AntList currentAnts;
-  HoverRectangle hover; 
-  
+  HoverRectangle hover;
   
   GameLevel(ArrayList<Button> sceneButtons){
     super(sceneButtons);
@@ -17,6 +16,7 @@ public class GameLevel extends Level {
     suns = new SunList();
     currentAnts = new AntList();
     hover = new HoverRectangle(0, 0);
+    SetWave();
     
     tiles = new TileMap();
     for(int i = 0; i < 5; i++){
@@ -30,7 +30,7 @@ public class GameLevel extends Level {
   
   void run() {
     // this ties all the classes together.
-    
+    setCurrentAnts();
     
     tiles.displayAll();
     for(int i = 0; i < 5; i++){
@@ -49,7 +49,6 @@ public class GameLevel extends Level {
     
     if(currentAnts.size() == 0){
       nextWave();
-      //setCurrentAnts(); Doesnt work rn because Waves is empty.
     }
     
     println(suns.size());
@@ -74,6 +73,8 @@ public class GameLevel extends Level {
       sceneButtons.get(i).display();
     }
     
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
   }
   
   void handleMouseClicked(){
@@ -110,12 +111,12 @@ public class GameLevel extends Level {
   void setPlant(Tile t, String name){
     Plant p;
     switch(name){
-      case "Peashooter":
-        p = new Peashooter("Peashooter.png", t.x + 30, t.y + 30);
-        t.plant = p;
-        break;
       case "Sunflower":
         p = new Sunflower("Sunflower.png", t.x + 30, t.y + 30);
+        t.plant = p;
+        break;
+      case "Peashooter":
+        p = new Peashooter("Peashooter.png", t.x + 30, t.y + 30);
         t.plant = p;
         break;
       case "Wallnut":
@@ -135,6 +136,14 @@ public class GameLevel extends Level {
   
   void setCurrentAnts(){
     currentAnts = waves[currentWave].getIncomingAnts();
+  }
+  
+  void SetWave() {
+    AntList ant = new AntList();
+    ant.add(new Ant("Ant.png", 1600, 300, 100, 50, 10, 1));
+    
+    Wave W0 = new Wave(ant);
+    waves[0] = W0;
   }
   
   void nextWave(){
