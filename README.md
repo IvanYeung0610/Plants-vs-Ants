@@ -44,3 +44,9 @@ Ivan Yeung: I added the sprites for peashooter, sun, sunflower, and wallnut. I a
 Joshua Liu: I worked on GameLevel's run and handleMouseClicked methods. They are developed enough now to simulate plant placing and shooting.
 
 Ivan Yeung: I made the HoverRectangle class and created the updateHover() method in GameLevel. I also helped by consulting my partner during debugging. I also added the images for the plant buttons we have so far.
+
+5/29:
+
+Joshua Liu: I worked on GameLevel and tested ants. I worked on changing the sprites instance variables to floats and modified all child classes accordingly.
+
+Ivan Yeung: I worked on display the plant's cost on the PlantButton. I also implemented the suns that fall from sky at a set interval. Along with that I created the for loop that removes all ants that have under 1 health.
