@@ -3,7 +3,7 @@ public class Sun extends Button{
   float xVelocity, yVelocity, bottomLevel;
   
   Sun(String img, float xcoor, float ycoor, String type){
-    super(img, xcoor, ycoor, 50, 50, type);
+    super(img, xcoor, ycoor, 80, 80, type);
     bottomLevel = (random(500) + 200);
   }
   

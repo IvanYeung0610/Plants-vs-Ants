@@ -12,7 +12,11 @@ public class LevelManager{
   }
   
   void run() {
+    if(levels[currentLevel].levelComplete){
+      currentLevel++;
+    }
     levels[currentLevel].run();
+    
   }
   
   void handleMouseClicked(){

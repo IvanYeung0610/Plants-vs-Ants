@@ -12,13 +12,15 @@ public class GameLevel extends Level {
   GameLevel(ArrayList<Button> sceneButtons){
     super(sceneButtons);
     currentWave = 0;
-    sun = 0;
-    timer = 600; //first sun is 10 secs
+    sun = 50;
+    timer = 300; //first sun is 10 secs
     bullets = new BulletList(new ArrayList<Bullet>());
     suns = new SunList();
     currentAnts = new AntList();
     hover = new HoverRectangle(0, 0);
     SetWave();
+    
+    
     
     tiles = new TileMap();
     for(int i = 0; i < 5; i++){
@@ -49,7 +51,7 @@ public class GameLevel extends Level {
       }
     }
     
-    if(currentAnts.size() == 0){
+    if(currentAnts.size() == 0){ // send the next wave if all ants are dead.
       nextWave();
     }
     
@@ -75,7 +77,7 @@ public class GameLevel extends Level {
       sceneButtons.get(i).display();
     }
     
-
+    // Display Total SUN
     textSize(25);
     text("Sun: " + sun, 1200, 40);
 
@@ -91,10 +93,14 @@ public class GameLevel extends Level {
   }
   
   void handleMouseClicked(){
-    for(int i = 0; i < sceneButtons.size(); i++){
+    for(int i = 0; i < sceneButtons.size(); i++){ // click the most recent button clicked, and unclick all others.
       if (sceneButtons.get(i).overButton()) {
+        for(int j = 0; j < sceneButtons.size(); j++){
+          if(j != i && sceneButtons.get(j).clicked == true){
+            sceneButtons.get(j).clickButton();
+          }
+        }
         sceneButtons.get(i).clickButton();
-        // UNCHECK ALL OTHER SCENE BUTTONS;
       }
     }
     for(int i = 0; i < suns.size(); i++){
@@ -102,15 +108,18 @@ public class GameLevel extends Level {
         suns.get(i).clickButton();
       }
     }
+    
+    // This mess is for placing plants.
     for(int i = 0; i < 5; i++){
-      for(int j = 0; j < 9; j++){
-        Tile currentTile = tiles.get(i,j);
-        if(currentTile.overButton()){
-          if(currentTile.plant == null){
-            for(int x = 0; x < sceneButtons.size(); x++){
-              Button currentButton = sceneButtons.get(x);
-              if(currentButton.getType().equals("PlantButton") && currentButton.isClicked()){
+      for(int j = 0; j < 9; j++){ // Loops thru all Tiles.
+        Tile currentTile = tiles.get(i,j); 
+        if(currentTile.overButton()){  // Checks which tile the mouse clicks on.
+          if(currentTile.plant == null){ // IF there are no plants already on it,
+            for(int x = 0; x < sceneButtons.size(); x++){ // Check which Plantbutton is clicked
+              Button currentButton = sceneButtons.get(x); 
+              if(currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost()){
                 setPlant(currentTile, currentButton.getName());
+                sun -= ((PlantButton)currentButton).getCost();
                 unCheck();
               }
             }
@@ -118,9 +127,8 @@ public class GameLevel extends Level {
         }
       }
     }
-    
-    
   }
+  
   void setPlant(Tile t, String name){
     Plant p;
     switch(name){
@@ -151,16 +159,22 @@ public class GameLevel extends Level {
     currentAnts = waves[currentWave].getIncomingAnts();
   }
   
+  
+  // This will be redefined in the child GameLevels.
   void SetWave() {
     AntList ant = new AntList();
-    ant.add(new Ant("Ant.png", 1600, 300, 100, 50, 10, 1));
+    ant.add(new Ant("Ant.png", 1600, 300, 100, 50, 15, 1));
     
     Wave W0 = new Wave(ant);
     waves[0] = W0;
   }
   
   void nextWave(){
-    currentWave++;
+    if(currentWave + 1 > waves.length){
+      levelComplete = true;
+    }  else{
+      currentWave++;
+    }
   }
   
   void updateHover(){

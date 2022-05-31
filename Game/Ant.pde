@@ -6,7 +6,7 @@ public class Ant extends Sprite {
     super(image_name, x, y, Width, Height);
     this.health = health;
     this.damage = damage;
-    velocity = .5;
+    velocity = .35;
   }
   void display(){
     super.display();
