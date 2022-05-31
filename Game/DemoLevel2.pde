@@ -1,23 +1,22 @@
-public class DemoLevel extends GameLevel {
+public class DemoLevel2 extends GameLevel {
   final int ROW1 = 180;
   final int ROW2 = 324;
   final int ROW3 = 468;
   final int ROW4 = 612;
   final int ROW5 = 756;
   
-  DemoLevel(){
+  DemoLevel2(){
     super(new ArrayList<Button>(), 2);
     
     sceneButtons.add(new PlantButton("SunflowerButton.png",0,0, 150, 100, "Sunflower"));
     sceneButtons.add(new PlantButton("PeashooterButton.png",170,0, 150, 100, "Peashooter"));
     sceneButtons.add(new PlantButton("WallnutButton.png",340,0, 150, 100, "Wallnut"));
   }
-  
   void run(){
     super.run();
     
     stroke(225);
-    text("DEMO", 500, 50);
+    text("DEMO2", 500, 50);
   }
   
   void SetWave() {

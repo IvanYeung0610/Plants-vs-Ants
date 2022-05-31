@@ -34,7 +34,9 @@ public class Ant extends Sprite {
   int getHealth(){
     return health;
   }
-  
+  void setAttacking(boolean b){
+    attacking = b;
+  }
   int attack(){
     if (timer == 0) {
       timer = 60;

@@ -88,14 +88,7 @@ public class GameLevel extends Level {
     }
     
     //Ants attacking
-    for (int i = 0; i < currentAnts.size(); i++) {
-      if (tiles.takeDamage(currentAnts.get(i))) {
-        currentAnts.get(i).attacking = true;
-        //print(currentAnts.get(i).attacking);
-      } else {
-        currentAnts.get(i).attacking = false;
-      }
-    }
+    antAttack();
     
     
     // Display Total SUN
@@ -149,7 +142,16 @@ public class GameLevel extends Level {
       }
     }
   }
-  
+  void antAttack(){
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (tiles.takeDamage(currentAnts.get(i))) {
+        currentAnts.get(i).setAttacking(true);
+        //print(currentAnts.get(i).attacking);
+      } else {
+        currentAnts.get(i).setAttacking(false);
+      }
+    }
+  }
   void setPlant(Tile t, String name){
     Plant p;
     switch(name){
@@ -191,7 +193,7 @@ public class GameLevel extends Level {
   }
   
   void nextWave(){
-    if(currentWave + 1 > waves.length){
+    if(currentWave + 1 == waves.length){
       levelComplete = true;
     }  else{
       currentWave++;

@@ -41,9 +41,9 @@ public class TileMap{
   boolean takeDamage(Ant ant){
   for(Tile[] x : tileArray){
      for (Tile t: x) {
-       if (t.plant != null){
-        if(t.plant.checkCollision(ant)) {
-          t.plant.takeDamage(ant.attack());
+       if (t.getPlant() != null){
+        if(t.getPlant().checkCollision(ant)) {
+          t.getPlant().takeDamage(ant.attack());
           return true;
         }
        }
