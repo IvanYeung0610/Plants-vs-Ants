@@ -1,16 +1,14 @@
 LevelManager g;
-Level[] levels = new Level[2];
+Level[] levels = new Level[3];
 void setup(){
   size(1400,900);
   
-  //ArrayList<Button> sceneButtons = new ArrayList<Button>();
-  //sceneButtons.add(new PlantButton("SunflowerButton.png",0,0, 150, 100, "Sunflower"));
-  //  sceneButtons.add(new PlantButton("PeashooterButton.png",170,0, 150, 100, "Peashooter"));
-  //  sceneButtons.add(new PlantButton("WallnutButton.png",340,0, 150, 100, "Wallnut"));
+  // ADD MORE LEVELS HERE:
   levels[0] = new DemoLevel();
   levels[1] = new DemoLevel2();
-  // ADD MORE LEVELS HERE:
+  levels[2] = new DemoLevel3();
   
+  // Set to levels to LevelManager;
   g = new LevelManager(levels);
 }
 

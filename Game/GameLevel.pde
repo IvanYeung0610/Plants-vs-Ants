@@ -185,11 +185,7 @@ public class GameLevel extends Level {
   
   // This will be redefined in the child GameLevels.
   void SetWave() {
-    AntList ant = new AntList();
-    ant.add(new Ant("Ant.png", 1600, 300, 100, 50, 15, 1));
     
-    Wave W0 = new Wave(ant);
-    waves[0] = W0;
   }
   
   void nextWave(){
