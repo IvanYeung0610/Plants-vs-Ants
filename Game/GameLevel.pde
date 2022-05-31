@@ -33,7 +33,6 @@ public class GameLevel extends Level {
   void run() {
     // this ties all the classes together.
     setCurrentAnts();
-    updateHover();
     tiles.displayAll();
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 9; j++){
