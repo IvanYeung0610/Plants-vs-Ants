@@ -50,3 +50,7 @@ Ivan Yeung: I made the HoverRectangle class and created the updateHover() method
 Joshua Liu: I worked on GameLevel and tested ants. I worked on changing the sprites instance variables to floats and modified all child classes accordingly.
 
 Ivan Yeung: I worked on display the plant's cost on the PlantButton. I also implemented the suns that fall from sky at a set interval. Along with that I created the for loop that removes all ants that have under 1 health.
+
+5/30:
+
+Joshua Liu: I worked on finshing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them. 
