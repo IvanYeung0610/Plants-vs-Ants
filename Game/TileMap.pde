@@ -42,7 +42,7 @@ public class TileMap{
   for(Tile[] x : tileArray){
      for (Tile t: x) {
        if (t.plant != null){
-        if(t.checkCollision(ant)) {
+        if(t.plant.checkCollision(ant)) {
           t.plant.takeDamage(ant.attack());
           return true;
         }

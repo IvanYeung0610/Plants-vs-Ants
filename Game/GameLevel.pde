@@ -86,6 +86,7 @@ public class GameLevel extends Level {
     for (int i = 0; i < currentAnts.size(); i++) {
       if (tiles.takeDamage(currentAnts.get(i))) {
         currentAnts.get(i).attacking = true;
+        //print(currentAnts.get(i).attacking);
       } else {
         currentAnts.get(i).attacking = false;
       }
