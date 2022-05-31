@@ -53,4 +53,6 @@ Ivan Yeung: I worked on display the plant's cost on the PlantButton. I also impl
 
 5/30:
 
-Joshua Liu: I worked on finshing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them. 
+Joshua Liu: I worked on finishing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them.
+
+Ivan Yeung: I worked on ants attacking and not moving when they attack. I also worked on updateHover() but it didn't seem to work so we decided to no include it in the demo. 
