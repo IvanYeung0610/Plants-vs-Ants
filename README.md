@@ -38,3 +38,21 @@ Ivan Yeung: I tested Bullet, BulletList, Peashooters. Changed how some of the me
 Joshua Liu: I started working on GameLevel which ties every class together. I also worked some of the other classes that were not finished.
 
 Ivan Yeung: I added the sprites for peashooter, sun, sunflower, and wallnut. I also completed and tested the sunflower and wallnut class, while making minor changes to how peashooter spawns the projectile.
+
+5/27:
+
+Joshua Liu: I worked on GameLevel's run and handleMouseClicked methods. They are developed enough now to simulate plant placing and shooting.
+
+Ivan Yeung: I made the HoverRectangle class and created the updateHover() method in GameLevel. I also helped by consulting my partner during debugging. I also added the images for the plant buttons we have so far.
+
+5/29:
+
+Joshua Liu: I worked on GameLevel and tested ants. I worked on changing the sprites instance variables to floats and modified all child classes accordingly.
+
+Ivan Yeung: I worked on display the plant's cost on the PlantButton. I also implemented the suns that fall from sky at a set interval. Along with that I created the for loop that removes all ants that have under 1 health.
+
+5/30:
+
+Joshua Liu: I worked on finishing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them.
+
+Ivan Yeung: I worked on ants attacking and not moving when they attack. I also worked on updateHover() but it didn't seem to work so we decided to no include it in the demo. 
