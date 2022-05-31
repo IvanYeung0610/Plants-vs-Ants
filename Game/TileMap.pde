@@ -38,5 +38,19 @@ public class TileMap{
     }
   }
   
+  boolean takeDamage(Ant ant){
+  for(Tile[] x : tileArray){
+     for (Tile t: x) {
+       if (t.plant != null){
+        if(t.checkCollision(ant)) {
+          t.plant.takeDamage(ant.attack());
+          return true;
+        }
+       }
+     }
+  }
+  return false;
+}
+  
   
 }
