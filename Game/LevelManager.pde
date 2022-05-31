@@ -13,7 +13,7 @@ public class LevelManager{
   
   void run() {
     if(levels[currentLevel].levelComplete){
-      currentLevel++;
+      playNext();
     }
     levels[currentLevel].run();
     

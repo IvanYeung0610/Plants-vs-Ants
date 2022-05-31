@@ -1,5 +1,5 @@
 public class GameLevel extends Level {
-  Wave[] waves = new Wave[1];
+  Wave[] waves;
   int currentWave;
   int sun;
   int timer;
@@ -9,7 +9,7 @@ public class GameLevel extends Level {
   AntList currentAnts;
   HoverRectangle hover;
   
-  GameLevel(ArrayList<Button> sceneButtons){
+  GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
     currentWave = 0;
     sun = 50;
@@ -18,9 +18,8 @@ public class GameLevel extends Level {
     suns = new SunList();
     currentAnts = new AntList();
     hover = new HoverRectangle(0, 0);
+    waves = new Wave[numOfWaves];
     SetWave();
-    
-    
     
     tiles = new TileMap();
     for(int i = 0; i < 5; i++){
@@ -29,13 +28,13 @@ public class GameLevel extends Level {
         tiles.add(t, i, j);
       }
     }
-    
   }
   
   void run() {
     // this ties all the classes together.
     setCurrentAnts();
     
+    // This Displays all tiles and runs the plant on top of them.
     tiles.displayAll();
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 9; j++){
@@ -50,6 +49,7 @@ public class GameLevel extends Level {
         }
       }
     }
+    
     
     if(currentAnts.size() == 0){ // send the next wave if all ants are dead.
       nextWave();
