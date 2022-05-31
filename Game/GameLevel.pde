@@ -33,7 +33,7 @@ public class GameLevel extends Level {
   void run() {
     // this ties all the classes together.
     setCurrentAnts();
-    
+    updateHover();
     tiles.displayAll();
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 9; j++){
@@ -71,6 +71,7 @@ public class GameLevel extends Level {
         break;
       }
     }
+
     //Kills ants when health is below zero
     for (int i = 0; i < currentAnts.size(); i++) {
       if (currentAnts.get(i).getHealth() <= 0) {
@@ -79,6 +80,16 @@ public class GameLevel extends Level {
     }
     for(int i = 0; i < sceneButtons.size(); i++){
       sceneButtons.get(i).display();
+    }
+    
+    //Ants attacking
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (tiles.takeDamage(currentAnts.get(i))) {
+        currentAnts.get(i).attacking = true;
+        //print(currentAnts.get(i).attacking);
+      } else {
+        currentAnts.get(i).attacking = false;
+      }
     }
     
 
@@ -175,6 +186,13 @@ public class GameLevel extends Level {
         if (mouseX < tile.x && mouseX > tile.x + tile.Width && mouseY < tile.y && mouseY > tile.y + tile.Height) {
           hover.x =  tile.x;
           hover.y = tile.y;
+          for (int i = 0; i < tile.Height; i++) {
+           for (int j = 0; j < tile.Width ; j++){
+             color c = tile.image.get(i, j);
+             set(j, i, color(red(c) * 1/2, green(c) * 1/2, blue(c) * 1/2));
+           }
+          }
+          print("1");
           hover.display(tile.Width, tile.Height);
           return; //ends cuz it found the match
         }
@@ -186,6 +204,13 @@ public class GameLevel extends Level {
         if (mouseX < button.x && mouseX > button.x + button.Width && mouseY < button.y && mouseY > button.y + button.Height) {
           hover.x = button.x;
           hover.y = button.y;
+          for (int i = 0; i < button.Height; i++) {
+            for (int j = 0; j < button.Width ; j++){
+              color c = button.image.get(i, j);
+              set(j, i, color(red(c) * 1/2, green(c) * 1/2, blue(c) * 1/2));
+            }
+          }
+          print("2");
           hover.display(button.Width, button.Height);
           return;
         }
