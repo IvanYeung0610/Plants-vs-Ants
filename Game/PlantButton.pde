@@ -1,11 +1,12 @@
 public class PlantButton extends Button {
   String name;
   int cost;
+  int timer;
   
   public PlantButton(String img, int xcoor, int ycoor, int Width, int Height, String name){
     super(img, xcoor, ycoor, Width, Height, "PlantButton");
     this.name = name;
-    
+    timer = 0;
     switch(name){
       case "Peashooter":
         cost = 100;
@@ -19,6 +20,11 @@ public class PlantButton extends Button {
     }
   }
   
+  
+  void setTimer(int newTime){
+    timer = newTime;
+  }
+  
   String getName(){
     return name;
   }
@@ -29,7 +35,15 @@ public class PlantButton extends Button {
   
   //new display method that adds text on top as the price (using switch statement and basing it off the name that it was intialized with)
   void display(){
+    if (timer > 0){
+      timer--;
+      stroke(100);
+      strokeWeight(10);
+      noFill();
+      rect(x,y,Width,Height);
+    }
     super.display();
+    text(timer, x,y);
     switch(name){
       case "Peashooter":
         textSize(40);
