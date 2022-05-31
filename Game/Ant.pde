@@ -8,7 +8,7 @@ public class Ant extends Sprite {
     super(image_name, x, y, Width, Height);
     this.health = health;
     this.damage = damage;
-    velocity = .5;
+    velocity = .35;
     attacking = false;
     timer = 60;
   }
@@ -34,7 +34,9 @@ public class Ant extends Sprite {
   int getHealth(){
     return health;
   }
-  
+  void setAttacking(boolean b){
+    attacking = b;
+  }
   int attack(){
     if (timer == 0) {
       timer = 60;

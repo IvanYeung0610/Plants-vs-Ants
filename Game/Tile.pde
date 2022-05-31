@@ -19,12 +19,17 @@ public class Tile extends Button{
     }
     
   }
+  Plant getPlant(){
+    return plant;
+  }
+  
   Sprite runPlant(){
     if (plant != null) {
       if (plant.health <= 0){
         plant = null;
+      }  else{
+        return plant.action();
       }
-      return plant.action();
     }
     return null;
   }

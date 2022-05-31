@@ -1,18 +1,19 @@
-GameLevel g;
+LevelManager g;
+Level[] levels = new Level[3];
 void setup(){
   size(1400,900);
-  ArrayList<Button> sceneButtons = new ArrayList<Button>();
-  PlantButton test = new PlantButton("PeashooterButton.png",0,0, 150, 100, "Peashooter");
-  PlantButton test2 = new PlantButton("SunflowerButton.png",170,0, 150, 100, "Sunflower");
-  PlantButton test3 = new PlantButton("WallnutButton.png",340,0, 150, 100, "Wallnut");
-  sceneButtons.add(test);
-  sceneButtons.add(test2);
-  sceneButtons.add(test3);
-  g = new GameLevel(sceneButtons);
+  
+  // ADD MORE LEVELS HERE:
+  levels[0] = new DemoLevel();
+  levels[1] = new DemoLevel2();
+  levels[2] = new DemoLevel3();
+  
+  // Set to levels to LevelManager;
+  g = new LevelManager(levels);
 }
 
 void draw(){
-  background(100);
+  background(50, 121, 168);
   g.run();
 }
 
