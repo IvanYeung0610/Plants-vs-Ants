@@ -8,6 +8,7 @@ public class GameLevel extends Level {
   TileMap tiles;
   AntList currentAnts;
   HoverRectangle hover;
+  LawnMower[] lawnMowers;
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
@@ -28,6 +29,12 @@ public class GameLevel extends Level {
         tiles.add(t, i, j);
       }
     }
+    
+    lawnMowers = new LawnMower[5];
+     for(int i = 0; i < 5; i++) {
+       LawnMower mower = new LawnMower("ProjectilePea.png", 90, 130 + i * 144, 100, 100);
+       lawnMowers[i] = mower;
+     }
   }
   
   
