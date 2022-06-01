@@ -43,7 +43,9 @@ public class GameLevel extends Level {
   // this ties all the classes together.
   void run() {
     setCurrentAnts();
-
+    
+    house.display();
+       
     tiles.displayAll();
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 9; j++){
@@ -64,7 +66,6 @@ public class GameLevel extends Level {
       nextWave();
     }
     
-    house.display();
     
     bullets.displayAll();
     bullets.moveAll();
@@ -88,6 +89,10 @@ public class GameLevel extends Level {
     for (int i = 0; i < currentAnts.size(); i++) {
       if (currentAnts.get(i).getHealth() <= 0) {
         currentAnts.remove(i);
+      }
+      //condition for losing the game
+      if (currentAnts.get(i).x < 50) {
+        
       }
     }
     for(int i = 0; i < sceneButtons.size(); i++){
