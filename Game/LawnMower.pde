@@ -14,7 +14,7 @@ public class LawnMower extends Sprite {
   
   void move(){
     if (activated) {
-      this.x += 10;
+      this.x += 7;
     }
   }
   
