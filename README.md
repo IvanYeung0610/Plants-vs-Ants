@@ -53,11 +53,12 @@ Ivan Yeung: I worked on display the plant's cost on the PlantButton. I also impl
 
 5/30:
 
-Joshua Liu: I worked on finshing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them. 
+Joshua Liu: I worked on finshing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them.
 
-Ivan Yeung: I worked on ants attacking and not moving when they attack. I also worked on updateHover() but it didn't seem to work so we decided to no include it in the demo. 
+Ivan Yeung: I worked on ants attacking and not moving when they attack. I also worked on updateHover() but it didn't seem to work so we decided to no include it in the demo.
 
 5/31:
 
 Joshua Liu: I worked on making the plantButtons have timers. This would make it so that the plants have a cooldown to being placed.
 
+Ivan Yeung: I worked on the lawnmower class and got it functioning like it does in the actual game. The lawnmowers are activated once and moves down the row and despawns. I also added the assets for the lawnmower and the house class.

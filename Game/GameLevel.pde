@@ -8,6 +8,7 @@ public class GameLevel extends Level {
   TileMap tiles;
   AntList currentAnts;
   HoverRectangle hover;
+  LawnMower[] lawnMowers;
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
@@ -28,6 +29,12 @@ public class GameLevel extends Level {
         tiles.add(t, i, j);
       }
     }
+    
+    lawnMowers = new LawnMower[5];
+     for(int i = 0; i < 5; i++) {
+       LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
+       lawnMowers[i] = mower;
+     }
   }
   
   
@@ -86,6 +93,20 @@ public class GameLevel extends Level {
     
     //Ants attacking
     antAttack();
+    
+    //Lawnmower processing
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+        for (int j = 0; j < currentAnts.size(); j++) {
+          lawnMowers[i].process(currentAnts.get(j));
+        }
+          lawnMowers[i].move();
+          if(lawnMowers[i].x > width) {
+            lawnMowers[i] = null;
+          }
+      }
+    }
     
     
     // Display Total SUN

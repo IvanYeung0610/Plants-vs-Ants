@@ -24,7 +24,12 @@ public class DemoLevel extends GameLevel {
     AntList ant = new AntList();
     //ADD MORE ANTS HERE:
     ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 2050, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1700, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1800, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1900, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 2000, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 2100, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 2200, ROW1, 100, 50, 15, 1));
     
     Wave W0 = new Wave(ant);
     waves[0] = W0;
