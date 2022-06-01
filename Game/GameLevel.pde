@@ -9,6 +9,7 @@ public class GameLevel extends Level {
   AntList currentAnts;
   HoverRectangle hover;
   LawnMower[] lawnMowers;
+  House house;
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
@@ -35,6 +36,7 @@ public class GameLevel extends Level {
        LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
        lawnMowers[i] = mower;
      }
+     house = new House("House.png", -450, 0, 590, 900);
   }
   
   
@@ -62,6 +64,7 @@ public class GameLevel extends Level {
       nextWave();
     }
     
+    house.display();
     
     bullets.displayAll();
     bullets.moveAll();
