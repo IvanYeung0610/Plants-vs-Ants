@@ -8,6 +8,13 @@ public class LawnMower extends Sprite {
   void process(Ant ant) {
     if (this.checkCollision(ant)) {
       activated = true;
+      ant.takeDamage(ant.getHealth());
+    } 
+  }
+  
+  void move(){
+    if (activated) {
+      this.x += 10;
     }
   }
   
