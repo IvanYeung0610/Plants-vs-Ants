@@ -132,6 +132,17 @@ public class GameLevel extends Level {
                 setPlant(currentTile, currentButton.getName());
                 sun -= ((PlantButton)currentButton).getCost();
                 unCheck();
+                switch(currentButton.getName()){
+                  case "Peashooter":
+                    ((PlantButton)currentButton).setTimer(500);
+                    break;
+                  case "Sunflower":
+                    ((PlantButton)currentButton).setTimer(300);
+                    break;
+                  case "Wallnut":
+                    ((PlantButton)currentButton).setTimer(2200);
+                    break;
+                }
               }
             }
           }

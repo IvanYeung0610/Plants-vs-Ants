@@ -54,3 +54,8 @@ Ivan Yeung: I worked on display the plant's cost on the PlantButton. I also impl
 5/30:
 
 Joshua Liu: I worked on finshing features in GameLevel for the Demo. I also made the demolevels for the demo and tested them. 
+
+5/31:
+
+Joshua Liu: I worked on making the plantButtons have timers. This would make it so that the plants have a cooldown to being placed.
+
