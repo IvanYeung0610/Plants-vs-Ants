@@ -77,6 +77,7 @@ public class PlantButton extends Button {
       fill(50, 100);
       noStroke();
       rect(x,y,Width,Height * ((float)timer / maxTimer) );
+      fill(0);
     }
     
     if(clicked){
