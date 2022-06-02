@@ -36,12 +36,38 @@ public class GameLevel extends Level {
        LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
        lawnMowers[i] = mower;
      }
-     house = new House("House.png", -450, 0, 590, 900);
+     house = new House("House.png", -470, 0, 590, 900);
   }
   
   
   // this ties all the classes together.
   void run() {
+
+    if (this.gameOver == true) {
+     house.display();
+     tiles.displayAll();
+     bullets.displayAll();
+     suns.displayAll();
+     currentAnts.displayAll();
+     for(int i = 0; i < sceneButtons.size(); i++){
+      sceneButtons.get(i).display();
+     }
+     for (int i = 0; i < 5; i++) {
+        if (lawnMowers[i] != null) {
+           lawnMowers[i].display();
+        }
+     }
+     fill(0);
+     textSize(25);
+     text("Sun: " + sun, 1200, 40);
+     
+     fill(0, 100);
+     rect(0, 0, 1600, 900);
+     fill(0, 170, 0);
+     textSize(100);
+     text("THE ANTS", width/2 - 200, height/2); 
+    }
+    else{
     setCurrentAnts();
     
     house.display();
@@ -62,9 +88,6 @@ public class GameLevel extends Level {
     }
     
     
-    if(currentAnts.size() == 0){ // send the next wave if all ants are dead.
-      nextWave();
-    }
     
     
     bullets.displayAll();
@@ -84,36 +107,46 @@ public class GameLevel extends Level {
         break;
       }
     }
-
-    //Kills ants when health is below zero
-    for (int i = 0; i < currentAnts.size(); i++) {
-      if (currentAnts.get(i).getHealth() <= 0) {
-        currentAnts.remove(i);
-      }
-      //condition for losing the game
-      if (currentAnts.get(i).x < 50) {
-        
-      }
-    }
-    for(int i = 0; i < sceneButtons.size(); i++){
-      sceneButtons.get(i).display();
-    }
     
-    //Ants attacking
-    antAttack();
-    
-    //Lawnmower processing
+      //Lawnmower processing
     for (int i = 0; i < 5; i++) {
       if (lawnMowers[i] != null) {
         lawnMowers[i].display();
         for (int j = 0; j < currentAnts.size(); j++) {
-          lawnMowers[i].process(currentAnts.get(j));
+           lawnMowers[i].process(currentAnts.get(j));
         }
           lawnMowers[i].move();
           if(lawnMowers[i].x > width) {
             lawnMowers[i] = null;
           }
       }
+    }
+
+    //Kills ants when health is below zero
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (currentAnts.get(i).getHealth() <= 0) {
+        currentAnts.remove(i);
+      }
+    }
+    
+    //displays sceneButtons
+    for(int i = 0; i < sceneButtons.size(); i++){
+      sceneButtons.get(i).display();
+    }
+    
+    //checks for losing condition
+    for (int i = 0; i < currentAnts.size(); i++) {
+      //condition for losing the game
+      if (currentAnts.get(i).x < 50) {
+        this.gameOver = true;
+      }
+    }
+    
+    //Ants attacking
+    antAttack();
+    
+    if(currentAnts.size() == 0){ // send the next wave if all ants are dead.
+      nextWave();
     }
     
     
@@ -131,6 +164,7 @@ public class GameLevel extends Level {
       timer--;
     }
   }
+  } //end of run()
   
   void handleMouseClicked(){
     for(int i = 0; i < sceneButtons.size(); i++){ // click the most recent button clicked, and unclick all others.

@@ -1,5 +1,6 @@
 public class LevelManager{
   Level[] levels;
+
   int currentLevel;
   
   public LevelManager(Level[] levels){

@@ -16,8 +16,8 @@ public class DemoLevel extends GameLevel {
   void run(){
     super.run();
     
-    stroke(225);
-    text("DEMO", 500, 50);
+    //stroke(225);
+    //text("DEMO", 500, 50);
   }
   
   void SetWave() {
@@ -28,7 +28,7 @@ public class DemoLevel extends GameLevel {
     ant.add(new Ant("Ant.png", 1800, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1900, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 2000, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 2100, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 10000, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 2200, ROW1, 100, 50, 15, 1));
     
     Wave W0 = new Wave(ant);
