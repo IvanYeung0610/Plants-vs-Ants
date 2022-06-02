@@ -70,7 +70,7 @@ public class GameLevel extends Level {
     
     suns.displayAll();
     suns.moveAll();
-    sun += suns.processAll() * 50;
+    sun += suns.processAll();
     
     
     currentAnts.displayAll();
@@ -107,7 +107,7 @@ public class GameLevel extends Level {
           if(lawnMowers[i].x > width) {
             lawnMowers[i] = null;
           }
-      }    
+      }
       
     }
     
@@ -187,11 +187,13 @@ public class GameLevel extends Level {
       unCheck();
       shovel.clickButton();
     }
+    
     if(shovel.isClicked()){ 
-      for(int i = 0; i < 5; i++){
+      for(int i = 0; i < 5; i++){ 
         for(int j = 0; j < 9; j++){
           Tile currentTile = tiles.get(i,j); 
           if(currentTile.overButton() && (currentTile.getPlant() != null)){
+            suns.add(new Sun(mouseX,mouseY, 40, currentTile.getPlant().getCost() / 2)); // Adds sun to game giving half of the plant's value.
             currentTile.plant = null;
             shovel.clickButton();
           }
