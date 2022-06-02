@@ -62,3 +62,8 @@ Ivan Yeung: I worked on ants attacking and not moving when they attack. I also w
 Joshua Liu: I worked on making the plantButtons have timers. This would make it so that the plants have a cooldown to being placed.
 
 Ivan Yeung: I worked on the lawnmower class and got it functioning like it does in the actual game. The lawnmowers are activated once and moves down the row and despawns. I also added the assets for the lawnmower and the house class.
+
+6/1:
+
+Joshua Liu: I worked on making a shovel for the game. It works like the other buttons for placing plants, but it removes the plant instead of placing one. 
+
