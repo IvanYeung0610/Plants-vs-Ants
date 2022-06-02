@@ -63,9 +63,11 @@ public class GameLevel extends Level {
      
      fill(0, 100);
      rect(0, 0, 1600, 900);
-     fill(0, 170, 0);
+     fill(255, 0, 0);
      textSize(100);
-     text("THE ANTS", width/2 - 200, height/2); 
+     text("YOUR HOME", width/2 - 200, height/2 - 150); 
+     text("IS INFESTED", width/2 - 200, height/2); 
+     text("WITH ANTS", width/2 - 200, height/2 + 150); 
     }
     else{
     setCurrentAnts();
