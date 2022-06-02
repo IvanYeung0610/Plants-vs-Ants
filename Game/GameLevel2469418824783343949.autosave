@@ -9,7 +9,6 @@ public class GameLevel extends Level {
   AntList currentAnts;
   HoverRectangle hover;
   LawnMower[] lawnMowers;
-  Shovel shovel;
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
@@ -20,9 +19,12 @@ public class GameLevel extends Level {
     suns = new SunList();
     currentAnts = new AntList();
     hover = new HoverRectangle(0, 0);
-    shovel = new Shovel();
     waves = new Wave[numOfWaves];
     SetWave();
+    
+    for(int i = 0; i < sceneButtons.size(); i++){
+      if(sceneButtons.get(i))
+    }
     
     tiles = new TileMap();
     for(int i = 0; i < 5; i++){
@@ -126,19 +128,11 @@ public class GameLevel extends Level {
       timer--;
     }
     
-    //Shovel:
-    shovel.display();
-    
   }
   
   void handleMouseClicked(){
     for(int i = 0; i < sceneButtons.size(); i++){ // click the most recent button clicked, and unclick all others.
       if (sceneButtons.get(i).overButton()) {
-        
-        if(shovel.isClicked()){
-          shovel.clickButton();
-        }
-        
         for(int j = 0; j < sceneButtons.size(); j++){
           if(j != i && sceneButtons.get(j).clicked == true){
             sceneButtons.get(j).clickButton();
@@ -183,20 +177,14 @@ public class GameLevel extends Level {
       }
     }
     //If user clicks on shovel:
-    if(shovel.overButton()){
-      unCheck();
-      shovel.clickButton();
-    }
     if(shovel.isClicked()){ 
       for(int i = 0; i < 5; i++){
         for(int j = 0; j < 9; j++){
           Tile currentTile = tiles.get(i,j); 
           if(currentTile.overButton() && (currentTile.getPlant() != null)){
             currentTile.plant = null;
-            shovel.clickButton();
           }
           unCheck();
-          
         }
       }
     }
