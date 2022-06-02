@@ -1,7 +1,8 @@
 public class PlantButton extends Button {
   String name;
   int cost;
-  int timer;
+  int timer, maxTimer;
+  
   
   public PlantButton(String img, int xcoor, int ycoor, int Width, int Height, String name){
     super(img, xcoor, ycoor, Width, Height, "PlantButton");
@@ -10,15 +11,22 @@ public class PlantButton extends Button {
     switch(name){
       case "Peashooter":
         cost = 100;
+        maxTimer = 500;
         break;
       case "Sunflower":
         cost = 50;
+        maxTimer = 300;
         break;
       case "Wallnut":
         cost = 50;
+        maxTimer = 2000;
         break;
     }
   }
+  void resetTimer() {
+    timer = maxTimer;
+  }
+  
   void clickButton(){
     if(timer <= 0){
       clicked = !clicked;
@@ -63,12 +71,12 @@ public class PlantButton extends Button {
     if (timer > 0){
       timer--;
       stroke(50);
-      strokeWeight(10);
-      fill(50, 100);
+      strokeWeight(5);
+      noFill();
       rect(x,y,Width,Height);
-      fill(255, 50, 50);
-      text(timer,x + 40,y + 60);
-      fill(0);
+      fill(50, 100);
+      noStroke();
+      rect(x,y,Width,Height * ((float)timer / maxTimer) );
     }
     
     if(clicked){

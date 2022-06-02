@@ -167,13 +167,13 @@ public class GameLevel extends Level {
                 unCheck();
                 switch(currentButton.getName()){
                   case "Peashooter":
-                    ((PlantButton)currentButton).setTimer(500);
+                    ((PlantButton)currentButton).resetTimer();
                     break;
                   case "Sunflower":
-                    ((PlantButton)currentButton).setTimer(300);
+                    ((PlantButton)currentButton).resetTimer();
                     break;
                   case "Wallnut":
-                    ((PlantButton)currentButton).setTimer(2200);
+                    ((PlantButton)currentButton).resetTimer();
                     break;
                 }
               }

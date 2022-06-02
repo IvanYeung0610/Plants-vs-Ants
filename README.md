@@ -65,5 +65,5 @@ Ivan Yeung: I worked on the lawnmower class and got it functioning like it does 
 
 6/1:
 
-Joshua Liu: I worked on making a shovel for the game. It works like the other buttons for placing plants, but it removes the plant instead of placing one. 
+Joshua Liu: I worked on making a shovel for the game. It works like the other buttons for placing plants, but it removes the plant instead of placing one. Also changed PlantButton's cooldown animation.
 
