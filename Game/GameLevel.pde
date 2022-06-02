@@ -44,7 +44,8 @@ public class GameLevel extends Level {
   
   // this ties all the classes together.
   void run() {
-
+    
+    //game over screen
     if (this.gameOver == true) {
      house.display();
      tiles.displayAll();
@@ -75,7 +76,8 @@ public class GameLevel extends Level {
      text("YOUR HOME", width/2, height/2 - 150); 
      text("IS INFESTED", width/2, height/2); 
      text("WITH ANTS", width/2, height/2 + 150); 
-    }
+    } //end of game over if statement
+    
     else{
     setCurrentAnts();
     
