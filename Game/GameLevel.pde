@@ -10,6 +10,7 @@ public class GameLevel extends Level {
   HoverRectangle hover;
   LawnMower[] lawnMowers;
   House house;
+  PFont shlop;
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
@@ -37,6 +38,7 @@ public class GameLevel extends Level {
        lawnMowers[i] = mower;
      }
      house = new House("House.png", -470, 0, 590, 900);
+     shlop = createFont("shlop rg.ttf", 100);
   }
   
   
@@ -64,10 +66,15 @@ public class GameLevel extends Level {
      fill(0, 100);
      rect(0, 0, 1600, 900);
      fill(255, 0, 0);
+     textFont(shlop);
+     textSize(150);
+     //have to figure out how to turn off shlop font(Probaby will make another font for other text)
+     textAlign(CENTER);
+     text("GAMEOVER", width/2, height/2 - 300); 
      textSize(100);
-     text("YOUR HOME", width/2 - 200, height/2 - 150); 
-     text("IS INFESTED", width/2 - 200, height/2); 
-     text("WITH ANTS", width/2 - 200, height/2 + 150); 
+     text("YOUR HOME", width/2, height/2 - 150); 
+     text("IS INFESTED", width/2, height/2); 
+     text("WITH ANTS", width/2, height/2 + 150); 
     }
     else{
     setCurrentAnts();
