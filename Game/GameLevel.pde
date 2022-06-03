@@ -55,7 +55,7 @@ public class GameLevel extends Level {
      suns.displayAll();
      currentAnts.displayAll();
      for(int i = 0; i < sceneButtons.size(); i++){
-      textSize(50);
+      textAlign(LEFT);
       sceneButtons.get(i).display();
      }
      
