@@ -13,7 +13,7 @@ void setup(){
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new RestartButton("RestartButton.png", width/2 - 200, height/2 + 200, 100, 50, "RestartButton");
-  quit = new QuitButton("QuitButton.png", width/2, height/2 + 200, 100, 50, "QuitButton");
+  quit = new QuitButton("QuitButton.png", width/2 + 50, height/2 + 200, 100, 50, "QuitButton");
 }
 
 void reset(){
