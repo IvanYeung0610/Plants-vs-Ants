@@ -1,6 +1,7 @@
 LevelManager g;
 Level[] levels = new Level[3];
 RestartButton retry;
+QuitButton quit;
 void setup(){
   size(1400,900);
   
@@ -12,6 +13,7 @@ void setup(){
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new RestartButton("RestartButton.png", width/2 - 200, height/2 + 200, 100, 50, "RestartButton");
+  quit = new QuitButton("QuitButton.png", width/2, height/2 + 200, 100, 50, "QuitButton");
 }
 
 void reset(){
@@ -22,10 +24,12 @@ void reset(){
 }
 
 void draw(){
+  g.levels[g.currentLevel].gameOver =true;
   background(50, 121, 168);
   g.run();
   if (g.levels[g.currentLevel].gameOver == true) {
     retry.display();
+    quit.display();
   }
 }
 
@@ -33,5 +37,8 @@ void mouseClicked(){
   g.handleMouseClicked();
   if (g.levels[g.currentLevel].gameOver == true && retry.overButton()) {
     reset();
+  }
+  if (g.levels[g.currentLevel].gameOver == true && quit.overButton()) {
+    exit();
   }
 }

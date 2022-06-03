@@ -70,6 +70,7 @@ public class GameLevel extends Level {
      text("Sun: " + sun, 1200, 40);
      //darkened screen
      fill(0, 100);
+     noStroke();
      rect(0, 0, 1600, 900);
      fill(255, 0, 0);
      textFont(shlop);
