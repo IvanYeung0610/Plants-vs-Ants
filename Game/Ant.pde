@@ -8,7 +8,7 @@ public class Ant extends Sprite {
     super(image_name, x, y, Width, Height);
     this.health = health;
     this.damage = damage;
-    velocity = 10;
+    velocity = .35;
     attacking = false;
     timer = 60;
   }

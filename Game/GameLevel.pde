@@ -40,7 +40,6 @@ public class GameLevel extends Level {
        lawnMowers[i] = mower;
      }
      house = new House("House.png", -470, 0, 590, 900);
-     retry = new RestartButton("RestartButton.png", width/2 - 200, height/2 + 200, 100, 50, "RestartButton");
      shlop = createFont("shlop rg.ttf", 100);
      Samdan = createFont("Samdan.ttf", 12);
   }
@@ -73,7 +72,6 @@ public class GameLevel extends Level {
      fill(0, 100);
      rect(0, 0, 1600, 900);
      fill(255, 0, 0);
-     retry.display();
      textFont(shlop);
      textSize(150);
      //have to figure out how to turn off shlop font(Probaby will make another font for other text)
