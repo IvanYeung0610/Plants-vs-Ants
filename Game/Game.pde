@@ -19,4 +19,5 @@ void draw(){
 
 void mouseClicked(){
   g.handleMouseClicked();
+  if (g.levels[g.currentLevel].gameOver == true)
 }
