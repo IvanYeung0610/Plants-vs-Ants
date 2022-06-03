@@ -71,3 +71,9 @@ Ivan Yeung: I worked on the lawnmower class and got it functioning like it does 
 Joshua Liu:
 
 Ivan Yeung: I worked on the home and what happens when the ants reach the home. I also added a font for the text on the game over screen when the ants reach the home. Not sure how to revert back to normal font. I plan on tweaking the font and then working on the buttons on the gameover screen that will allow players to start over.
+
+6/02
+
+Joshua Liu:
+
+Ivan Yeung: I worked on adding a default font for cases outside of the gameover mode. I also worked on the restart button that allows the player to restart the level they are on if they lose. I also added a quitButton template which can also serve as a template for other possible buttons in the future.
