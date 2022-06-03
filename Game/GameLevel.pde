@@ -10,6 +10,7 @@ public class GameLevel extends Level {
   HoverRectangle hover;
   LawnMower[] lawnMowers;
   House house;
+  PFont Samdan;
   PFont shlop;
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
@@ -39,6 +40,7 @@ public class GameLevel extends Level {
      }
      house = new House("House.png", -470, 0, 590, 900);
      shlop = createFont("shlop rg.ttf", 100);
+     Samdan = createFont("Samdan.ttf", 12);
   }
   
   
@@ -53,8 +55,10 @@ public class GameLevel extends Level {
      suns.displayAll();
      currentAnts.displayAll();
      for(int i = 0; i < sceneButtons.size(); i++){
+      textSize(50);
       sceneButtons.get(i).display();
      }
+     
      for (int i = 0; i < 5; i++) {
         if (lawnMowers[i] != null) {
            lawnMowers[i].display();
@@ -63,7 +67,7 @@ public class GameLevel extends Level {
      fill(0);
      textSize(25);
      text("Sun: " + sun, 1200, 40);
-     
+     //darkened screen
      fill(0, 100);
      rect(0, 0, 1600, 900);
      fill(255, 0, 0);
@@ -76,9 +80,11 @@ public class GameLevel extends Level {
      text("YOUR HOME", width/2, height/2 - 150); 
      text("IS INFESTED", width/2, height/2); 
      text("WITH ANTS", width/2, height/2 + 150); 
+     textFont(Samdan);
     } //end of game over if statement
     
     else{
+    textFont(Samdan);
     setCurrentAnts();
     
     house.display();
