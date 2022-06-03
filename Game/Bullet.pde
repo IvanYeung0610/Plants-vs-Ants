@@ -1,5 +1,5 @@
 public class Bullet extends Sprite{
-  final float velocity = 10; //placeholder
+  float velocity = 10; //placeholder
   int damage;
   
   public Bullet(String img, float xcoor, float ycoor, int Width, int Height, int dmg){
@@ -10,7 +10,9 @@ public class Bullet extends Sprite{
   void move(){
     super.x += velocity;
   }
-  
+  void setVelocity(float newV){
+    velocity = newV;
+  }
   //display() in Sprite super class is adequate
   //void display(){}
   
