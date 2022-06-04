@@ -1,11 +1,13 @@
 public class PotatoMine extends Plant {
   int timer;
   boolean primed;
+  int exploded;
 
   PotatoMine(float xcoor, float ycoor) {
     super("PotatoMine.png", xcoor + 20, ycoor + 30, 50, 50, 5, 25);
-    timer = 1200;
+    timer = 100;
     primed = false;
+    exploded = -1;
   }
 
   Sprite action() {
@@ -21,9 +23,21 @@ public class PotatoMine extends Plant {
       timer = -1;
       primed = true;
     }
+    if(exploded > 0) {
+      exploded--;
+    }
     return null;
   }
   
+  void setExploded() {
+    exploded = 60;
+    image = loadImage("Explosion.png");
+    Width = 200;
+    Height = 200;
+    x -= 25;
+    y -= 30;
+    image.resize(Width,Height);
+  }
   
   boolean isPrimed(){
     return primed;  

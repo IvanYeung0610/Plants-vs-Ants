@@ -2,7 +2,7 @@ public class GameLevel extends Level {
   Wave[] waves;
   int currentWave;
   int sun;
-  int timer;
+  int timer, ExplodeTimer;
   BulletList bullets;
   SunList suns;
   TileMap tiles;
@@ -215,20 +215,7 @@ public class GameLevel extends Level {
                 setPlant(currentTile, currentButton.getName());
                 sun -= ((PlantButton)currentButton).getCost();
                 unCheck();
-                switch(currentButton.getName()) {
-                case "Peashooter":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                case "Sunflower":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                case "Wallnut":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                case "PotatoMine":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                }
+                ((PlantButton)currentButton).resetTimer();
               }
             }
           }
@@ -295,6 +282,10 @@ public class GameLevel extends Level {
       p = new PotatoMine(t.x + 30, t.y + 30);
       t.plant = p;
       break;
+    case "Repeater":
+      p = new Repeater(t.x + 30, t.y + 30);
+      t.plant = p;
+      break;
     }
   }
   void checkMineCollision() {
@@ -304,16 +295,18 @@ public class GameLevel extends Level {
         Plant currentPlant = currentTile.getPlant();
         if (currentPlant != null) {
           if ((currentPlant.getType()).equals("PotatoMine")) { 
-            if (((PotatoMine)currentPlant).isPrimed()) {        // If the Mine is Primed,
+            if (((PotatoMine)currentPlant).isPrimed() && ((PotatoMine)currentPlant).exploded == -1) {        // If the Mine is Primed,
               if (currentAnts.checkCollision(currentPlant)) {   // And if any ants are colliding with the mine,
                 for (int ind = 0; ind < currentAnts.size(); ind++) {  // Then all ants colliding with the Tile the mine is on dies.
                   if (currentAnts.get(ind).checkCollision(currentTile)) {
                     currentAnts.get(ind).takeDamage(100);
-                    print("dead");
                   }
                 }
-                currentTile.setPlant(null);
+                ((PotatoMine)currentPlant).setExploded();
               }
+            }
+            if (((PotatoMine)currentPlant).exploded == 0) {
+              currentTile.setPlant(null);
             }
           }
         }

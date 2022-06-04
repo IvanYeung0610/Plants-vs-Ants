@@ -13,5 +13,4 @@ public class QuitButton extends Button {
     textAlign(CENTER);
     text("QUIT", this.x + this.Width/2, this.y + this.Height/1.25 );
   }
-    
 }

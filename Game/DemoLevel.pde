@@ -12,6 +12,7 @@ public class DemoLevel extends GameLevel {
     sceneButtons.add(new PlantButton("PeashooterButton.png",170,0, 150, 100, "Peashooter"));
     sceneButtons.add(new PlantButton("WallnutButton.png",340,0, 150, 100, "Wallnut"));
     sceneButtons.add(new PlantButton("PotatoMineButton.png",510,0, 150, 100, "PotatoMine"));
+    sceneButtons.add(new PlantButton("PotatoMineButton.png",680,0, 150, 100, "Repeater"));
   }
   
   void run(){
