@@ -1,10 +1,12 @@
 public class Level{
   ArrayList<Button> sceneButtons;
   boolean levelComplete;
+  boolean gameOver;
   
   public Level(ArrayList<Button> sceneButtons){
     this.sceneButtons = sceneButtons;
     levelComplete = false;
+    gameOver = false;
   }
   
   void displayAllButtons(){
