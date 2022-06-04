@@ -24,7 +24,6 @@ void reset(){
 }
 
 void draw(){
-  g.levels[g.currentLevel].gameOver =true;
   background(50, 121, 168);
   g.run();
   if (g.levels[g.currentLevel].gameOver == true) {
