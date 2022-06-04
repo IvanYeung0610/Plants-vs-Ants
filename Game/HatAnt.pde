@@ -12,7 +12,7 @@ public class HatAnt extends Ant {
       hat.display();
       text(hat.getHealth(), hat.x, hat.y - 10);  
       if (hat.getHealth() > 0) {
-        hat.setX((int)x + 10);
+        hat.setX((int)x + 8);
       } else {
         dropHat();
       }
@@ -29,7 +29,6 @@ public class HatAnt extends Ant {
   }
 
   void dropHat() {
-    println("drop");
     if (hat != null) {
       if (hat.getHealth() <= 0) {
         hat.dropHat();

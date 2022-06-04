@@ -137,26 +137,26 @@ public class GameLevel extends Level {
       }
     }
 
-      if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
-        nextWave();
-      }
+    if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
+      nextWave();
+    }
 
-      // Display Total SUN
-      textSize(25);
-      text("Sun: " + sun, 1200, 40);
+    // Display Total SUN
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
 
-      //Sun that spawns from the sky
-      if (timer == 0) {
-        //(int)(Math.random() * (b - a + 1)) + a
-        Sun skySun = new Sun("Sun.png", (int)(Math.random() * (1000 - 200 + 1)) + 200, -10, "Sun");
-        suns.add(skySun);
-        timer = 900;
-      } else {
-        timer--;
-      }
+    //Sun that spawns from the sky
+    if (timer == 0) {
+      //(int)(Math.random() * (b - a + 1)) + a
+      Sun skySun = new Sun("Sun.png", (int)(Math.random() * (1000 - 200 + 1)) + 200, -10, "Sun");
+      suns.add(skySun);
+      timer = 900;
+    } else {
+      timer--;
+    }
 
-      //Shovel:
-      shovel.display();
+    //Shovel:
+    shovel.display();
   } //end of run()
 
   void handleMouseClicked() {
