@@ -9,14 +9,10 @@ public class GameLevel extends Level {
   AntList currentAnts;
   HoverRectangle hover;
   LawnMower[] lawnMowers;
-<<<<<<< HEAD
   Shovel shovel;
-=======
   House house;
-  RestartButton retry;
   PFont Samdan;
   PFont shlop;
->>>>>>> main
   
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves){
     super(sceneButtons);
@@ -168,8 +164,7 @@ public class GameLevel extends Level {
     
     //Ants attacking
     antAttack();
-    
-<<<<<<< HEAD
+
     //Lawnmower processing
     for (int i = 0; i < 5; i++) {
       if (lawnMowers[i] != null) {
@@ -183,10 +178,9 @@ public class GameLevel extends Level {
           }
       }
       
-=======
+
     if(currentAnts.size() == 0){ // send the next wave if all ants are dead.
       nextWave();
->>>>>>> main
     }
     
     
