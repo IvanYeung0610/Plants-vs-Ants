@@ -74,6 +74,6 @@ Ivan Yeung: I worked on the home and what happens when the ants reach the home. 
 
 6/02
 
-Joshua Liu:
+Joshua Liu: I worked on the shovel and making it so that the shovel drops suns back onto the tile that the deleted plant was on.
 
 Ivan Yeung: I worked on adding a default font for cases outside of the gameover mode. I also worked on the restart button that allows the player to restart the level they are on if they lose. I also added a quitButton template which can also serve as a template for other possible buttons in the future.
