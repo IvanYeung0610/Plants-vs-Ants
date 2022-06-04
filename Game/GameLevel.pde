@@ -103,12 +103,14 @@ public class GameLevel extends Level {
       currentAnts.displayAll();
       currentAnts.moveAll();
       int bulletCount = bullets.size();
-      for (int i = 0; i < bulletCount; i++) {
+      for (int i = 0; i < bulletCount; i++) { // This makes the ants check for bullet collision
         if (currentAnts.takeDamage(bullets.get(i))) {
           bullets.remove(i);
           break;
         }
       }
+      checkMineCollision();
+
 
       //Lawnmower processing
       for (int i = 0; i < 5; i++) {
@@ -223,6 +225,9 @@ public class GameLevel extends Level {
                 case "Wallnut":
                   ((PlantButton)currentButton).resetTimer();
                   break;
+                case "PotatoMine":
+                  ((PlantButton)currentButton).resetTimer();
+                  break;
                 }
               }
             }
@@ -270,6 +275,7 @@ public class GameLevel extends Level {
       }
     }
   }
+
   void setPlant(Tile t, String name) {
     Plant p;
     switch(name) {
@@ -285,6 +291,33 @@ public class GameLevel extends Level {
       p = new Wallnut("Wallnut.png", t.x + 30, t.y + 30);
       t.plant = p;
       break;
+    case "PotatoMine":
+      p = new PotatoMine(t.x + 30, t.y + 30);
+      t.plant = p;
+      break;
+    }
+  }
+  void checkMineCollision() {
+    for (int i = 0; i < 5; i++) { 
+      for (int j = 0; j < 9; j++) {
+        Tile currentTile = tiles.get(i, j);
+        Plant currentPlant = currentTile.getPlant();
+        if (currentPlant != null) {
+          if ((currentPlant.getType()).equals("PotatoMine")) { 
+            if (((PotatoMine)currentPlant).isPrimed()) {        // If the Mine is Primed,
+              if (currentAnts.checkCollision(currentPlant)) {   // And if any ants are colliding with the mine,
+                for (int ind = 0; ind < currentAnts.size(); ind++) {  // Then all ants colliding with the Tile the mine is on dies.
+                  if (currentAnts.get(ind).checkCollision(currentTile)) {
+                    currentAnts.get(ind).takeDamage(100);
+                    print("dead");
+                  }
+                }
+                currentTile.setPlant(null);
+              }
+            }
+          }
+        }
+      }
     }
   }
 

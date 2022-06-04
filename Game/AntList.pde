@@ -41,6 +41,13 @@ public class AntList{
     }
     return false;
   }
-  
+  boolean checkCollision(Sprite s){
+    for(Ant x : ants){
+      if(x.checkCollision(s)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 }

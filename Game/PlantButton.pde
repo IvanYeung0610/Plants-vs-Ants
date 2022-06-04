@@ -21,6 +21,10 @@ public class PlantButton extends Button {
         cost = 50;
         maxTimer = 2000;
         break;
+      case "PotatoMine":
+        cost = 25;
+        maxTimer = 700;
+        break;
     }
   }
   void resetTimer() {
@@ -65,6 +69,11 @@ public class PlantButton extends Button {
         textSize(50);
         fill(0);
         text("50", x + Width - 40, y + Height - 5);
+        break;
+      case "PotatoMine":
+        textSize(50);
+        fill(0);
+        text("25", x + Width - 40, y + Height - 5);
         break;
     }
     
