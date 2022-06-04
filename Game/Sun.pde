@@ -1,10 +1,18 @@
 public class Sun extends Button{
   boolean collected = false;
   float xVelocity, yVelocity, bottomLevel;
+  int value;
+  
+  Sun(float xcoor, float ycoor, int size, int value){
+    super("Sun.png", xcoor, ycoor, size, size, "Sun");
+    bottomLevel = (ycoor + 20);
+    this.value = value;
+  }
   
   Sun(String img, float xcoor, float ycoor, String type){
     super(img, xcoor, ycoor, 80, 80, type);
     bottomLevel = (random(500) + 200);
+    value = 50;
   }
   
   void move(){
@@ -26,6 +34,9 @@ public class Sun extends Button{
   }
   void collect(){
     collected = true;
+  }
+  int getValue(){
+    return value;
   }
   
   void setBottomLevel(float newLevel){

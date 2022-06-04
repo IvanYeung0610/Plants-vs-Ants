@@ -20,7 +20,7 @@ public class SunList {
     int i = 0;
     while(i < suns.size()){
       if(suns.get(i).isClicked()){ 
-        counter++;
+        counter += suns.get(i).getValue();
         suns.remove(i);
       }
       i++;

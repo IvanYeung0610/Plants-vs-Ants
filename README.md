@@ -68,12 +68,12 @@ Ivan Yeung: I worked on the lawnmower class and got it functioning like it does 
 
 6/01:
 
-Joshua Liu:
+Joshua Liu:I worked on making a shovel for the game. It works like the other buttons for placing plants, but it removes the plant instead of placing one. Also changed PlantButton's cooldown animation.
 
 Ivan Yeung: I worked on the home and what happens when the ants reach the home. I also added a font for the text on the game over screen when the ants reach the home. Not sure how to revert back to normal font. I plan on tweaking the font and then working on the buttons on the gameover screen that will allow players to start over.
 
 6/02
 
-Joshua Liu:
+Joshua Liu: I worked on the shovel and making it so that the shovel drops suns back onto the tile that the deleted plant was on.
 
 Ivan Yeung: I worked on adding a default font for cases outside of the gameover mode. I also worked on the restart button that allows the player to restart the level they are on if they lose. I also added a quitButton template which can also serve as a template for other possible buttons in the future.
