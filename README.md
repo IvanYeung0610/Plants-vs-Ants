@@ -9,6 +9,9 @@ Repository for final project of APCS. We are doing a Plant VS Zombies-esque game
 ## **Brief Description**
 The project that we will be working on is a Plants vs. Zombies-esque game. Instead of having zombies, they will be ants but their mechanics will be around the same. This project will consist of making various plant classes, ant classes, and tile classes. There will be a grid of 9 by 5 tiles. Each tile can hold one plant and these plants will stop the incoming enemies from reaching the other side of the grid by shooting at them. Placing plants will require energy(sunlight) that drops onto the map or produced by a plant. There will be a variety of plants and ants with their own unique traits.
 
+## **Compile Instructions**
+Open up the files in processing and press the play button to begin the game.
+
 LOG:
 ---
 5/23
@@ -63,7 +66,14 @@ Joshua Liu: I worked on making the plantButtons have timers. This would make it 
 
 Ivan Yeung: I worked on the lawnmower class and got it functioning like it does in the actual game. The lawnmowers are activated once and moves down the row and despawns. I also added the assets for the lawnmower and the house class.
 
-6/1:
+6/01:
 
-Joshua Liu: I worked on making a shovel for the game. It works like the other buttons for placing plants, but it removes the plant instead of placing one. Also changed PlantButton's cooldown animation.
+Joshua Liu:I worked on making a shovel for the game. It works like the other buttons for placing plants, but it removes the plant instead of placing one. Also changed PlantButton's cooldown animation.
 
+Ivan Yeung: I worked on the home and what happens when the ants reach the home. I also added a font for the text on the game over screen when the ants reach the home. Not sure how to revert back to normal font. I plan on tweaking the font and then working on the buttons on the gameover screen that will allow players to start over.
+
+6/02
+
+Joshua Liu:
+
+Ivan Yeung: I worked on adding a default font for cases outside of the gameover mode. I also worked on the restart button that allows the player to restart the level they are on if they lose. I also added a quitButton template which can also serve as a template for other possible buttons in the future.
