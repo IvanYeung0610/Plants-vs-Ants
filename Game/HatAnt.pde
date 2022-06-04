@@ -8,11 +8,20 @@ public class HatAnt extends Ant {
 
   void display() {
     super.display();
-    hat.display();
+    if (hat != null) {
+      hat.display();
+      text(hat.getHealth(), hat.x, hat.y - 10);  
+      if (hat.getHealth() > 0) {
+        hat.setX((int)x + 10);
+      } else {
+        dropHat();
+      }
+    }
+    fill(0);
   }
 
   void takeDamage(int damage) {
-    if (hat == null) {
+    if (hat == null || hat.getHealth() <= 0) {
       super.takeDamage(damage);
     } else {
       hat.takeDamage(damage);
@@ -20,11 +29,12 @@ public class HatAnt extends Ant {
   }
 
   void dropHat() {
+    println("drop");
     if (hat != null) {
       if (hat.getHealth() <= 0) {
         hat.dropHat();
       }
-      if (hat.y == this.y + this.Height) {
+      if (hat.y >= this.y + this.Height) {
         hat = null;
       }
     }
