@@ -51,9 +51,8 @@ public class GameLevel extends Level {
 
     textFont(Samdan);
     setCurrentAnts();
-    house.display();
-
-    tiles.displayAll();
+    displayALL();
+    // This runs the plants and adds their projectiles.
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 9; j++) {
         Tile currentTile = tiles.get(i, j);
@@ -68,14 +67,12 @@ public class GameLevel extends Level {
       }
     }
 
-    bullets.displayAll();
+    
     bullets.moveAll();
-
-    suns.displayAll();
+    
     suns.moveAll();
     sun += suns.processAll();
 
-    currentAnts.displayAll();
     currentAnts.moveAll();
 
     int bulletCount = bullets.size();
@@ -100,21 +97,11 @@ public class GameLevel extends Level {
       }
     }
 
-      //Kills ants when health is below zero
-      for (int i = 0; i < currentAnts.size(); i++) {
-        if (currentAnts.get(i).getHealth() <= 0) {
-          currentAnts.remove(i);
-        }
+    //Kills ants when health is below zero
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (currentAnts.get(i).getHealth() <= 0) {
+        currentAnts.remove(i);
       }
-
-      //displays sceneButtons
-      for (int i = 0; i < sceneButtons.size(); i++) {
-        sceneButtons.get(i).display();
-      }
-
-    //displays sceneButtons
-    for (int i = 0; i < sceneButtons.size(); i++) {
-      sceneButtons.get(i).display();
     }
 
     //checks for losing condition
@@ -161,9 +148,7 @@ public class GameLevel extends Level {
 
     //Sun that spawns from the sky
     spawnSun();
-
-    //Shovel:
-    shovel.display();
+    
   } //end of run()
 
   void handleMouseClicked() {
@@ -226,6 +211,20 @@ public class GameLevel extends Level {
         }
       }
     }
+  }
+
+  void displayALL() {
+    house.display();
+    tiles.displayAll();
+    
+    //displays sceneButtons
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      sceneButtons.get(i).display();
+    }
+    bullets.displayAll();
+    suns.displayAll();
+    currentAnts.displayAll();
+    shovel.display();
   }
 
   void spawnSun() {
@@ -343,7 +342,6 @@ public class GameLevel extends Level {
 
   void gameOver() {
     //game over screen
-    house.display();
     tiles.displayAll();
     bullets.displayAll();
     suns.displayAll();
