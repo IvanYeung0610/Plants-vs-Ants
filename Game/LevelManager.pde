@@ -1,26 +1,28 @@
-public class LevelManager{
+public class LevelManager {
   Level[] levels;
-
   int currentLevel;
-  
-  public LevelManager(Level[] levels){
+
+  public LevelManager(Level[] levels) {
     this.levels = levels;
     currentLevel = 0;
   }
-  
-  void playNext(){
+
+  void playNext() {
     currentLevel++;
   }
-  
+
   void run() {
-    if(levels[currentLevel].levelComplete){
+    if (levels[currentLevel].levelComplete) {
       playNext();
     }
-    levels[currentLevel].run();
-    
+    if (levels[currentLevel].gameOver) {
+      levels[currentLevel].gameOver();
+    } else {
+      levels[currentLevel].run();
+    }
   }
-  
-  void handleMouseClicked(){
+
+  void handleMouseClicked() {
     levels[currentLevel].handleMouseClicked();
   }
 }

@@ -3,8 +3,8 @@ public class Ant extends Sprite {
   float velocity;
   boolean attacking;
   int timer;
-  
-  Ant(String image_name, float x, float y, int Width, int Height, int health, int damage){
+
+  Ant(String image_name, float x, float y, int Width, int Height, int health, int damage) {
     super(image_name, x, y, Width, Height);
     this.health = health;
     this.damage = damage;
@@ -12,32 +12,33 @@ public class Ant extends Sprite {
     attacking = false;
     timer = 60;
   }
-  void display(){
+  void display() {
     super.display();
     text(health, x + Width / 2, y);
   }
-  
-  void move(){
-    if (attacking == false){
+
+  void move() {
+    if (attacking == false) {
       x -= velocity;
     }
   }
-  
-  void changeVelocity(int newV){
+
+  void changeVelocity(int newV) {
     velocity = newV;
   }
-  
-  void takeDamage(int Damage){
+
+  void takeDamage(int Damage) {
     health -= Damage;
   }
-  
-  int getHealth(){
+
+  int getHealth() {
     return health;
   }
-  void setAttacking(boolean b){
+  void setAttacking(boolean b) {
     attacking = b;
   }
-  int attack(){
+
+  int attack() {
     if (timer == 0) {
       timer = 60;
       return damage;
@@ -45,6 +46,5 @@ public class Ant extends Sprite {
       timer --;
       return 0;
     }
-   }
-  
+  }
 }

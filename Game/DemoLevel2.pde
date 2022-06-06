@@ -38,7 +38,6 @@ public class DemoLevel2 extends GameLevel {
     ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW5, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 10000, ROW2, 100, 50, 15, 1));
     
     Wave W1 = new Wave(ant);
     waves[1] = W1; 

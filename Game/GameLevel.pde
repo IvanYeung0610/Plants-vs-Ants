@@ -49,82 +49,56 @@ public class GameLevel extends Level {
   // this ties all the classes together.
   void run() {
 
-    //game over screen
-    if (this.gameOver == true) {
-      house.display();
-      tiles.displayAll();
-      bullets.displayAll();
-      suns.displayAll();
-      currentAnts.displayAll();
-      for (int i = 0; i < sceneButtons.size(); i++) {
-        textAlign(LEFT);
-        sceneButtons.get(i).display();
-      }
+    textFont(Samdan);
+    setCurrentAnts();
+    house.display();
 
-      for (int i = 0; i < 5; i++) {
-        if (lawnMowers[i] != null) {
-          lawnMowers[i].display();
-        }
-      }
-      fill(0);
-      textSize(25);
-      text("Sun: " + sun, 1200, 40);
-      //darkened screen
-      fill(0, 100);
-      noStroke();
-      rect(0, 0, 1600, 900);
-      fill(255, 0, 0);
-      textFont(shlop);
-      textSize(150);
-      //have to figure out how to turn off shlop font(Probaby will make another font for other text)
-      textAlign(CENTER);
-      text("GAMEOVER", width/2, height/2 - 300); 
-      textSize(100);
-      text("YOUR HOME", width/2, height/2 - 150); 
-      text("IS INFESTED", width/2, height/2); 
-      text("WITH ANTS", width/2, height/2 + 150); 
-      textFont(Samdan);
-    } //end of game over if statement
-
-    else {
-      textFont(Samdan);
-      setCurrentAnts();
-      house.display();
-      tiles.displayAll();
-      runTilePlants();
-
-      bullets.displayAll();
-      bullets.moveAll();
-
-      suns.displayAll();
-      suns.moveAll();
-      sun += suns.processAll();
-
-      currentAnts.displayAll();
-      currentAnts.moveAll();
-      int bulletCount = bullets.size();
-      for (int i = 0; i < bulletCount; i++) { // This makes the ants check for bullet collision
-        if (currentAnts.takeDamage(bullets.get(i))) {
-          bullets.remove(i);
-          break;
-        }
-      }
-      checkMineCollision();
-
-
-      //Lawnmower processing
-      for (int i = 0; i < 5; i++) {
-        if (lawnMowers[i] != null) {
-          lawnMowers[i].display();
-          for (int j = 0; j < currentAnts.size(); j++) {
-            lawnMowers[i].process(currentAnts.get(j));
-          }
-          lawnMowers[i].move();
-          if (lawnMowers[i].x > width) {
-            lawnMowers[i] = null;
+    tiles.displayAll();
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 9; j++) {
+        Tile currentTile = tiles.get(i, j);
+        Sprite projectile = currentTile.runPlant();
+        if (projectile != null) {
+          if (currentTile.plant.getType() == "Sunflower") {
+            suns.add((Sun)projectile);
+          } else {
+            bullets.add((Bullet)projectile);
           }
         }
       }
+    }
+
+    bullets.displayAll();
+    bullets.moveAll();
+
+    suns.displayAll();
+    suns.moveAll();
+    sun += suns.processAll();
+
+    currentAnts.displayAll();
+    currentAnts.moveAll();
+
+    int bulletCount = bullets.size();
+    for (int i = 0; i < bulletCount; i++) {
+      if (currentAnts.takeDamage(bullets.get(i))) {
+        bullets.remove(i);
+        break;
+      }
+    }
+
+    //Lawnmower processing
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+        for (int j = 0; j < currentAnts.size(); j++) {
+          lawnMowers[i].process(currentAnts.get(j));
+        }
+        lawnMowers[i].move();
+        if (lawnMowers[i].x > width) {
+          lawnMowers[i] = null;
+        }
+      }
+    }
 
       //Kills ants when health is below zero
       for (int i = 0; i < currentAnts.size(); i++) {
@@ -138,47 +112,58 @@ public class GameLevel extends Level {
         sceneButtons.get(i).display();
       }
 
-      //checks for losing condition
-      for (int i = 0; i < currentAnts.size(); i++) {
-        //condition for losing the game
-        if (currentAnts.get(i).x < 50) {
-          this.gameOver = true;
-        }
-      }
-
-      //Ants attacking
-      antAttack();
-
-      //Lawnmower processing
-      for (int i = 0; i < 5; i++) {
-        if (lawnMowers[i] != null) {
-          lawnMowers[i].display();
-          for (int j = 0; j < currentAnts.size(); j++) {
-            lawnMowers[i].process(currentAnts.get(j));
-          }
-          lawnMowers[i].move();
-          if (lawnMowers[i].x > width) {
-            lawnMowers[i] = null;
-          }
-        }
-      }
-
-
-      if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
-        nextWave();
-      }
-
-
-      // Display Total SUN
-      textSize(25);
-      text("Sun: " + sun, 1200, 40);
-
-      //Sun that spawns from the sky
-      spawnSun();
-
-      //Shovel:
-      shovel.display();
+    //displays sceneButtons
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      sceneButtons.get(i).display();
     }
+
+    //checks for losing condition
+    for (int i = 0; i < currentAnts.size(); i++) {
+      //condition for losing the game
+      if (currentAnts.get(i).x < 50) {
+        this.gameOver = true;
+      }
+    }
+
+    //Ants attacking
+    antAttack();
+
+    //checks for losing condition
+    for (int i = 0; i < currentAnts.size(); i++) {
+      //condition for losing the game
+      if (currentAnts.get(i).x < 50) {
+        this.gameOver = true;
+      }
+    }
+
+    //Lawnmower processing
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+        for (int j = 0; j < currentAnts.size(); j++) {
+          lawnMowers[i].process(currentAnts.get(j));
+        }
+        lawnMowers[i].move();
+        if (lawnMowers[i].x > width) {
+          lawnMowers[i] = null;
+        }
+      }
+    }
+
+    if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
+      nextWave();
+    }
+
+
+    // Display Total SUN
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
+
+    //Sun that spawns from the sky
+    spawnSun();
+
+    //Shovel:
+    shovel.display();
   } //end of run()
 
   void handleMouseClicked() {
@@ -242,6 +227,7 @@ public class GameLevel extends Level {
       }
     }
   }
+
   void spawnSun() {
     if (timer == 0) {
       //(int)(Math.random() * (b - a + 1)) + a
@@ -252,6 +238,7 @@ public class GameLevel extends Level {
       timer--;
     }
   }
+
   void antAttack() {
     for (int i = 0; i < currentAnts.size(); i++) {
       if (tiles.takeDamage(currentAnts.get(i))) {
@@ -325,6 +312,7 @@ public class GameLevel extends Level {
   void setCurrentAnts() {
     currentAnts = waves[currentWave].getIncomingAnts();
   }
+
   void runTilePlants() {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 9; j++) {
@@ -351,6 +339,43 @@ public class GameLevel extends Level {
     } else {
       currentWave++;
     }
+  }
+
+  void gameOver() {
+    //game over screen
+    house.display();
+    tiles.displayAll();
+    bullets.displayAll();
+    suns.displayAll();
+    currentAnts.displayAll();
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      textAlign(LEFT);
+      sceneButtons.get(i).display();
+    }
+
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+      }
+    }
+    fill(0);
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
+    //darkened screen
+    fill(0, 100);
+    noStroke();
+    rect(0, 0, 1600, 900);
+    fill(255, 0, 0);
+    textFont(shlop);
+    textSize(150);
+    //have to figure out how to turn off shlop font(Probaby will make another font for other text)
+    textAlign(CENTER);
+    text("GAMEOVER", width/2, height/2 - 300); 
+    textSize(100);
+    text("YOUR HOME", width/2, height/2 - 150); 
+    text("IS INFESTED", width/2, height/2); 
+    text("WITH ANTS", width/2, height/2 + 150); 
+    textFont(Samdan);
   }
 
   void updateHover() {
