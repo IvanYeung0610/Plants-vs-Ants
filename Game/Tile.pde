@@ -22,7 +22,9 @@ public class Tile extends Button{
   Plant getPlant(){
     return plant;
   }
-  
+  void setPlant(Plant p){
+    plant = p;
+  }
   Sprite runPlant(){
     if (plant != null) {
       if (plant.health <= 0){

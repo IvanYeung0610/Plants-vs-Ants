@@ -2,7 +2,7 @@ public class GameLevel extends Level {
   Wave[] waves;
   int currentWave;
   int sun;
-  int timer;
+  int timer, ExplodeTimer;
   BulletList bullets;
   SunList suns;
   TileMap tiles;
@@ -42,7 +42,7 @@ public class GameLevel extends Level {
     }
     house = new House("House.png", -470, 0, 590, 900);
     shlop = createFont("shlop rg.ttf", 100);
-    Samdan = createFont("Samdan.ttf", 12);
+    Samdan = createFont("Samdan.ttf", 25);
   }
 
 
@@ -100,12 +100,17 @@ public class GameLevel extends Level {
       }
     }
 
-    //Kills ants when health is below zero
-    for (int i = 0; i < currentAnts.size(); i++) {
-      if (currentAnts.get(i).getHealth() <= 0) {
-        currentAnts.remove(i);
+      //Kills ants when health is below zero
+      for (int i = 0; i < currentAnts.size(); i++) {
+        if (currentAnts.get(i).getHealth() <= 0) {
+          currentAnts.remove(i);
+        }
       }
-    }
+
+      //displays sceneButtons
+      for (int i = 0; i < sceneButtons.size(); i++) {
+        sceneButtons.get(i).display();
+      }
 
     //displays sceneButtons
     for (int i = 0; i < sceneButtons.size(); i++) {
@@ -122,6 +127,14 @@ public class GameLevel extends Level {
 
     //Ants attacking
     antAttack();
+
+    //checks for losing condition
+    for (int i = 0; i < currentAnts.size(); i++) {
+      //condition for losing the game
+      if (currentAnts.get(i).x < 50) {
+        this.gameOver = true;
+      }
+    }
 
     //Lawnmower processing
     for (int i = 0; i < 5; i++) {
@@ -141,19 +154,13 @@ public class GameLevel extends Level {
       nextWave();
     }
 
+
     // Display Total SUN
     textSize(25);
     text("Sun: " + sun, 1200, 40);
 
     //Sun that spawns from the sky
-    if (timer == 0) {
-      //(int)(Math.random() * (b - a + 1)) + a
-      Sun skySun = new Sun("Sun.png", (int)(Math.random() * (1000 - 200 + 1)) + 200, -10, "Sun");
-      suns.add(skySun);
-      timer = 900;
-    } else {
-      timer--;
-    }
+    spawnSun();
 
     //Shovel:
     shovel.display();
@@ -193,17 +200,7 @@ public class GameLevel extends Level {
                 setPlant(currentTile, currentButton.getName());
                 sun -= ((PlantButton)currentButton).getCost();
                 unCheck();
-                switch(currentButton.getName()) {
-                case "Peashooter":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                case "Sunflower":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                case "Wallnut":
-                  ((PlantButton)currentButton).resetTimer();
-                  break;
-                }
+                ((PlantButton)currentButton).resetTimer();
               }
             }
           }
@@ -230,6 +227,18 @@ public class GameLevel extends Level {
       }
     }
   }
+
+  void spawnSun() {
+    if (timer == 0) {
+      //(int)(Math.random() * (b - a + 1)) + a
+      Sun skySun = new Sun("Sun.png", (int)(Math.random() * (1000 - 200 + 1)) + 200, -10, "Sun");
+      suns.add(skySun);
+      timer = 900;
+    } else {
+      timer--;
+    }
+  }
+
   void antAttack() {
     for (int i = 0; i < currentAnts.size(); i++) {
       if (tiles.takeDamage(currentAnts.get(i))) {
@@ -240,6 +249,7 @@ public class GameLevel extends Level {
       }
     }
   }
+
   void setPlant(Tile t, String name) {
     Plant p;
     switch(name) {
@@ -255,6 +265,39 @@ public class GameLevel extends Level {
       p = new Wallnut("Wallnut.png", t.x + 30, t.y + 30);
       t.plant = p;
       break;
+    case "PotatoMine":
+      p = new PotatoMine(t.x + 30, t.y + 30);
+      t.plant = p;
+      break;
+    case "Repeater":
+      p = new Repeater(t.x + 30, t.y + 30);
+      t.plant = p;
+      break;
+    }
+  }
+  void checkMineCollision() {
+    for (int i = 0; i < 5; i++) { 
+      for (int j = 0; j < 9; j++) {
+        Tile currentTile = tiles.get(i, j);
+        Plant currentPlant = currentTile.getPlant();
+        if (currentPlant != null) {
+          if ((currentPlant.getType()).equals("PotatoMine")) { 
+            if (((PotatoMine)currentPlant).isPrimed() && ((PotatoMine)currentPlant).exploded == -1) {        // If the Mine is Primed,
+              if (currentAnts.checkCollision(currentPlant)) {   // And if any ants are colliding with the mine,
+                for (int ind = 0; ind < currentAnts.size(); ind++) {  // Then all ants colliding with the Tile the mine is on dies.
+                  if (currentAnts.get(ind).checkCollision(currentTile)) {
+                    currentAnts.get(ind).takeDamage(100);
+                  }
+                }
+                ((PotatoMine)currentPlant).setExploded();
+              }
+            }
+            if (((PotatoMine)currentPlant).exploded == 0) {
+              currentTile.setPlant(null);
+            }
+          }
+        }
+      }
     }
   }
 
@@ -270,6 +313,21 @@ public class GameLevel extends Level {
     currentAnts = waves[currentWave].getIncomingAnts();
   }
 
+  void runTilePlants() {
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 9; j++) {
+        Tile currentTile = tiles.get(i, j);
+        Sprite projectile = currentTile.runPlant();
+        if (projectile != null) {
+          if (currentTile.plant.getType() == "Sunflower") {
+            suns.add((Sun)projectile);
+          } else {
+            bullets.add((Bullet)projectile);
+          }
+        }
+      }
+    }
+  }
 
   // This will be redefined in the child GameLevels.
   void SetWave() {
