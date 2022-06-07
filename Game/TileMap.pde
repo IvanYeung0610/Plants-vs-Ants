@@ -18,10 +18,6 @@ public class TileMap {
     return tileArray[row][col];
   }
 
-  boolean getOccupied() {
-    return occupied;
-  }
-
   void displayAll() {
     for (Tile[] t : tileArray) {
       for (Tile tile : t) {
@@ -59,12 +55,10 @@ public class TileMap {
   void checkAntMound(Ant ant) {
     for (Tile[] x : tileArray) {
       for (Tile t : x) {
-        if (t.getPlant() != null) {
-          if (t.getPlant().checkCollision(ant)) {
-            t.setOccupied(true);
-          } else {
-            t.setOccupied(false);
-          }
+        if (t.checkCollision(ant)) {
+          t.setOccupied(true);
+        } else {
+          t.setOccupied(false);
         }
       }
     }
