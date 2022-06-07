@@ -81,7 +81,10 @@ Ivan Yeung: I worked on adding a default font for cases outside of the gameover 
 
 6/03:
 
-Joshua Liu: I made the PotatoMine and made sure that it was functioning according to our original designs. The potato mine kills all ants on the same tile as it when an ant collides with it in the primed state. I also worked on the UML diagram and started working on other Plants. 
+Joshua Liu: I made the PotatoMine and made sure that it was functioning according to our original designs. The potato mine kills all ants on the same tile as it when an ant collides with it in the primed state. I also worked on the UML diagram and started working on other Plants.
 
 Ivan Yeung: I worked on making and adding various assets(BucketHat, ConeHat, PotatoMine, PotatoMineBullet, PotatoMine Button, Repeater, RepeaterButton). I also created a function HatAnt class which creates ants that wears hats that fall off when completely drained of its health.
 
+6/04:
+
+Ivan Yeung: I worked on AntMound class. As of today, it remains stationary and can spawn an ant to the level at a set interval. I plan on making some sort of system that prevents plants from being placed on a tile that touches a ant mound.
