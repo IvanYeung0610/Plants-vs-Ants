@@ -69,14 +69,12 @@ public class GameLevel extends Level {
       }
     }
 
-    
+
     bullets.moveAll();
-    
     suns.moveAll();
     sun += suns.processAll();
-
     currentAnts.moveAll();
-
+    checkMineCollision();
     int bulletCount = bullets.size();
     for (int i = 0; i < bulletCount; i++) {
       if (currentAnts.takeDamage(bullets.get(i))) {
@@ -150,7 +148,6 @@ public class GameLevel extends Level {
 
     //Sun that spawns from the sky
     spawnSun();
-    
   } //end of run()
 
   void handleMouseClicked() {
@@ -218,7 +215,7 @@ public class GameLevel extends Level {
   void displayALL() {
     house.display();
     tiles.displayAll();
-    
+
     //displays sceneButtons
     for (int i = 0; i < sceneButtons.size(); i++) {
       sceneButtons.get(i).display();
@@ -228,17 +225,16 @@ public class GameLevel extends Level {
     currentAnts.displayAll();
     shovel.display();
     displayExplosions();
-    
   }
-  
-  void displayExplosions(){
-    for(int i = 0; i < displayQueue.size(); i++){
+
+  void displayExplosions() {
+    for (int i = 0; i < displayQueue.size(); i++) {
       Explosion e = (Explosion)displayQueue.get(i);
       e.display();
     }
-    for(int i = 0; i < displayQueue.size(); i++){
+    for (int i = 0; i < displayQueue.size(); i++) {
       Explosion e = (Explosion)displayQueue.get(i);
-      if(e.getTimer() <= 0){
+      if (e.getTimer() <= 0) {
         displayQueue.remove(i);
       }
     }
@@ -298,18 +294,16 @@ public class GameLevel extends Level {
         Plant currentPlant = currentTile.getPlant();
         if (currentPlant != null) {
           if ((currentPlant.getType()).equals("PotatoMine")) { 
-            if (((PotatoMine)currentPlant).isPrimed() && ((PotatoMine)currentPlant).exploded == -1) {        // If the Mine is Primed,
+            if (((PotatoMine)currentPlant).isPrimed()) {        // If the Mine is Primed,
               if (currentAnts.checkCollision(currentPlant)) {   // And if any ants are colliding with the mine,
                 for (int ind = 0; ind < currentAnts.size(); ind++) {  // Then all ants colliding with the Tile the mine is on dies.
                   if (currentAnts.get(ind).checkCollision(currentTile)) {
                     currentAnts.get(ind).takeDamage(100);
                   }
                 }
-                ((PotatoMine)currentPlant).setExploded();
+                currentTile.setPlant(null);
+                displayQueue.add(new Explosion(currentTile.x, currentTile.y));
               }
-            }
-            if (((PotatoMine)currentPlant).exploded == 0) {
-              currentTile.setPlant(null);
             }
           }
         }
