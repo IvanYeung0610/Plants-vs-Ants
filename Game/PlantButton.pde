@@ -23,7 +23,7 @@ public class PlantButton extends Button {
         break;
       case "PotatoMine":
         cost = 25;
-        maxTimer = 700;
+        maxTimer = 800;
         break;
       case "Repeater":
         cost = 175;
@@ -83,7 +83,7 @@ public class PlantButton extends Button {
       case "Repeater":
         textSize(50);
         fill(0);
-        text("175", x + Width - 40, y + Height - 5);
+        text("175", x + Width - 60, y + Height - 5);
         break;
     }
     

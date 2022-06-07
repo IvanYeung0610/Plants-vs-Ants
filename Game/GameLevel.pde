@@ -10,6 +10,7 @@ public class GameLevel extends Level {
   HoverRectangle hover;
   LawnMower[] lawnMowers;
   Shovel shovel;
+  Sprite shovelMouse;
   House house;
   ArrayList<Sprite> displayQueue;
   PFont Samdan;
@@ -27,6 +28,7 @@ public class GameLevel extends Level {
     shovel = new Shovel();
     waves = new Wave[numOfWaves];
     displayQueue = new ArrayList<Sprite>();
+    shovelMouse = new Sprite("MouseShovel.png", 0, 0, 50, 50);
     SetWave();
 
     tiles = new TileMap();
@@ -75,6 +77,8 @@ public class GameLevel extends Level {
     sun += suns.processAll();
     currentAnts.moveAll();
     checkMineCollision();
+    shovelMouse.setX(mouseX - 5);
+    shovelMouse.setY(mouseY - 5);
     int bulletCount = bullets.size();
     for (int i = 0; i < bulletCount; i++) {
       if (currentAnts.takeDamage(bullets.get(i))) {
@@ -191,12 +195,12 @@ public class GameLevel extends Level {
         }
       }
     }
-    //If user clicks on shovel:
+
     if (shovel.overButton()) {
       unCheck();
       shovel.clickButton();
     }
-
+    //If user clicks on shovel:
     if (shovel.isClicked()) { 
       for (int i = 0; i < 5; i++) { 
         for (int j = 0; j < 9; j++) {
@@ -225,6 +229,7 @@ public class GameLevel extends Level {
     currentAnts.displayAll();
     shovel.display();
     displayExplosions();
+    if(shovel.isClicked()) shovelMouse.display();
   }
 
   void displayExplosions() {

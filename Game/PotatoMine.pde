@@ -4,7 +4,7 @@ public class PotatoMine extends Plant {
 
   PotatoMine(float xcoor, float ycoor) {
     super("PotatoMine.png", xcoor + 20, ycoor + 30, 50, 50, 5, 25);
-    timer = 100;
+    timer = 1100;
     primed = false;
   }
 
