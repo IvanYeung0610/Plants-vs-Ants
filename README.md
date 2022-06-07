@@ -85,3 +85,6 @@ Joshua Liu: I made the PotatoMine and made sure that it was functioning accordin
 
 Ivan Yeung: I worked on making and adding various assets(BucketHat, ConeHat, PotatoMine, PotatoMineBullet, PotatoMine Button, Repeater, RepeaterButton). I also created a function HatAnt class which creates ants that wears hats that fall off when completely drained of its health.
 
+6/06:
+
+Joshua Liu: I made the Potatomine's explosion display over tiles and not interfere with the ants passing by. I also cleaned up some of the code in GameLevel and made the Repeater plant and tested it.
