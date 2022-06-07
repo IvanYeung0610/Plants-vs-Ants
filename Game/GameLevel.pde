@@ -385,6 +385,37 @@ public class GameLevel extends Level {
     text("WITH ANTS", width/2, height/2 + 150); 
     textFont(Samdan);
   }
+  
+  void intermission() {
+    house.display();
+    tiles.displayAll();
+    bullets.displayAll();
+    suns.displayAll();
+    currentAnts.displayAll();
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      textAlign(LEFT);
+      sceneButtons.get(i).display();
+    }
+
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+      }
+    }
+    fill(0);
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
+    //darkened screen
+    fill(0, 100);
+    noStroke();
+    rect(0, 0, 1600, 900);
+    fill(255, 0, 0);
+    textFont(Samdan);
+    textSize(150);
+    textAlign(CENTER);
+    text("YOU WON", width/2, height/2 - 400); 
+    textAlign(LEFT);
+  }
 
   void updateHover() {
     for (Tile[] t : tiles.tileArray) {
