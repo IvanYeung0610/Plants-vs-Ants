@@ -219,17 +219,20 @@ public class GameLevel extends Level {
   void displayALL() {
     house.display();
     tiles.displayAll();
-
-    //displays sceneButtons
-    for (int i = 0; i < sceneButtons.size(); i++) {
-      sceneButtons.get(i).display();
-    }
+    displaySceneButtons();
     bullets.displayAll();
     suns.displayAll();
     currentAnts.displayAll();
     shovel.display();
     displayExplosions();
-    if(shovel.isClicked()) shovelMouse.display();
+    if (shovel.isClicked()) shovelMouse.display();
+  }
+
+  void displaySceneButtons() {
+    //displays sceneButtons
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      sceneButtons.get(i).display();
+    }
   }
 
   void displayExplosions() {
