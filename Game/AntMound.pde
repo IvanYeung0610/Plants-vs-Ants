@@ -2,7 +2,12 @@ public class AntMound extends Ant {
   public AntMound(String image_name, float x, float y, int Width, int Height, int health, int damage) {
     super(image_name, x, y, Width, Height, health, damage);
     attacking = true;
-    timer = 900;
+    timer = 1200;
+    type = "AntMound";
+  }
+
+  void setAttacking(boolean b) {
+    attacking = true;
   }
 
   int attack() {
@@ -13,5 +18,9 @@ public class AntMound extends Ant {
       timer --;
       return 0;
     }
+  }
+
+  String getType() {
+    return type;
   }
 }

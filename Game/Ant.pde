@@ -3,6 +3,7 @@ public class Ant extends Sprite {
   float velocity;
   boolean attacking;
   int timer;
+  String type;
 
   Ant(String image_name, float x, float y, int Width, int Height, int health, int damage) {
     super(image_name, x, y, Width, Height);
@@ -11,6 +12,7 @@ public class Ant extends Sprite {
     velocity = .30;
     attacking = false;
     timer = 60;
+    type = "Ant";
   }
   void display() {
     super.display();
@@ -34,7 +36,7 @@ public class Ant extends Sprite {
   int getHealth() {
     return health;
   }
-  
+
   void setAttacking(boolean b) {
     attacking = b;
   }
@@ -47,5 +49,9 @@ public class Ant extends Sprite {
       timer --;
       return 0;
     }
+  }
+
+  String getType() {
+    return type;
   }
 }

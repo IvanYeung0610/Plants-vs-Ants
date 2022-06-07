@@ -100,17 +100,17 @@ public class GameLevel extends Level {
       }
     }
 
-      //Kills ants when health is below zero
-      for (int i = 0; i < currentAnts.size(); i++) {
-        if (currentAnts.get(i).getHealth() <= 0) {
-          currentAnts.remove(i);
-        }
+    //Kills ants when health is below zero
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (currentAnts.get(i).getHealth() <= 0) {
+        currentAnts.remove(i);
       }
+    }
 
-      //displays sceneButtons
-      for (int i = 0; i < sceneButtons.size(); i++) {
-        sceneButtons.get(i).display();
-      }
+    //displays sceneButtons
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      sceneButtons.get(i).display();
+    }
 
     //displays sceneButtons
     for (int i = 0; i < sceneButtons.size(); i++) {
@@ -241,11 +241,18 @@ public class GameLevel extends Level {
 
   void antAttack() {
     for (int i = 0; i < currentAnts.size(); i++) {
-      if (tiles.takeDamage(currentAnts.get(i))) {
-        currentAnts.get(i).setAttacking(true);
-        //print(currentAnts.get(i).attacking);
-      } else {
-        currentAnts.get(i).setAttacking(false);
+      if (currentAnts.get(i).getType().equals("Ant")) {
+        if (tiles.takeDamage(currentAnts.get(i))) {
+          currentAnts.get(i).setAttacking(true);
+          //print(currentAnts.get(i).attacking);
+        } else {
+          currentAnts.get(i).setAttacking(false);
+        }
+      }
+      if (currentAnts.get(i).getType().equals("AntMound")){
+        if (currentAnts.get(i).attack() == 1){
+          currentAnts.add(new Ant("Ant.png", currentAnts.get(i).x, currentAnts.get(i).y, 100, 50, 15, 1));
+        }
       }
     }
   }
