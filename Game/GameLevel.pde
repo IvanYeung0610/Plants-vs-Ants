@@ -196,7 +196,7 @@ public class GameLevel extends Level {
           if (currentTile.plant == null) { // IF there are no plants already on it,
             for (int x = 0; x < sceneButtons.size(); x++) { // Check which Plantbutton is clicked
               Button currentButton = sceneButtons.get(x); 
-              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost()) {
+              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost() && !currentTile.getOccupied()) {
                 setPlant(currentTile, currentButton.getName());
                 sun -= ((PlantButton)currentButton).getCost();
                 unCheck();
@@ -250,6 +250,7 @@ public class GameLevel extends Level {
         }
       }
       if (currentAnts.get(i).getType().equals("AntMound")){
+        tiles.checkAntMound(currentAnts.get(i));
         if (currentAnts.get(i).attack() == 1){
           currentAnts.add(new Ant("Ant.png", currentAnts.get(i).x, currentAnts.get(i).y, 100, 50, 15, 1));
         }

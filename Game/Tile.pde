@@ -1,10 +1,12 @@
 public class Tile extends Button{
   final int size = 100;
   Plant plant;
+  boolean occupied;
   
   public Tile(String img, float xcoor, float ycoor, int Width, int Height){
     super(img, xcoor, ycoor, Width, Height, "Tile");
     this.plant = null;
+    occupied = false;
   }
   
   void display(){
@@ -34,6 +36,14 @@ public class Tile extends Button{
       }
     }
     return null;
+  }
+  
+  boolean getOccupied(){
+    return occupied;
+  }
+  
+  void setOccupied(boolean input){
+    occupied = input;
   }
   
   

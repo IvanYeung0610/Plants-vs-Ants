@@ -1,11 +1,9 @@
 public class TileMap {
   Tile[][] tileArray;
-  boolean occupied;
 
   public TileMap() {
     //every level will have a grid of 5 by 9 tiles
     tileArray = new Tile[5][9];
-    occupied = false;
   }
 
   boolean add(Tile tile, int row, int col) {
@@ -63,9 +61,9 @@ public class TileMap {
       for (Tile t : x) {
         if (t.getPlant() != null) {
           if (t.getPlant().checkCollision(ant)) {
-            occupied = true;
+            t.setOccupied(true);
           } else {
-            occupied = false;
+            t.setOccupied(false);
           }
         }
       }
