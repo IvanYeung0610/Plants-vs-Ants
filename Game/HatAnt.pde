@@ -25,6 +25,9 @@ public class HatAnt extends Ant {
       super.takeDamage(damage);
     } else {
       hat.takeDamage(damage);
+      if(damage - hat.getHealth() > 0){
+        super.takeDamage(damage - hat.getHealth());
+      }
     }
   }
 

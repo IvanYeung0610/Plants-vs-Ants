@@ -15,6 +15,14 @@ public class LevelManager {
     if (levels[currentLevel].levelComplete) {
       playNext();
     }
+    
+    if(currentLevel == 0){
+      MainMenu m = ((MainMenu)levels[currentLevel]);
+      if(m.getStarted()){
+        currentLevel = m.getLevelSelected();
+      }
+    }
+    
     if (levels[currentLevel].gameOver) {
       levels[currentLevel].gameOver();
     } else {

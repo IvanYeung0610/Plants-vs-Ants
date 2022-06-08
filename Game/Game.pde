@@ -6,10 +6,10 @@ void setup() {
   size(1400, 900);
 
   // ADD MORE LEVELS HERE:
-  levels[0] = new DemoLevel();
-  levels[1] = new DemoLevel2();
-  levels[2] = new DemoLevel3();
-
+  levels[0] = new MainMenu();
+  levels[1] = new DemoLevel();
+  levels[2] = new DemoLevel2();
+  
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new RestartButton("RestartButton.png", width/2 - 200, height/2 + 200, 100, 50, "RestartButton");
