@@ -119,13 +119,6 @@ public class GameLevel extends Level {
     //Ants attacking
     antAttack();
 
-    //checks for losing condition
-    for (int i = 0; i < currentAnts.size(); i++) {
-      //condition for losing the game
-      if (currentAnts.get(i).x < 50) {
-        this.gameOver = true;
-      }
-    }
 
     //Lawnmower processing
     for (int i = 0; i < 5; i++) {
@@ -369,6 +362,7 @@ public class GameLevel extends Level {
 
   void gameOver() {
     //game over screen
+    house.display();
     tiles.displayAll();
     bullets.displayAll();
     suns.displayAll();
@@ -427,11 +421,16 @@ public class GameLevel extends Level {
     noStroke();
     rect(0, 0, 1600, 900);
     fill(255, 0, 0);
-    textFont(Samdan);
+    textFont(shlop);
     textSize(150);
+    //have to figure out how to turn off shlop font(Probaby will make another font for other text)
     textAlign(CENTER);
-    text("YOU WON", width/2, height/2 - 400); 
-    textAlign(LEFT);
+    text("GAMEOVER", width/2, height/2 - 300); 
+    textSize(100);
+    text("YOUR HOME", width/2, height/2 - 150); 
+    text("IS INFESTED", width/2, height/2); 
+    text("WITH ANTS", width/2, height/2 + 150); 
+    textFont(Samdan);
   }
 
   void updateHover() {

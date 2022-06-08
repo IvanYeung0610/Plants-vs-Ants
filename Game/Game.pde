@@ -46,3 +46,13 @@ void mouseClicked() {
     exit();
   }
 }
+
+void keyPressed(){
+  if (key == 'g') {
+    g.levels[g.currentLevel].gameOver = true; 
+  }
+  
+  if (key == 'i') {
+    g.levels[g.currentLevel].levelComplete = true;
+  }
+}
