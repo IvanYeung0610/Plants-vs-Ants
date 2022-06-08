@@ -184,7 +184,7 @@ public class GameLevel extends Level {
           if (currentTile.plant == null) { // IF there are no plants already on it,
             for (int x = 0; x < sceneButtons.size(); x++) { // Check which Plantbutton is clicked
               Button currentButton = sceneButtons.get(x); 
-              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost()) {
+              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost() && currentTile.getOccupied() == false) {
                 setPlant(currentTile, currentButton.getName());
                 sun -= ((PlantButton)currentButton).getCost();
                 unCheck();
@@ -261,11 +261,19 @@ public class GameLevel extends Level {
 
   void antAttack() {
     for (int i = 0; i < currentAnts.size(); i++) {
-      if (tiles.takeDamage(currentAnts.get(i))) {
-        currentAnts.get(i).setAttacking(true);
-        //print(currentAnts.get(i).attacking);
-      } else {
-        currentAnts.get(i).setAttacking(false);
+      if (currentAnts.get(i).getType().equals("Ant")) {
+        if (tiles.takeDamage(currentAnts.get(i))) {
+          currentAnts.get(i).setAttacking(true);
+          //print(currentAnts.get(i).attacking);
+        } else {
+          currentAnts.get(i).setAttacking(false);
+        }
+      }
+      if (currentAnts.get(i).getType().equals("AntMound")) {
+        tiles.checkAntMound(currentAnts.get(i));
+        if (currentAnts.get(i).attack() == 1) {
+          currentAnts.add(new Ant("Ant.png", currentAnts.get(i).x, currentAnts.get(i).y, 100, 50, 15, 1));
+        }
       }
     }
   }
@@ -393,6 +401,37 @@ public class GameLevel extends Level {
     text("IS INFESTED", width/2, height/2); 
     text("WITH ANTS", width/2, height/2 + 150); 
     textFont(Samdan);
+  }
+
+  void intermission() {
+    house.display();
+    tiles.displayAll();
+    bullets.displayAll();
+    suns.displayAll();
+    currentAnts.displayAll();
+    for (int i = 0; i < sceneButtons.size(); i++) {
+      textAlign(LEFT);
+      sceneButtons.get(i).display();
+    }
+
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+      }
+    }
+    fill(0);
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
+    //darkened screen
+    fill(0, 100);
+    noStroke();
+    rect(0, 0, 1600, 900);
+    fill(255, 0, 0);
+    textFont(Samdan);
+    textSize(150);
+    textAlign(CENTER);
+    text("YOU WON", width/2, height/2 - 400); 
+    textAlign(LEFT);
   }
 
   void updateHover() {

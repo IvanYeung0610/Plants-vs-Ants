@@ -36,6 +36,8 @@ public class DemoLevel extends GameLevel {
     ant.add(new HatAnt("Ant.png", 2300, ROW1, 100, 50, 15, 1, new Hat("ConeHat.png", 2200, ROW1 - 5, 25, 25, 10))); //ROWX - 5 for ycoor of cone hat
     ant.add(new HatAnt("Ant.png", 2500, ROW2, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW2 - 2, 25, 25, 20))); //ROWX - 2 for ycoor of cone hat
     
+    ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
+    
     Wave W0 = new Wave(ant);
     waves[0] = W0;
     
