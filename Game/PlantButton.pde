@@ -23,7 +23,7 @@ public class PlantButton extends Button {
         break;
       case "PotatoMine":
         cost = 25;
-        maxTimer = 700;
+        maxTimer = 800;
         break;
       case "Repeater":
         cost = 175;
