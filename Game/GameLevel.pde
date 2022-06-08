@@ -127,20 +127,6 @@ public class GameLevel extends Level {
       }
     }
 
-    //Lawnmower processing
-    for (int i = 0; i < 5; i++) {
-      if (lawnMowers[i] != null) {
-        lawnMowers[i].display();
-        for (int j = 0; j < currentAnts.size(); j++) {
-          lawnMowers[i].process(currentAnts.get(j));
-        }
-        lawnMowers[i].move();
-        if (lawnMowers[i].x > width) {
-          lawnMowers[i] = null;
-        }
-      }
-    }
-
     if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
       nextWave();
     }

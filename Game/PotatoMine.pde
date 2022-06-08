@@ -3,7 +3,7 @@ public class PotatoMine extends Plant {
   boolean primed;
 
   PotatoMine(float xcoor, float ycoor) {
-    super("PotatoMine.png", xcoor + 20, ycoor + 30, 50, 50, 5, 25);
+    super("PotatoMine.png", xcoor + 20, ycoor + 30, 50, 50, 3, 25);
     timer = 1100;
     primed = false;
   }
