@@ -88,3 +88,11 @@ Ivan Yeung: I worked on making and adding various assets(BucketHat, ConeHat, Pot
 6/06:
 
 Joshua Liu: I made the Potatomine's explosion display over tiles and not interfere with the ants passing by. I also cleaned up some of the code in GameLevel and made the Repeater plant and tested it.
+
+6/07:
+
+Joshua Liu: I made the MainMenu scene.
+
+6/09:
+
+Joshua Liu: I made the cherryBomb and cleaned up the code in GameLevel.

@@ -9,23 +9,27 @@ public class DemoLevel2 extends GameLevel {
     super(new ArrayList<Button>(), 2);
     
     sceneButtons.add(new PlantButton("SunflowerButton.png",0,0, 150, 100, "Sunflower"));
-    sceneButtons.add(new PlantButton("PeashooterButton.png",170,0, 150, 100, "Peashooter"));
-    sceneButtons.add(new PlantButton("WallnutButton.png",340,0, 150, 100, "Wallnut"));
-    sceneButtons.add(new PlantButton("PotatoMineButton.png",510,0, 150, 100, "PotatoMine"));
+    sceneButtons.add(new PlantButton("PeashooterButton.png",160,0, 150, 100, "Peashooter"));
+    sceneButtons.add(new PlantButton("WallnutButton.png",320,0, 150, 100, "Wallnut"));
+    sceneButtons.add(new PlantButton("PotatoMineButton.png",480,0, 150, 100, "PotatoMine"));
+    sceneButtons.add(new PlantButton("CherryBombButton.png",640,0, 150, 100, "CherryBomb"));
   }
   void run(){
     super.run();
-    
-    textAlign(LEFT);
-    stroke(225);
-    text("DEMO2", 500, 50);
   }
   
   void SetWave() {
     AntList ant = new AntList();
     //ADD MORE ANTS HERE:
     ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 2050, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1700, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1710, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1720, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1700, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW5, 100, 50, 15, 1));
     
     Wave W0 = new Wave(ant);
     waves[0] = W0;

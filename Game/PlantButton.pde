@@ -29,6 +29,10 @@ public class PlantButton extends Button {
         cost = 175;
         maxTimer = 600;
         break;
+      case "CherryBomb":
+        cost = 150;
+        maxTimer = 1200;
+        break;
     }
   }
   
@@ -84,6 +88,11 @@ public class PlantButton extends Button {
         textSize(50);
         fill(0);
         text("175", x + Width - 60, y + Height - 5);
+        break;
+      case "CherryBomb":
+        textSize(50);
+        fill(0);
+        text("150", x + Width - 60, y + Height - 5);
         break;
     }
     
