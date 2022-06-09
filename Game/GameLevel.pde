@@ -18,37 +18,8 @@ public class GameLevel extends Level {
 
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves) {
     super(sceneButtons);
-    currentWave = 0;
-    sun = 50;
-    timer = 300; //first sun is 10 secs
-    bullets = new BulletList(new ArrayList<Bullet>());
-    suns = new SunList();
-    currentAnts = new AntList();
-    hover = new HoverRectangle(0, 0);
-    shovel = new Shovel();
-    waves = new Wave[numOfWaves];
-    displayQueue = new ArrayList<Sprite>();
-    shovelMouse = new Sprite("MouseShovel.png", 0, 0, 50, 50);
-    SetWave();
-
-    tiles = new TileMap();
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 9; j++) {
-        Tile t = new Tile("Tile.png", 104 + (j * 144), 130 + (i * 144), 144, 144);
-        tiles.add(t, i, j);
-      }
-    }
-
-    lawnMowers = new LawnMower[5];
-    for (int i = 0; i < 5; i++) {
-      LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
-      lawnMowers[i] = mower;
-    }
-    house = new House("House.png", -470, 0, 590, 900);
-    shlop = createFont("shlop rg.ttf", 100);
-    Samdan = createFont("Samdan.ttf", 25);
+    initalizeALL(numOfWaves);
   }
-
 
   // this ties all the classes together.
   void run() {
@@ -81,7 +52,6 @@ public class GameLevel extends Level {
 
     checkPlantPlace();
 
-
     if (shovel.overButton()) {
       unCheck();
       shovel.clickButton();
@@ -100,6 +70,25 @@ public class GameLevel extends Level {
         }
       }
     }
+  }
+  void initalizeALL(int NUMOFWAVES) {
+    currentWave = 0;
+    sun = 50;
+    timer = 300; //first sun is 10 secs
+    bullets = new BulletList(new ArrayList<Bullet>());
+    suns = new SunList();
+    currentAnts = new AntList();
+    hover = new HoverRectangle(0, 0);
+    shovel = new Shovel();
+    waves = new Wave[NUMOFWAVES];
+    displayQueue = new ArrayList<Sprite>();
+    shovelMouse = new Sprite("MouseShovel.png", 0, 0, 50, 50);
+    SetWave();
+    setupTiles();
+    initalizeLawnMower();
+    house = new House("House.png", -470, 0, 590, 900);
+    shlop = createFont("shlop rg.ttf", 100);
+    Samdan = createFont("Samdan.ttf", 25);
   }
   void ProcessALL() {
     setCurrentAnts();
@@ -128,7 +117,6 @@ public class GameLevel extends Level {
     currentAnts.displayAll();
     shovel.display();
     displayExplosions();
-
     // Display Total SUN
     textSize(25);
     text("Sun: " + sun, 1200, 40);
@@ -141,7 +129,22 @@ public class GameLevel extends Level {
       sceneButtons.get(i).display();
     }
   }
-
+  void setupTiles() {
+    tiles = new TileMap();
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 9; j++) {
+        Tile t = new Tile("Tile.png", 104 + (j * 144), 130 + (i * 144), 144, 144);
+        tiles.add(t, i, j);
+      }
+    }
+  }
+  void initalizeLawnMower() {
+    lawnMowers = new LawnMower[5];
+    for (int i = 0; i < 5; i++) {
+      LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
+      lawnMowers[i] = mower;
+    }
+  }
   void runPlants() {
     // This runs the plants and adds their projectiles.
     for (int i = 0; i < 5; i++) {
