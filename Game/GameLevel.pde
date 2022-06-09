@@ -18,134 +18,15 @@ public class GameLevel extends Level {
 
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves) {
     super(sceneButtons);
-    currentWave = 0;
-    sun = 50;
-    timer = 300; //first sun is 10 secs
-    bullets = new BulletList(new ArrayList<Bullet>());
-    suns = new SunList();
-    currentAnts = new AntList();
-    hover = new HoverRectangle(0, 0);
-    shovel = new Shovel();
-    waves = new Wave[numOfWaves];
-    displayQueue = new ArrayList<Sprite>();
-    shovelMouse = new Sprite("MouseShovel.png", 0, 0, 50, 50);
-    SetWave();
-
-    tiles = new TileMap();
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 9; j++) {
-        Tile t = new Tile("Tile.png", 104 + (j * 144), 130 + (i * 144), 144, 144);
-        tiles.add(t, i, j);
-      }
-    }
-
-    lawnMowers = new LawnMower[5];
-    for (int i = 0; i < 5; i++) {
-      LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
-      lawnMowers[i] = mower;
-    }
-    house = new House("House.png", -470, 0, 590, 900);
-    shlop = createFont("shlop rg.ttf", 100);
-    Samdan = createFont("Samdan.ttf", 25);
+    initalizeALL(numOfWaves);
   }
-
 
   // this ties all the classes together.
   void run() {
-
     textFont(Samdan);
-    setCurrentAnts();
     displayALL();
-    // This runs the plants and adds their projectiles.
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 9; j++) {
-        Tile currentTile = tiles.get(i, j);
-        Sprite projectile = currentTile.runPlant();
-        if (projectile != null) {
-          if (currentTile.plant.getType() == "Sunflower") {
-            suns.add((Sun)projectile);
-          } else {
-            bullets.add((Bullet)projectile);
-          }
-        }
-      }
-    }
-
-
-    bullets.moveAll();
-    suns.moveAll();
-    sun += suns.processAll();
-    currentAnts.moveAll();
-    checkMineCollision();
-    shovelMouse.setX(mouseX - 5);
-    shovelMouse.setY(mouseY - 5);
-    int bulletCount = bullets.size();
-    for (int i = 0; i < bulletCount; i++) {
-      if (currentAnts.takeDamage(bullets.get(i))) {
-        bullets.remove(i);
-        break;
-      }
-    }
-
-    //Lawnmower processing
-    for (int i = 0; i < 5; i++) {
-      if (lawnMowers[i] != null) {
-        lawnMowers[i].display();
-        for (int j = 0; j < currentAnts.size(); j++) {
-          lawnMowers[i].process(currentAnts.get(j));
-        }
-        lawnMowers[i].move();
-        if (lawnMowers[i].x > width) {
-          lawnMowers[i] = null;
-        }
-      }
-    }
-
-    //Kills ants when health is below zero
-    for (int i = 0; i < currentAnts.size(); i++) {
-      if (currentAnts.get(i).getHealth() <= 0) {
-        currentAnts.remove(i);
-      }
-    }
-
-    //checks for losing condition
-    for (int i = 0; i < currentAnts.size(); i++) {
-      //condition for losing the game
-      if (currentAnts.get(i).x < 50) {
-        this.gameOver = true;
-      }
-    }
-
-    //Ants attacking
-    antAttack();
-
-
-    //Lawnmower processing
-    for (int i = 0; i < 5; i++) {
-      if (lawnMowers[i] != null) {
-        lawnMowers[i].display();
-        for (int j = 0; j < currentAnts.size(); j++) {
-          lawnMowers[i].process(currentAnts.get(j));
-        }
-        lawnMowers[i].move();
-        if (lawnMowers[i].x > width) {
-          lawnMowers[i] = null;
-        }
-      }
-    }
-
-    if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
-      nextWave();
-    }
-
-
-    // Display Total SUN
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
-
-    //Sun that spawns from the sky
-    spawnSun();
-  } //end of run()
+    ProcessALL();
+  }
 
   void handleMouseClicked() {
     for (int i = 0; i < sceneButtons.size(); i++) { // click the most recent button clicked, and unclick all others.
@@ -169,25 +50,7 @@ public class GameLevel extends Level {
       }
     }
 
-    // This mess is for placing plants.
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 9; j++) { // Loops thru all Tiles.
-        Tile currentTile = tiles.get(i, j); 
-        if (currentTile.overButton()) {  // Checks which tile the mouse clicks on.
-          if (currentTile.plant == null) { // IF there are no plants already on it,
-            for (int x = 0; x < sceneButtons.size(); x++) { // Check which Plantbutton is clicked
-              Button currentButton = sceneButtons.get(x); 
-              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost() && currentTile.getOccupied() == false) {
-                setPlant(currentTile, currentButton.getName());
-                sun -= ((PlantButton)currentButton).getCost();
-                unCheck();
-                ((PlantButton)currentButton).resetTimer();
-              }
-            }
-          }
-        }
-      }
-    }
+    checkPlantPlace();
 
     if (shovel.overButton()) {
       unCheck();
@@ -209,6 +72,44 @@ public class GameLevel extends Level {
     }
   }
 
+
+  void initalizeALL(int NUMOFWAVES) {
+    currentWave = 0;
+    sun = 50;
+    timer = 300; //first sun is 10 secs
+    bullets = new BulletList(new ArrayList<Bullet>());
+    suns = new SunList();
+    currentAnts = new AntList();
+    hover = new HoverRectangle(0, 0);
+    shovel = new Shovel();
+    waves = new Wave[NUMOFWAVES];
+    displayQueue = new ArrayList<Sprite>();
+    shovelMouse = new Sprite("MouseShovel.png", 0, 0, 50, 50);
+    SetWave();
+    setupTiles();
+    initalizeLawnMower();
+    house = new House("House.png", -470, 0, 590, 900);
+    shlop = createFont("shlop rg.ttf", 100);
+    Samdan = createFont("Samdan.ttf", 25);
+  }
+  void ProcessALL() {
+    setCurrentAnts();
+    runPlants();
+    bullets.moveAll();
+    suns.moveAll();
+    sun += suns.processAll();
+    currentAnts.moveAll();
+    checkMineCollision();
+    shovelMouse.setX(mouseX - 5);
+    shovelMouse.setY(mouseY - 5);
+    checkBulletCollide();
+    processLawnMowers();
+    checkGameOver();
+    killAnts();
+    antAttack();
+    checkNextWave();
+    spawnSun();
+  }
   void displayALL() {
     house.display();
     tiles.displayAll();
@@ -218,6 +119,9 @@ public class GameLevel extends Level {
     currentAnts.displayAll();
     shovel.display();
     displayExplosions();
+    // Display Total SUN
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
     if (shovel.isClicked()) shovelMouse.display();
   }
 
@@ -225,6 +129,97 @@ public class GameLevel extends Level {
     //displays sceneButtons
     for (int i = 0; i < sceneButtons.size(); i++) {
       sceneButtons.get(i).display();
+    }
+  }
+  void setupTiles() {
+    tiles = new TileMap();
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 9; j++) {
+        Tile t = new Tile("Tile.png", 104 + (j * 144), 130 + (i * 144), 144, 144);
+        tiles.add(t, i, j);
+      }
+    }
+  }
+  void initalizeLawnMower() {
+    lawnMowers = new LawnMower[5];
+    for (int i = 0; i < 5; i++) {
+      LawnMower mower = new LawnMower("Lawnmower.png", 25, 165 + i * 144, 110, 110);
+      lawnMowers[i] = mower;
+    }
+  }
+  void runPlants() {
+    // This runs the plants and adds their projectiles.
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 9; j++) {
+        Tile currentTile = tiles.get(i, j);
+        Sprite projectile = currentTile.runPlant();
+        if (projectile != null) {
+          if (currentTile.plant.getType() == "Sunflower") {
+            suns.add((Sun)projectile);
+          } else if (currentTile.plant.getType() == "CherryBomb") {
+            cherryBombExplode((Bullet)projectile, currentTile.x - 72, currentTile.y - 72);
+          } else {
+            bullets.add((Bullet)projectile);
+          }
+        }
+      }
+    }
+  }
+  void cherryBombExplode(Bullet b, float x, float y) {
+    if (b != null) {
+      for (int i = 0; i < currentAnts.size(); i++) {
+        if (currentAnts.get(i).checkCollision(b)) {
+          currentAnts.get(i).takeDamage(b.getDamage());
+        }
+      }
+      displayQueue.add(new Explosion("Explosion2.png", x, y, 288, 288));
+    }
+  }
+  void processLawnMowers() {
+    //Lawnmower processing
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
+        for (int j = 0; j < currentAnts.size(); j++) {
+          lawnMowers[i].process(currentAnts.get(j));
+        }
+        lawnMowers[i].move();
+        if (lawnMowers[i].x > width) {
+          lawnMowers[i] = null;
+        }
+      }
+    }
+  }
+  void killAnts() {
+    //Kills ants when health is below zero
+    for (int i = 0; i < currentAnts.size(); i++) {
+      if (currentAnts.get(i).getHealth() <= 0) {
+        currentAnts.remove(i);
+      }
+    }
+
+  }
+  void checkGameOver() {
+    //checks for losing condition
+    for (int i = 0; i < currentAnts.size(); i++) {
+      //condition for losing the game
+      if (currentAnts.get(i).x < 50) {
+        this.gameOver = true;
+      }
+    }
+  }
+  void checkBulletCollide() {
+    int bulletCount = bullets.size();
+    for (int i = 0; i < bulletCount; i++) {
+      if (currentAnts.takeDamage(bullets.get(i))) {
+        bullets.remove(i);
+        break;
+      }
+    }
+  }
+  void checkNextWave() {
+    if (currentAnts.size() == 0) { // send the next wave if all ants are dead.
+      nextWave();
     }
   }
 
@@ -271,6 +266,27 @@ public class GameLevel extends Level {
     }
   }
 
+  void checkPlantPlace() {
+    // This mess is for placing plants.
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 9; j++) { // Loops thru all Tiles.
+        Tile currentTile = tiles.get(i, j); 
+        if (currentTile.overButton()) {  // Checks which tile the mouse clicks on.
+          if (currentTile.plant == null) { // IF there are no plants already on it,
+            for (int x = 0; x < sceneButtons.size(); x++) { // Check which Plantbutton is clicked
+              Button currentButton = sceneButtons.get(x); 
+              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost()) {
+                setPlant(currentTile, currentButton.getName());
+                sun -= ((PlantButton)currentButton).getCost();
+                unCheck();
+                ((PlantButton)currentButton).resetTimer();
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   void setPlant(Tile t, String name) {
     Plant p;
     switch(name) {
@@ -294,6 +310,10 @@ public class GameLevel extends Level {
       p = new Repeater(t.x + 30, t.y + 30);
       t.plant = p;
       break;
+    case "CherryBomb":
+      p = new CherryBomb(t.x + 20, t.y + 20);
+      t.plant = p;
+      break;
     }
   }
   void checkMineCollision() {
@@ -311,7 +331,7 @@ public class GameLevel extends Level {
                   }
                 }
                 currentTile.setPlant(null);
-                displayQueue.add(new Explosion(currentTile.x, currentTile.y));
+                displayQueue.add(new Explosion("Explosion.png", currentTile.x, currentTile.y, 200, 200));
               }
             }
           }

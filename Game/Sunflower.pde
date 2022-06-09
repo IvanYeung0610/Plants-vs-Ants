@@ -2,7 +2,7 @@ public class Sunflower extends Plant{
   int timer;
   
   public Sunflower(String img, float xcoor, float ycoor) {
-    super(img, xcoor, ycoor, 100, 100, 10, 50);
+    super(img, xcoor, ycoor, 100, 100, 6, 50);
     timer = 360; //600 frames = 10 sec at 60 fps (Peashooter will shoot every 1.5 sec)
   }
   
