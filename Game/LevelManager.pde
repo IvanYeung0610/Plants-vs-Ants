@@ -25,7 +25,7 @@ public class LevelManager {
 
     if (levels[currentLevel].gameOver) {
       levels[currentLevel].gameOver();
-    } else if (levels[currentLevel].intermission) {
+    } else if (levels[currentLevel].levelComplete) {
       levels[currentLevel].intermission();
     } else {
       levels[currentLevel].run();

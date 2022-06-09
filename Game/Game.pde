@@ -9,7 +9,7 @@ void setup() {
   levels[0] = new MainMenu();
   levels[1] = new DemoLevel();
   levels[2] = new DemoLevel2();
-  
+
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new RestartButton("RestartButton.png", width/2 - 200, height/2 + 200, 100, 50, "RestartButton");
@@ -24,14 +24,11 @@ void reset() {
 }
 
 void draw() {
-  if (g.levels[g.currentLevel].levelComplete) {
-    retry.display();
-    quit.display();
-  } else {
-    background(50, 121, 168);
-    g.run();
-  }
-  if (g.levels[g.currentLevel].gameOver) {
+  background(50, 121, 168);
+  g.run();
+
+
+  if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete) {
     retry.display();
     quit.display();
   }
@@ -47,11 +44,11 @@ void mouseClicked() {
   }
 }
 
-void keyPressed(){
+void keyPressed() {
   if (key == 'g') {
-    g.levels[g.currentLevel].gameOver = true; 
+    g.levels[g.currentLevel].gameOver = true;
   }
-  
+
   if (key == 'i') {
     g.levels[g.currentLevel].levelComplete = true;
   }

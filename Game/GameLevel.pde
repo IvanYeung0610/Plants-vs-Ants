@@ -425,11 +425,7 @@ public class GameLevel extends Level {
     textSize(150);
     //have to figure out how to turn off shlop font(Probaby will make another font for other text)
     textAlign(CENTER);
-    text("GAMEOVER", width/2, height/2 - 300); 
-    textSize(100);
-    text("YOUR HOME", width/2, height/2 - 150); 
-    text("IS INFESTED", width/2, height/2); 
-    text("WITH ANTS", width/2, height/2 + 150); 
+    text("YOU WON", width/2, height/2 - 300); 
     textFont(Samdan);
   }
 
