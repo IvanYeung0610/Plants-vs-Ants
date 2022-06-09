@@ -33,7 +33,7 @@ void draw() {
     quit.display();
   }
   cursor.setX(mouseX);
-  cursor.setX(mouseY);
+  cursor.setY(mouseY);
   cursor.display();
 }
 
