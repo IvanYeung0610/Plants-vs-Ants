@@ -113,9 +113,10 @@ public class GameLevel extends Level {
   void displayALL() {
     house.display();
     tiles.displayAll();
+    displayLawnMower();
+    suns.displayAll();
     displaySceneButtons();
     bullets.displayAll();
-    suns.displayAll();
     currentAnts.displayAll();
     shovel.display();
     displayExplosions();
@@ -179,7 +180,6 @@ public class GameLevel extends Level {
     //Lawnmower processing
     for (int i = 0; i < 5; i++) {
       if (lawnMowers[i] != null) {
-        lawnMowers[i].display();
         for (int j = 0; j < currentAnts.size(); j++) {
           lawnMowers[i].process(currentAnts.get(j));
         }
@@ -197,7 +197,6 @@ public class GameLevel extends Level {
         currentAnts.remove(i);
       }
     }
-
   }
   void checkGameOver() {
     //checks for losing condition
@@ -232,6 +231,14 @@ public class GameLevel extends Level {
       Explosion e = (Explosion)displayQueue.get(i);
       if (e.getTimer() <= 0) {
         displayQueue.remove(i);
+      }
+    }
+  }
+
+  void displayLawnMower() {
+    for (int i = 0; i < 5; i++) {
+      if (lawnMowers[i] != null) {
+        lawnMowers[i].display();
       }
     }
   }
@@ -382,21 +389,8 @@ public class GameLevel extends Level {
 
   void gameOver() {
     //game over screen
-    house.display();
-    tiles.displayAll();
-    bullets.displayAll();
-    suns.displayAll();
-    currentAnts.displayAll();
-    for (int i = 0; i < sceneButtons.size(); i++) {
-      textAlign(LEFT);
-      sceneButtons.get(i).display();
-    }
+    displayALL();
 
-    for (int i = 0; i < 5; i++) {
-      if (lawnMowers[i] != null) {
-        lawnMowers[i].display();
-      }
-    }
     fill(0);
     textSize(25);
     text("Sun: " + sun, 1200, 40);
@@ -418,21 +412,8 @@ public class GameLevel extends Level {
   }
 
   void intermission() {
-    house.display();
-    tiles.displayAll();
-    bullets.displayAll();
-    suns.displayAll();
-    currentAnts.displayAll();
-    for (int i = 0; i < sceneButtons.size(); i++) {
-      textAlign(LEFT);
-      sceneButtons.get(i).display();
-    }
+    displayALL();
 
-    for (int i = 0; i < 5; i++) {
-      if (lawnMowers[i] != null) {
-        lawnMowers[i].display();
-      }
-    }
     fill(0);
     textSize(25);
     text("Sun: " + sun, 1200, 40);
@@ -440,12 +421,12 @@ public class GameLevel extends Level {
     fill(0, 100);
     noStroke();
     rect(0, 0, 1600, 900);
-    fill(255, 0, 0);
-    textFont(shlop);
-    textSize(150);
+    fill(0);
+    textFont(Samdan);
+    textSize(200);
     //have to figure out how to turn off shlop font(Probaby will make another font for other text)
     textAlign(CENTER);
-    text("YOU WON", width/2, height/2 - 300); 
+    text("YOU WON", width/2, height/2 ); 
     textFont(Samdan);
   }
 
