@@ -92,3 +92,7 @@ Joshua Liu: I made the Potatomine's explosion display over tiles and not interfe
 6/07:
 
 Joshua Liu: I made the MainMenu scene.
+
+6/09:
+
+Joshua Liu: I made the cherryBomb and cleaned up the code in GameLevel.
