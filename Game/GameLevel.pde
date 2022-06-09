@@ -74,6 +74,7 @@ public class GameLevel extends Level {
 
 
   void initalizeALL(int NUMOFWAVES) {
+    noCursor();
     currentWave = 0;
     sun = 50;
     timer = 300; //first sun is 10 secs
@@ -100,8 +101,8 @@ public class GameLevel extends Level {
     sun += suns.processAll();
     currentAnts.moveAll();
     checkMineCollision();
-    shovelMouse.setX(mouseX - 5);
-    shovelMouse.setY(mouseY - 5);
+    shovelMouse.setX(mouseX - 25);
+    shovelMouse.setY(mouseY - 25);
     checkBulletCollide();
     processLawnMowers();
     checkGameOver();
@@ -122,9 +123,13 @@ public class GameLevel extends Level {
     // Display Total SUN
     textSize(25);
     text("Sun: " + sun, 1200, 40);
-    if (shovel.isClicked()) shovelMouse.display();
+    displayCursor();
   }
-
+  void displayCursor() {
+    if (shovel.isClicked()) {
+      shovelMouse.display();
+    }
+  }
   void displaySceneButtons() {
     //displays sceneButtons
     for (int i = 0; i < sceneButtons.size(); i++) {
@@ -165,14 +170,14 @@ public class GameLevel extends Level {
       }
     }
   }
-  void cherryBombExplode(Bullet b,float x, float y) {
+  void cherryBombExplode(Bullet b, float x, float y) {
     if (b != null) {
-      for(int i = 0; i < currentAnts.size(); i++){
-        if(currentAnts.get(i).checkCollision(b)){
+      for (int i = 0; i < currentAnts.size(); i++) {
+        if (currentAnts.get(i).checkCollision(b)) {
           currentAnts.get(i).takeDamage(b.getDamage());
         }
       }
-      displayQueue.add(new Explosion("Explosion2.png",x, y, 288, 288));
+      displayQueue.add(new Explosion("Explosion2.png", x, y, 288, 288));
     }
   }
   void processLawnMowers() {
