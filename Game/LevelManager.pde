@@ -12,19 +12,21 @@ public class LevelManager {
   }
 
   void run() {
-    if (levels[currentLevel].levelComplete) {
-      playNext();
-    }
-    
-    if(currentLevel == 0){
+    //if (levels[currentLevel].levelComplete) {
+    //  playNext();
+    //}
+
+    if (currentLevel == 0) {
       MainMenu m = ((MainMenu)levels[currentLevel]);
-      if(m.getStarted()){
+      if (m.getStarted()) {
         currentLevel = m.getLevelSelected();
       }
     }
-    
+
     if (levels[currentLevel].gameOver) {
       levels[currentLevel].gameOver();
+    } else if (levels[currentLevel].levelComplete && currentLevel != levels.length - 1) {
+      levels[currentLevel].intermission();
     } else {
       levels[currentLevel].run();
     }
