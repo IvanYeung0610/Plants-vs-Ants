@@ -71,6 +71,8 @@ public class GameLevel extends Level {
       }
     }
   }
+
+
   void initalizeALL(int NUMOFWAVES) {
     currentWave = 0;
     sun = 50;
@@ -154,11 +156,19 @@ public class GameLevel extends Level {
         if (projectile != null) {
           if (currentTile.plant.getType() == "Sunflower") {
             suns.add((Sun)projectile);
+          } else if (currentTile.plant.getType() == "CherryBomb") {
+            cherryBombExplode((Bullet)projectile, currentTile.x - 72, currentTile.y - 72);
           } else {
             bullets.add((Bullet)projectile);
           }
         }
       }
+    }
+  }
+  void cherryBombExplode(Bullet b,float x, float y) {
+    if (b != null) {
+      currentAnts.takeDamage(b);
+      displayQueue.add(new Explosion("Explosion2.png",x, y, 288, 288));
     }
   }
   void processLawnMowers() {
@@ -288,7 +298,7 @@ public class GameLevel extends Level {
       t.plant = p;
       break;
     case "CherryBomb":
-      p = new CherryBomb(t.x + 30, t.y + 30);
+      p = new CherryBomb(t.x + 20, t.y + 20);
       t.plant = p;
       break;
     }
@@ -308,7 +318,7 @@ public class GameLevel extends Level {
                   }
                 }
                 currentTile.setPlant(null);
-                displayQueue.add(new Explosion(currentTile.x, currentTile.y));
+                displayQueue.add(new Explosion("Explosion.png", currentTile.x, currentTile.y, 200, 200));
               }
             }
           }

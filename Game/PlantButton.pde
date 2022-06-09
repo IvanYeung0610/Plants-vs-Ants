@@ -30,7 +30,7 @@ public class PlantButton extends Button {
         maxTimer = 600;
         break;
       case "CherryBomb":
-        cost = 150;
+        cost = 1;
         maxTimer = 1200;
         break;
     }
