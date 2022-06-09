@@ -167,7 +167,11 @@ public class GameLevel extends Level {
   }
   void cherryBombExplode(Bullet b,float x, float y) {
     if (b != null) {
-      currentAnts.takeDamage(b);
+      for(int i = 0; i < currentAnts.size(); i++){
+        if(currentAnts.get(i).checkCollision(b)){
+          currentAnts.get(i).takeDamage(b.getDamage());
+        }
+      }
       displayQueue.add(new Explosion("Explosion2.png",x, y, 288, 288));
     }
   }
