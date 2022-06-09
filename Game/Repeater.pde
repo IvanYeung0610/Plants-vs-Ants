@@ -2,7 +2,7 @@ public class Repeater extends Plant {
   int timer;
   
   Repeater(float xcoor, float ycoor){
-    super("Repeater.png", xcoor, ycoor, 100, 100, 10, 175);
+    super("Repeater.png", xcoor, ycoor, 100, 100, 7, 175);
     timer = 90;
   }
   

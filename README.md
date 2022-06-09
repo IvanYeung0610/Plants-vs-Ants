@@ -93,4 +93,10 @@ Ivan Yeung: I worked on AntMound class. As of today, it remains stationary and c
 
 6/07:
 
+Joshua Liu: I made the MainMenu scene.
+
 Ivan Yeung: I completed AntMound. Now you cannot put plants on the tiles that have a AntMound. Currently working on the intermission screen and implementing it in the same manner as the gameOver screen.
+
+6/09:
+
+Joshua Liu: I made the cherryBomb and cleaned up the code in GameLevel.
