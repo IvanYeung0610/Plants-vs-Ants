@@ -10,6 +10,10 @@ public class LevelManager {
   void playNext() {
     currentLevel++;
   }
+  
+  void playPrev(){
+    currentLevel--;
+  }
 
   void run() {
     //if (levels[currentLevel].levelComplete) {
@@ -34,5 +38,13 @@ public class LevelManager {
 
   void handleMouseClicked() {
     levels[currentLevel].handleMouseClicked();
+  }
+  
+  int getSize(){
+    return levels.length;
+  }
+  
+  Level getCurrentLevel(){
+    return levels[currentLevel];
   }
 }

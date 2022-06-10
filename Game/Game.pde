@@ -1,7 +1,6 @@
 LevelManager g;
 Level[] levels = new Level[3];
-RestartButton retry;
-QuitButton quit;
+Button retry, quit, mainMenu, nextLevel, previousLevel;
 void setup() {
   size(1400, 900);
 
@@ -12,15 +11,18 @@ void setup() {
 
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
-  retry = new RestartButton("RestartButton.png", width/2 - 200, height/2 + 200, 100, 50, "RestartButton");
-  quit = new QuitButton("QuitButton.png", width/2 + 50, height/2 + 200, 100, 50, "QuitButton");
+  retry = new Button("Retry.png", width/2 - 300, height/2 + 200, 100, 50, "RestartButton");
+  quit = new Button("Quit.png", width/2 - 200, height/2 + 200, 100, 50, "QuitButton");
+  mainMenu = new Button("MainMenu.png", width/2 - 100, height/2 + 200, 100, 50, "MainMenuButton");
+  nextLevel = new Button("NextLevel.png", width/2 , height/2 + 200, 100, 50, "NextLevelButton");
+  previousLevel = new Button("PreviousLevel.png", width/2 + 100, height/2 + 200, 100, 50, "PreviousLevelButton");
 }
 
 void reset() {
   // ADD MORE LEVELS HERE:
-  g.levels[0] = new DemoLevel();
-  g.levels[1] = new DemoLevel2();
-  g.levels[2] = new DemoLevel3();
+  g.levels[0] = new MainMenu();
+  g.levels[1] = new DemoLevel();
+  g.levels[2] = new DemoLevel2();
 }
 
 void draw() {
@@ -31,16 +33,32 @@ void draw() {
   if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete) {
     retry.display();
     quit.display();
+    mainMenu.display();
+    nextLevel.display();
+    previousLevel.display();
   }
 }
 
 void mouseClicked() {
   g.handleMouseClicked();
-  if (g.levels[g.currentLevel].gameOver && retry.overButton() || g.levels[g.currentLevel].levelComplete && retry.overButton()) {
+  Level level = g.getCurrentLevel();
+  if (level.gameOver && retry.overButton() || level.levelComplete && retry.overButton()) {
     reset();
   }
-  if (g.levels[g.currentLevel].gameOver && quit.overButton() || g.levels[g.currentLevel].levelComplete && quit.overButton()) {
+  if (level.gameOver && quit.overButton() || level.levelComplete && quit.overButton()) {
     exit();
+  }
+  if (level.gameOver && mainMenu.overButton() || level.levelComplete && mainMenu.overButton()) {
+    g.currentLevel = 0;
+    reset();
+  }
+  if ((level.gameOver && nextLevel.overButton() || level.levelComplete && nextLevel.overButton()) && g.currentLevel < g.getSize()) {
+    g.currentLevel++;
+    reset();
+  }
+  if ((level.gameOver && nextLevel.overButton() || level.levelComplete && nextLevel.overButton()) && g.currentLevel > 0) {
+    g.playPrev();
+    reset();
   }
 }
 
