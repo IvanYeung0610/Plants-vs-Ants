@@ -1,6 +1,6 @@
 LevelManager g;
 Level[] levels = new Level[3];
-Button retry, quit, mainMenu, nextLevel, previousLevel;
+Button retry, quit, mainMenu, nextLevel, previousLevel, setting;
 void setup() {
   size(1400, 900);
 
@@ -16,6 +16,7 @@ void setup() {
   mainMenu = new Button("MainMenu.png", width/2 - 50, height/2 + 200, 100, 50, "MainMenuButton");
   nextLevel = new Button("RightArrow.png", 1140, height/2 - 200, 200, 200, "NextLevelButton");
   previousLevel = new Button("LeftArrow.png", 40, height/2 - 200, 200, 200, "PreviousLevelButton");
+  setting = new Button("Retry.png", 1500, 100, 100, 100, "SettingButton");
 }
 
 void reset() {
