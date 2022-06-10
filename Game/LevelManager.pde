@@ -11,20 +11,23 @@ public class LevelManager {
     currentLevel++;
   }
 
+  void playPrev() {
+    currentLevel--;
+  }
+
   void run() {
-    if (levels[currentLevel].levelComplete) {
-      playNext();
-    }
-    
-    if(currentLevel == 0){
+
+    if (currentLevel == 0) {
       MainMenu m = ((MainMenu)levels[currentLevel]);
-      if(m.getStarted()){
+      if (m.getStarted()) {
         currentLevel = m.getLevelSelected();
       }
     }
-    
+
     if (levels[currentLevel].gameOver) {
       levels[currentLevel].gameOver();
+    } else if (levels[currentLevel].levelComplete) {
+      levels[currentLevel].intermission();
     } else {
       levels[currentLevel].run();
     }
@@ -32,5 +35,13 @@ public class LevelManager {
 
   void handleMouseClicked() {
     levels[currentLevel].handleMouseClicked();
+  }
+
+  int getSize() {
+    return levels.length;
+  }
+
+  Level getCurrentLevel() {
+    return levels[currentLevel];
   }
 }
