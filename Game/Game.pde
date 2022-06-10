@@ -14,8 +14,8 @@ void setup() {
   retry = new Button("Retry.png", width/2 + 50, height/2 + 200, 100, 50, "RestartButton");
   quit = new Button("Quit.png", width/2 - 150, height/2 + 200, 100, 50, "QuitButton");
   mainMenu = new Button("MainMenu.png", width/2 - 50, height/2 + 200, 100, 50, "MainMenuButton");
-  nextLevel = new Button("NextLevel.png", width/2 + 150, height/2 + 200, 100, 50, "NextLevelButton");
-  previousLevel = new Button("PreviousLevel.png", width/2 - 250, height/2 + 200, 100, 50, "PreviousLevelButton");
+  nextLevel = new Button("RightArrow.png", 1140, height/2 - 200, 200, 200, "NextLevelButton");
+  previousLevel = new Button("LeftArrow.png", 40, height/2 - 200, 200, 200, "PreviousLevelButton");
 }
 
 void reset() {
@@ -26,7 +26,6 @@ void reset() {
 }
 
 void draw() {
-  println(g.currentLevel);
   background(50, 121, 168);
   g.run();
 
@@ -37,8 +36,12 @@ void draw() {
     mainMenu.display();
   }
   if (g.levels[g.currentLevel].levelComplete) {
-    nextLevel.display();
-    previousLevel.display();
+    if (g.currentLevel < g.getSize() - 1) {
+      nextLevel.display();
+    }
+    if (g.currentLevel > 1) {
+      previousLevel.display();
+    }
   }
 }
 
@@ -55,11 +58,11 @@ void mouseClicked() {
     g.currentLevel = 0;
     reset();
   }
-  if (level.levelComplete && nextLevel.overButton() && g.currentLevel < g.getSize()) {
+  if (level.levelComplete && nextLevel.overButton() && g.currentLevel < g.getSize() - 1) {
     reset();
     g.playNext();
   }
-  if ( level.levelComplete && previousLevel.overButton() && g.currentLevel > 0) {
+  if ( level.levelComplete && previousLevel.overButton() && g.currentLevel > 1) {
     reset();
     g.playPrev();
   }
