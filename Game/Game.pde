@@ -6,8 +6,8 @@ void setup() {
 
   // ADD MORE LEVELS HERE:
   levels[0] = new MainMenu();
-  levels[1] = new DemoLevel();
-  levels[2] = new DemoLevel2();
+  levels[1] = new DemoLevel2();
+  levels[2] = new DemoLevel();
 
   // Set to levels to LevelManager;
   g = new LevelManager(levels);

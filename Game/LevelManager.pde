@@ -9,12 +9,10 @@ public class LevelManager {
 
   void playNext() {
     currentLevel++;
-    levels[currentLevel].run();
   }
 
   void playPrev() {
     currentLevel--;
-    levels[currentLevel].run();
   }
 
   void run() {
@@ -28,7 +26,7 @@ public class LevelManager {
 
     if (levels[currentLevel].gameOver) {
       levels[currentLevel].gameOver();
-    } else if (levels[currentLevel].levelComplete && currentLevel != levels.length - 1) {
+    } else if (levels[currentLevel].levelComplete) {
       levels[currentLevel].intermission();
     } else {
       levels[currentLevel].run();
