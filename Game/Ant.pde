@@ -4,6 +4,7 @@ public class Ant extends Sprite {
   boolean attacking;
   int timer;
   String type;
+  boolean chilled;
 
   Ant(String image_name, float x, float y, int Width, int Height, int health, int damage) {
     super(image_name, x, y, Width, Height);
@@ -13,7 +14,14 @@ public class Ant extends Sprite {
     attacking = false;
     timer = 60;
     type = "Ant";
+    chilled = false;
   }
+  void getChilled(){
+    chilled = true;
+    velocity = .18;
+    // CHANGE SPRITE HERE:
+  }
+  
   void display() {
     super.display();
     text(health, x + Width / 2, y);
