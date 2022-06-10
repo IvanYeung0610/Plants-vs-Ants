@@ -3,7 +3,6 @@ Level[] levels = new Level[3];
 Button retry, quit, mainMenu, nextLevel, previousLevel;
 void setup() {
   size(1400, 900);
-
   // ADD MORE LEVELS HERE:
   levels[0] = new MainMenu();
   levels[1] = new DemoLevel2();
@@ -28,6 +27,7 @@ void reset() {
 void draw() {
   background(50, 121, 168);
   g.run();
+
 
 
   if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete) {
