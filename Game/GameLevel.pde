@@ -427,8 +427,8 @@ public class GameLevel extends Level {
     textSize(200);
     textAlign(CENTER);
     text("YOU WON", width/2, height/2 );
-    fill(255);
     textFont(Samdan);
+    fill(255);
     textAlign(LEFT);
   }
 

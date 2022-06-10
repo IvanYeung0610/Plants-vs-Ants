@@ -9,16 +9,15 @@ public class LevelManager {
 
   void playNext() {
     currentLevel++;
+    levels[currentLevel].run();
   }
-  
-  void playPrev(){
+
+  void playPrev() {
     currentLevel--;
+    levels[currentLevel].run();
   }
 
   void run() {
-    //if (levels[currentLevel].levelComplete) {
-    //  playNext();
-    //}
 
     if (currentLevel == 0) {
       MainMenu m = ((MainMenu)levels[currentLevel]);
@@ -39,12 +38,12 @@ public class LevelManager {
   void handleMouseClicked() {
     levels[currentLevel].handleMouseClicked();
   }
-  
-  int getSize(){
+
+  int getSize() {
     return levels.length;
   }
-  
-  Level getCurrentLevel(){
+
+  Level getCurrentLevel() {
     return levels[currentLevel];
   }
 }

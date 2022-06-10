@@ -11,11 +11,11 @@ void setup() {
 
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
-  retry = new Button("Retry.png", width/2 - 300, height/2 + 200, 100, 50, "RestartButton");
-  quit = new Button("Quit.png", width/2 - 200, height/2 + 200, 100, 50, "QuitButton");
-  mainMenu = new Button("MainMenu.png", width/2 - 100, height/2 + 200, 100, 50, "MainMenuButton");
-  nextLevel = new Button("NextLevel.png", width/2 , height/2 + 200, 100, 50, "NextLevelButton");
-  previousLevel = new Button("PreviousLevel.png", width/2 + 100, height/2 + 200, 100, 50, "PreviousLevelButton");
+  retry = new Button("Retry.png", width/2 + 50, height/2 + 200, 100, 50, "RestartButton");
+  quit = new Button("Quit.png", width/2 - 150, height/2 + 200, 100, 50, "QuitButton");
+  mainMenu = new Button("MainMenu.png", width/2 - 50, height/2 + 200, 100, 50, "MainMenuButton");
+  nextLevel = new Button("NextLevel.png", width/2 + 150, height/2 + 200, 100, 50, "NextLevelButton");
+  previousLevel = new Button("PreviousLevel.png", width/2 - 250, height/2 + 200, 100, 50, "PreviousLevelButton");
 }
 
 void reset() {
@@ -26,6 +26,7 @@ void reset() {
 }
 
 void draw() {
+  println(g.currentLevel);
   background(50, 121, 168);
   g.run();
 
@@ -34,6 +35,8 @@ void draw() {
     retry.display();
     quit.display();
     mainMenu.display();
+  }
+  if (g.levels[g.currentLevel].levelComplete) {
     nextLevel.display();
     previousLevel.display();
   }
@@ -52,13 +55,13 @@ void mouseClicked() {
     g.currentLevel = 0;
     reset();
   }
-  if ((level.gameOver && nextLevel.overButton() || level.levelComplete && nextLevel.overButton()) && g.currentLevel < g.getSize()) {
-    g.currentLevel++;
+  if (level.levelComplete && nextLevel.overButton() && g.currentLevel < g.getSize()) {
     reset();
+    g.playNext();
   }
-  if ((level.gameOver && nextLevel.overButton() || level.levelComplete && nextLevel.overButton()) && g.currentLevel > 0) {
-    g.playPrev();
+  if ( level.levelComplete && previousLevel.overButton() && g.currentLevel > 0) {
     reset();
+    g.playPrev();
   }
 }
 
@@ -69,5 +72,13 @@ void keyPressed() {
 
   if (key == 'i') {
     g.levels[g.currentLevel].levelComplete = true;
+  }
+
+  if (key == 'x') {
+    g.playNext();
+  }
+
+  if (key == 'z') {
+    g.playPrev();
   }
 }
