@@ -65,37 +65,31 @@ public class PlantButton extends Button {
     text(timer, x, y);
     switch(name) {
     case "Peashooter":
-      textAlign(LEFT);
       textSize(50);
       fill(0);
       text("100", x + Width - 60, y + Height - 5);
       break;
     case "Sunflower":
-      textAlign(LEFT);
       textSize(50);
       fill(0);
       text("50", x + Width - 40, y + Height - 5);
       break;
     case "Wallnut":
-      textAlign(LEFT);
       textSize(50);
       fill(0);
       text("50", x + Width - 40, y + Height - 5);
       break;
     case "PotatoMine":
-      textAlign(LEFT);
       textSize(50);
       fill(0);
       text("25", x + Width - 40, y + Height - 5);
       break;
     case "Repeater":
-      textAlign(LEFT);
       textSize(50);
       fill(0);
       text("175", x + Width - 60, y + Height - 5);
       break;
     case "CherryBomb":
-      textAlign(LEFT);
       textSize(50);
       fill(0);
       text("150", x + Width - 60, y + Height - 5);

@@ -19,7 +19,6 @@ public class DemoLevel extends GameLevel {
   void run(){
     super.run();
     
-    textAlign(LEFT);
     stroke(225);
     text("DEMO", 1000, 50);
   }

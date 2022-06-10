@@ -14,6 +14,7 @@ public class MainMenu extends GameLevel {
   void run() {
     background(135, 181, 74);
     textFont(shlop);
+    //textAlign(LEFT);
     text("Plants VS Ants", 330, 300);
     textSize(50);
     text("LevelSelected: " + levelSelected, 530, 600);
@@ -21,20 +22,20 @@ public class MainMenu extends GameLevel {
   }
 
   void handleMouseClicked() {
-    if(sceneButtons.get(0).overButton()){
-      if(levelSelected != 1) levelSelected--;
+    if (sceneButtons.get(0).overButton()) {
+      if (levelSelected != 1) levelSelected--;
     }
-    if(sceneButtons.get(1).overButton()){
-      if(levelSelected < 2) levelSelected++;
+    if (sceneButtons.get(1).overButton()) {
+      if (levelSelected < 2) levelSelected++;
     }
-    if(sceneButtons.get(2).overButton()){
+    if (sceneButtons.get(2).overButton()) {
       started = true;
     }
   }
-  boolean getStarted(){
+  boolean getStarted() {
     return started;
   }
-  int getLevelSelected(){
+  int getLevelSelected() {
     return levelSelected;
   }
 }

@@ -401,7 +401,6 @@ public class GameLevel extends Level {
     fill(255, 0, 0);
     textFont(shlop);
     textSize(150);
-    //have to figure out how to turn off shlop font(Probaby will make another font for other text)
     textAlign(CENTER);
     text("GAMEOVER", width/2, height/2 - 300); 
     textSize(100);
@@ -409,6 +408,8 @@ public class GameLevel extends Level {
     text("IS INFESTED", width/2, height/2); 
     text("WITH ANTS", width/2, height/2 + 150); 
     textFont(Samdan);
+    fill(255);
+    textAlign(LEFT);
   }
 
   void intermission() {
@@ -424,10 +425,11 @@ public class GameLevel extends Level {
     fill(0);
     textFont(Samdan);
     textSize(200);
-    //have to figure out how to turn off shlop font(Probaby will make another font for other text)
     textAlign(CENTER);
-    text("YOU WON", width/2, height/2 ); 
+    text("YOU WON", width/2, height/2 );
     textFont(Samdan);
+    fill(255);
+    textAlign(LEFT);
   }
 
   void updateHover() {
