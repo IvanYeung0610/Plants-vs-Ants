@@ -41,8 +41,9 @@ public class Tile extends Button {
           return plant.action();
         }
       }
-      return null;
     }
+    return null;
+  }
 
     boolean getOccupied() {
       return occupied;

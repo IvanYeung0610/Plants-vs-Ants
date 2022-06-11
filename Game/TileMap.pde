@@ -38,8 +38,9 @@ public class TileMap {
           }
         }
       }
-      return false;
     }
+    return false;
+  }
 
     void checkAntMound(Ant ant) {
       for (Tile[] x : tileArray) {
