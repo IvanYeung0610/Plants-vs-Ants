@@ -74,6 +74,7 @@ public class GameLevel extends Level {
 
 
   void initalizeALL(int NUMOFWAVES) {
+    noCursor();
     currentWave = 0;
     sun = 50;
     timer = 300; //first sun is 10 secs
@@ -100,8 +101,8 @@ public class GameLevel extends Level {
     sun += suns.processAll();
     currentAnts.moveAll();
     checkMineCollision();
-    shovelMouse.setX(mouseX - 5);
-    shovelMouse.setY(mouseY - 5);
+    shovelMouse.setX(mouseX - 25);
+    shovelMouse.setY(mouseY - 25);
     checkBulletCollide();
     processLawnMowers();
     checkGameOver();
@@ -123,9 +124,13 @@ public class GameLevel extends Level {
     // Display Total SUN
     textSize(25);
     text("Sun: " + sun, 1200, 40);
-    if (shovel.isClicked()) shovelMouse.display();
+    displayCursor();
   }
-
+  void displayCursor() {
+    if (shovel.isClicked()) {
+      shovelMouse.display();
+    }
+  }
   void displaySceneButtons() {
     //displays sceneButtons
     for (int i = 0; i < sceneButtons.size(); i++) {
@@ -153,7 +158,7 @@ public class GameLevel extends Level {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 9; j++) {
         Tile currentTile = tiles.get(i, j);
-        Sprite projectile = currentTile.runPlant();
+        Sprite projectile = currentTile.runPlant(currentAnts);
         if (projectile != null) {
           if (currentTile.plant.getType() == "Sunflower") {
             suns.add((Sun)projectile);
@@ -357,22 +362,6 @@ public class GameLevel extends Level {
 
   void setCurrentAnts() {
     currentAnts = waves[currentWave].getIncomingAnts();
-  }
-
-  void runTilePlants() {
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 9; j++) {
-        Tile currentTile = tiles.get(i, j);
-        Sprite projectile = currentTile.runPlant();
-        if (projectile != null) {
-          if (currentTile.plant.getType() == "Sunflower") {
-            suns.add((Sun)projectile);
-          } else {
-            bullets.add((Bullet)projectile);
-          }
-        }
-      }
-    }
   }
 
   // This will be redefined in the child GameLevels.

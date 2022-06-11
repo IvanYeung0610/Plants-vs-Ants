@@ -1,9 +1,11 @@
 LevelManager g;
 Level[] levels = new Level[3];
+Sprite cursor;
 Button retry, quit, mainMenu, nextLevel, previousLevel, setting, resume;
+
 void setup() {
   size(1400, 900);
-
+  cursor = new Sprite("Cursor.png", 0, 0, 40, 40);
   // ADD MORE LEVELS HERE:
   levels[0] = new MainMenu();
   levels[1] = new DemoLevel2();
@@ -45,6 +47,7 @@ void draw() {
       previousLevel.display();
     }
   }
+
   if (g.currentLevel != 0 ) {
     setting.display();
     if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete || g.levels[g.currentLevel].getPaused()) {
@@ -57,6 +60,10 @@ void draw() {
   if (g.levels[g.currentLevel].getPaused()) {
     resume.display();
   }
+
+  cursor.setX(mouseX);
+  cursor.setY(mouseY);
+  cursor.display();
 }
 
 void mouseClicked() {
@@ -83,7 +90,7 @@ void mouseClicked() {
   if ( setting.overButton() && !level.levelComplete && !level.gameOver) {
     level.setPaused(true);
   }
-  if (g.levels[g.currentLevel].getPaused() && resume.overButton()){
+  if (g.levels[g.currentLevel].getPaused() && resume.overButton()) {
     level.setPaused(false);
   }
 }

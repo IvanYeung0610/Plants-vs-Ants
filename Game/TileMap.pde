@@ -28,16 +28,6 @@ public class TileMap {
     }
   }
 
-  void runAll() {
-    for (Tile[] t : tileArray) {
-      for (Tile tile : t) {
-        if (tile != null) {
-          tile.runPlant();
-        }
-      }
-    }
-  }
-
   boolean takeDamage(Ant ant) {
     for (Tile[] x : tileArray) {
       for (Tile t : x) {
@@ -52,15 +42,15 @@ public class TileMap {
     return false;
   }
 
-  void checkAntMound(Ant ant) {
-    for (Tile[] x : tileArray) {
-      for (Tile t : x) {
-        if (t.checkCollision(ant)) {
-          t.setOccupied(true);
-        } else {
-          t.setOccupied(false);
+    void checkAntMound(Ant ant) {
+      for (Tile[] x : tileArray) {
+        for (Tile t : x) {
+          if (t.checkCollision(ant)) {
+            t.setOccupied(true);
+          } else {
+            t.setOccupied(false);
+          }
         }
       }
     }
   }
-}
