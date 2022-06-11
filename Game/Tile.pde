@@ -25,12 +25,18 @@ public class Tile extends Button{
   void setPlant(Plant p){
     plant = p;
   }
-  Sprite runPlant(){
+  
+  Sprite runPlant(AntList ants){
     if (plant != null) {
       if (plant.health <= 0){
         plant = null;
       }  else{
-        return plant.action();
+        String type = plant.getType();
+        if(type.equals("Peashooter") || type.equals("Repeater")){
+          return plant.action(ants);
+        }  else {
+          return plant.action();
+        }
       }
     }
     return null;

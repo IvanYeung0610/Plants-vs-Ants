@@ -28,16 +28,6 @@ public class TileMap{
     }
   }
   
-  void runAll(){
-    for (Tile[] t: tileArray){
-      for(Tile tile: t){
-         if (tile != null) {
-          tile.runPlant();
-        }
-      }
-    }
-  }
-  
   boolean takeDamage(Ant ant){
   for(Tile[] x : tileArray){
      for (Tile t: x) {

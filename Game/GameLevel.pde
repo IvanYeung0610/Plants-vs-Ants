@@ -157,7 +157,7 @@ public class GameLevel extends Level {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 9; j++) {
         Tile currentTile = tiles.get(i, j);
-        Sprite projectile = currentTile.runPlant();
+        Sprite projectile = currentTile.runPlant(currentAnts);
         if (projectile != null) {
           if (currentTile.plant.getType() == "Sunflower") {
             suns.add((Sun)projectile);
@@ -346,22 +346,6 @@ public class GameLevel extends Level {
 
   void setCurrentAnts() {
     currentAnts = waves[currentWave].getIncomingAnts();
-  }
-
-  void runTilePlants() {
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 9; j++) {
-        Tile currentTile = tiles.get(i, j);
-        Sprite projectile = currentTile.runPlant();
-        if (projectile != null) {
-          if (currentTile.plant.getType() == "Sunflower") {
-            suns.add((Sun)projectile);
-          } else {
-            bullets.add((Bullet)projectile);
-          }
-        }
-      }
-    }
   }
 
   // This will be redefined in the child GameLevels.
