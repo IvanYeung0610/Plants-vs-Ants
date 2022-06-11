@@ -1,6 +1,6 @@
 LevelManager g;
 Level[] levels = new Level[3];
-Button retry, quit, mainMenu, nextLevel, previousLevel, setting;
+Button retry, quit, mainMenu, nextLevel, previousLevel, setting, resume;
 void setup() {
   size(1400, 900);
 
@@ -12,11 +12,12 @@ void setup() {
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new Button("Retry.png", width/2 + 50, height/2 + 200, 100, 50, "RestartButton");
-  quit = new Button("Quit.png", width/2 - 150, height/2 + 200, 100, 50, "QuitButton");
-  mainMenu = new Button("MainMenu.png", width/2 - 50, height/2 + 200, 100, 50, "MainMenuButton");
+  quit = new Button("Quit.png", 610, height/2 + 200, 100, 50, "QuitButton");
+  mainMenu = new Button("MainMenu.png", width/2 - 230, height/2 + 200, 100, 50, "MainMenuButton");
   nextLevel = new Button("RightArrow.png", 1140, height/2 - 200, 200, 200, "NextLevelButton");
   previousLevel = new Button("LeftArrow.png", 40, height/2 - 200, 200, 200, "PreviousLevelButton");
-  setting = new Button("Retry.png", 1500, 100, 100, 100, "SettingButton");
+  setting = new Button("Setting.png", 1300, 10, 50, 50, "SettingButton");
+  resume = new Button("Resume.png", width/2 + 190, height/2 + 200, 100, 50, "ResumeButton");
 }
 
 void reset() {
@@ -29,12 +30,12 @@ void reset() {
 void draw() {
   background(50, 121, 168);
   g.run();
-
-
-  if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete) {
-    retry.display();
+  if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete || g.levels[g.currentLevel].getPaused() || g.currentLevel == 0) {
     quit.display();
-    mainMenu.display();
+    if (g.currentLevel != 0) {
+      mainMenu.display();
+      retry.display();
+    }
   }
   if (g.levels[g.currentLevel].levelComplete) {
     if (g.currentLevel < g.getSize() - 1) {
@@ -44,18 +45,30 @@ void draw() {
       previousLevel.display();
     }
   }
+  if (g.currentLevel != 0 ) {
+    setting.display();
+    if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete || g.levels[g.currentLevel].getPaused()) {
+      fill(0, 100);
+      noStroke();
+      rect(1300, 10, 50, 50);
+      fill(255);
+    }
+  }
+  if (g.levels[g.currentLevel].getPaused()) {
+    resume.display();
+  }
 }
 
 void mouseClicked() {
   g.handleMouseClicked();
   Level level = g.getCurrentLevel();
-  if (level.gameOver && retry.overButton() || level.levelComplete && retry.overButton()) {
+  if (level.gameOver && retry.overButton() || level.levelComplete && retry.overButton()|| g.levels[g.currentLevel].getPaused() && retry.overButton()) {
     reset();
   }
-  if (level.gameOver && quit.overButton() || level.levelComplete && quit.overButton()) {
+  if (level.gameOver && quit.overButton() || level.levelComplete && quit.overButton() || g.currentLevel == 0 && quit.overButton() || g.levels[g.currentLevel].getPaused() && quit.overButton()) {
     exit();
   }
-  if (level.gameOver && mainMenu.overButton() || level.levelComplete && mainMenu.overButton()) {
+  if (level.gameOver && mainMenu.overButton() || level.levelComplete && mainMenu.overButton() || g.levels[g.currentLevel].getPaused() && mainMenu.overButton()) {
     g.currentLevel = 0;
     reset();
   }
@@ -66,6 +79,12 @@ void mouseClicked() {
   if ( level.levelComplete && previousLevel.overButton() && g.currentLevel > 1) {
     reset();
     g.playPrev();
+  }
+  if ( setting.overButton() && !level.levelComplete && !level.gameOver) {
+    level.setPaused(true);
+  }
+  if (g.levels[g.currentLevel].getPaused() && resume.overButton()){
+    level.setPaused(false);
   }
 }
 

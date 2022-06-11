@@ -14,7 +14,6 @@ public class MainMenu extends GameLevel {
   void run() {
     background(135, 181, 74);
     textFont(shlop);
-    //textAlign(LEFT);
     text("Plants VS Ants", 330, 300);
     textSize(50);
     text("LevelSelected: " + levelSelected, 530, 600);

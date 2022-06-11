@@ -28,6 +28,8 @@ public class LevelManager {
       levels[currentLevel].gameOver();
     } else if (levels[currentLevel].levelComplete) {
       levels[currentLevel].intermission();
+    } else if (levels[currentLevel].paused) {
+      levels[currentLevel].pause();
     } else {
       levels[currentLevel].run();
     }
