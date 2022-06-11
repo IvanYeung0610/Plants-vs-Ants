@@ -19,6 +19,8 @@ public class Level{
   
   void gameOver(){}
   
+  void intermission(){}
+  
   //runs through sceneButtons to check if any buttons have been clicked
   void handleMouseClicked(){
     int index = 0;

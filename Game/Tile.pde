@@ -1,46 +1,54 @@
-public class Tile extends Button{
+public class Tile extends Button {
   final int size = 100;
   Plant plant;
-  
-  public Tile(String img, float xcoor, float ycoor, int Width, int Height){
+  boolean occupied;
+
+  public Tile(String img, float xcoor, float ycoor, int Width, int Height) {
     super(img, xcoor, ycoor, Width, Height, "Tile");
     this.plant = null;
+    occupied = false;
   }
-  
-  void display(){
+
+  void display() {
     super.display();
     if (plant != null) {
       plant.display();
       text(plant.health, x + Width / 2, y);
       // will be changed.
-      if(clicked){
-        rect(x,y,100,100);
+      if (clicked) {
+        rect(x, y, 100, 100);
       }
     }
-    
   }
-  Plant getPlant(){
+  Plant getPlant() {
     return plant;
   }
-  void setPlant(Plant p){
-    plant = p;
+  void setPlant(Plant p) {
+    if (occupied == false) {
+      plant = p;
+    }
   }
-  
-  Sprite runPlant(AntList ants){
+
+  Sprite runPlant(AntList ants) {
     if (plant != null) {
-      if (plant.health <= 0){
+      if (plant.health <= 0) {
         plant = null;
-      }  else{
+      } else {
         String type = plant.getType();
-        if(type.equals("Peashooter") || type.equals("Repeater")){
+        if (type.equals("Peashooter") || type.equals("Repeater")) {
           return plant.action(ants);
-        }  else {
+        } else {
           return plant.action();
         }
       }
+      return null;
     }
-    return null;
+
+    boolean getOccupied() {
+      return occupied;
+    }
+
+    void setOccupied(boolean input) {
+      occupied = input;
+    }
   }
-  
-  
-}
