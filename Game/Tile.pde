@@ -28,22 +28,28 @@ public class Tile extends Button {
       plant = p;
     }
   }
-  Sprite runPlant() {
+
+  Sprite runPlant(AntList ants) {
     if (plant != null) {
       if (plant.health <= 0) {
         plant = null;
       } else {
-        return plant.action();
+        String type = plant.getType();
+        if (type.equals("Peashooter") || type.equals("Repeater")) {
+          return plant.action(ants);
+        } else {
+          return plant.action();
+        }
       }
     }
     return null;
   }
 
-  boolean getOccupied() {
-    return occupied;
-  }
+    boolean getOccupied() {
+      return occupied;
+    }
 
-  void setOccupied(boolean input) {
-    occupied = input;
+    void setOccupied(boolean input) {
+      occupied = input;
+    }
   }
-}
