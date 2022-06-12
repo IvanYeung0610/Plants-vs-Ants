@@ -47,6 +47,7 @@ public class TileMap {
         for (Tile t : x) {
           if (t.checkCollision(ant)) {
             t.setOccupied(true);
+            t.plant = null;
           } else {
             t.setOccupied(false);
           }
