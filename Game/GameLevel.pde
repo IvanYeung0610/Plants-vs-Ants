@@ -446,42 +446,4 @@ public class GameLevel extends Level {
     textAlign(LEFT);
   }
 
-  void updateHover() {
-    for (Tile[] t : tiles.tileArray) {
-      for (Tile tile : t) {
-        if (mouseX < tile.x && mouseX > tile.x + tile.Width && mouseY < tile.y && mouseY > tile.y + tile.Height) {
-          hover.x =  tile.x;
-          hover.y = tile.y;
-          for (int i = 0; i < tile.Height; i++) {
-            for (int j = 0; j < tile.Width; j++) {
-              color c = tile.image.get(i, j);
-              set(j, i, color(red(c) * 1/2, green(c) * 1/2, blue(c) * 1/2));
-            }
-          }
-          print("1");
-          hover.display(tile.Width, tile.Height);
-          return; //ends cuz it found the match
-        }
-      }
-    }
-
-    for (Button button : sceneButtons) {
-      if ((button.type).equals("PlantButton")) {
-        if (mouseX < button.x && mouseX > button.x + button.Width && mouseY < button.y && mouseY > button.y + button.Height) {
-          hover.x = button.x;
-          hover.y = button.y;
-          for (int i = 0; i < button.Height; i++) {
-            for (int j = 0; j < button.Width; j++) {
-              color c = button.image.get(i, j);
-              set(j, i, color(red(c) * 1/2, green(c) * 1/2, blue(c) * 1/2));
-            }
-          }
-          print("2");
-          hover.display(button.Width, button.Height);
-          return;
-        }
-      }
-    }
-    //for loop through plant buttons
-  }
 }
