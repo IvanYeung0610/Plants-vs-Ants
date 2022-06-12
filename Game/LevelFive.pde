@@ -1,11 +1,11 @@
-public class LevelFour extends GameLevel {
+public class LevelFive extends GameLevel {
   final int ROW1 = 180;
   final int ROW2 = 324;
   final int ROW3 = 468;
   final int ROW4 = 612;
   final int ROW5 = 756;
 
-  LevelFour() {
+  LevelFive() {
     super(new ArrayList<Button>(), 4);
 
     sceneButtons.add(new PlantButton("SunflowerButton.png", 0, 0, 150, 100, "Sunflower"));

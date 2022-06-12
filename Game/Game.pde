@@ -30,6 +30,7 @@ void reset() {
   g.levels[1] = new LevelOne();
   g.levels[2] = new LevelTwo();
   g.levels[3] = new LevelThree();
+  g.levels[4] = new LevelFour();
 }
 
 void draw() {

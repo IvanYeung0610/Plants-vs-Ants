@@ -33,6 +33,7 @@ public class LevelThree extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
+    ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW2 - 20, 130, 100, 20, 0));
     ant.add(new Ant("Ant.png", 1150, ROW1, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
