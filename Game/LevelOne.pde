@@ -17,7 +17,6 @@ public class LevelOne extends GameLevel {
     super.run();
 
     stroke(225);
-    text("DEMO", 1000, 50);
   }
 
   void SetWave() {
@@ -33,7 +32,11 @@ public class LevelOne extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
+    ant.add(new Ant("Ant.png", 1450, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1450, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1450, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1450, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1450, ROW5, 100, 50, 15, 1));
 
     Wave W1 = new Wave(ant);
     waves[1] = W1;

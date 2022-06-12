@@ -13,6 +13,7 @@ public class LevelThree extends GameLevel {
     sceneButtons.add(new PlantButton("WallnutButton.png", 320, 0, 150, 100, "Wallnut"));
     sceneButtons.add(new PlantButton("PotatoMineButton.png", 480, 0, 150, 100, "PotatoMine"));
     sceneButtons.add(new PlantButton("RepeaterButton.png", 640, 0, 150, 100, "Repeater"));
+    sceneButtons.add(new PlantButton("SnowPeaButton.png", 640, 0, 150, 100, "SnowPea"));
   }
 
   void run() {
@@ -25,9 +26,10 @@ public class LevelThree extends GameLevel {
   void SetWave() {
     AntList ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new HatAnt("Ant.png", 2000, ROW2, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW2 - 5, 25, 25, 10)));
-    ant.add(new HatAnt("Ant.png", 2500, ROW3, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW3 - 2, 25, 25, 20))); 
+    ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
+    //ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
+    //ant.add(new HatAnt("Ant.png", 2000, ROW2, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW2 - 5, 25, 25, 10)));
+    //ant.add(new HatAnt("Ant.png", 2500, ROW3, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW3 - 2, 25, 25, 20))); 
 
 
     Wave W0 = new Wave(ant);
@@ -35,9 +37,8 @@ public class LevelThree extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1650, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1150, ROW1, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW3, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW5, 100, 50, 15, 1));
 
