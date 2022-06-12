@@ -26,6 +26,7 @@ public class LevelThree extends GameLevel {
   void SetWave() {
     AntList ant = new AntList();
     //ADD MORE ANTS HERE:
+    ant.add(new FireAnt("FireAnt.png", 1500, ROW3, 100, 50, 15, 10000));
     ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
     //ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
     //ant.add(new HatAnt("Ant.png", 2000, ROW2, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW2 - 5, 25, 25, 10)));
