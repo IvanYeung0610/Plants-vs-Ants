@@ -102,3 +102,7 @@ Ivan Yeung: I completed AntMound. Now you cannot put plants on the tiles that ha
 Joshua Liu: I made the cherryBomb and cleaned up the code in GameLevel.
 
 Ivan Yeung: I reworked all the buttons that appear when player is on the gameOver screen of intermission screen. This includes the retry button, quit button, main menu button, next level button, previous level button. The next level button does not appear when it is the last level and the previous level does not appear when on the first level after main menu.
+
+6/10:
+
+Ivan Yeung: I created and pause and resume buttons and creating working paused screens for them. The positions are subject to change before the project in entirely due.

@@ -426,6 +426,26 @@ public class GameLevel extends Level {
     textAlign(LEFT);
   }
 
+  void pause() {
+    displayALL();
+
+    fill(0);
+    textSize(25);
+    text("Sun: " + sun, 1200, 40);
+    //darkened screen
+    fill(0, 100);
+    noStroke();
+    rect(0, 0, 1600, 900);
+    fill(0);
+    textFont(Samdan);
+    textSize(200);
+    textAlign(CENTER);
+    text("PAUSED", width/2, height/2 );
+    textFont(Samdan);
+    fill(255);
+    textAlign(LEFT);
+  }
+
   void updateHover() {
     for (Tile[] t : tiles.tileArray) {
       for (Tile tile : t) {

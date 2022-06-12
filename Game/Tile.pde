@@ -13,6 +13,7 @@ public class Tile extends Button {
     super.display();
     if (plant != null) {
       plant.display();
+      fill(0);
       text(plant.health, x + Width / 2, y);
       // will be changed.
       if (clicked) {

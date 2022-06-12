@@ -2,11 +2,13 @@ public class Level{
   ArrayList<Button> sceneButtons;
   boolean levelComplete;
   boolean gameOver;
+  boolean paused;
   
   public Level(ArrayList<Button> sceneButtons){
     this.sceneButtons = sceneButtons;
     levelComplete = false;
     gameOver = false;
+    paused = false;
   }
   
   void displayAllButtons(){
@@ -21,6 +23,8 @@ public class Level{
   
   void intermission(){}
   
+  void pause(){}
+  
   //runs through sceneButtons to check if any buttons have been clicked
   void handleMouseClicked(){
     int index = 0;
@@ -32,6 +36,14 @@ public class Level{
       index++;
     }
     
-  } 
+  }
+  
+  void setPaused(boolean a){
+    paused = a;
+  }
+  
+  boolean getPaused(){
+    return paused;
+  }
   
 }
