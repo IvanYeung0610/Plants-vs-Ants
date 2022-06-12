@@ -15,10 +15,13 @@ public class GameLevel extends Level {
   ArrayList<Sprite> displayQueue;
   PFont Samdan;
   PFont shlop;
+  PImage sunCounter;
 
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves) {
     super(sceneButtons);
     initalizeALL(numOfWaves);
+    sunCounter = loadImage("SunCounter.png");
+    sunCounter.resize(50, 50);
   }
 
   // this ties all the classes together.
@@ -122,8 +125,14 @@ public class GameLevel extends Level {
     shovel.display();
     displayExplosions();
     // Display Total SUN
+    fill(0, 100);
+    noStroke();
+    rect(1160, 20, 85, 30);
+    fill(255);
+    image(sunCounter, 1150, 10);
     textSize(25);
-    text("Sun: " + sun, 1200, 40);
+    text(sun, 1200, 45);
+    fill(0);
     displayCursor();
   }
   void displayCursor() {
@@ -385,9 +394,6 @@ public class GameLevel extends Level {
     //game over screen
     displayALL();
 
-    fill(0);
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
     //darkened screen
     fill(0, 100);
     noStroke();
@@ -409,9 +415,6 @@ public class GameLevel extends Level {
   void intermission() {
     displayALL();
 
-    fill(0);
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
     //darkened screen
     fill(0, 100);
     noStroke();
@@ -429,9 +432,6 @@ public class GameLevel extends Level {
   void pause() {
     displayALL();
 
-    fill(0);
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
     //darkened screen
     fill(0, 100);
     noStroke();
