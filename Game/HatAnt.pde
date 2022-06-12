@@ -10,7 +10,7 @@ public class HatAnt extends Ant {
     super.display();
     if (hat != null) {
       hat.display();
-      text(hat.getHealth(), hat.x, hat.y - 10);  
+      //text(hat.getHealth(), hat.x, hat.y - 10);  
       if (hat.getHealth() > 0) {
         hat.setX((int)x + 8);
       } else {

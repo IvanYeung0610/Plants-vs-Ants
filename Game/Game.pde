@@ -1,7 +1,7 @@
 LevelManager g;
 Level[] levels = new Level[4];
 Sprite cursor;
-Button retry, quit, mainMenu, nextLevel, previousLevel, setting, resume;
+Button retry, quit, mainMenu, nextLevel, previousLevel, pause, resume;
 
 void setup() {
   size(1400, 900);
@@ -19,7 +19,7 @@ void setup() {
   mainMenu = new Button("MainMenu.png", width/2 - 230, height/2 + 200, 100, 50, "MainMenuButton");
   nextLevel = new Button("RightArrow.png", 1140, height/2 - 200, 200, 200, "NextLevelButton");
   previousLevel = new Button("LeftArrow.png", 40, height/2 - 200, 200, 200, "PreviousLevelButton");
-  setting = new Button("Setting.png", 1300, 10, 50, 50, "SettingButton");
+  pause = new Button("Pause.png", 1300, 10, 50, 50, "PauseButton");
   resume = new Button("Resume.png", width/2 + 190, height/2 + 200, 100, 50, "ResumeButton");
 }
 
@@ -51,7 +51,7 @@ void draw() {
   }
 
   if (g.currentLevel != 0 ) {
-    setting.display();
+    pause.display();
     if (g.levels[g.currentLevel].gameOver || g.levels[g.currentLevel].levelComplete || g.levels[g.currentLevel].getPaused()) {
       fill(0, 100);
       noStroke();
@@ -89,7 +89,7 @@ void mouseClicked() {
     reset();
     g.playPrev();
   }
-  if ( setting.overButton() && !level.levelComplete && !level.gameOver) {
+  if ( pause.overButton() && !level.levelComplete && !level.gameOver) {
     level.setPaused(true);
   }
   if (g.levels[g.currentLevel].getPaused() && resume.overButton()) {
