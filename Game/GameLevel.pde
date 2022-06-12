@@ -326,7 +326,12 @@ public class GameLevel extends Level {
       p = new CherryBomb(t.x + 20, t.y + 20);
       t.plant = p;
       break;
+    case "SnowPea":
+      p = new SnowPea(t.x + 20, t.y + 20);
+      t.plant = p;
+      break;
     }
+    
   }
   void checkMineCollision() {
     for (int i = 0; i < 5; i++) { 

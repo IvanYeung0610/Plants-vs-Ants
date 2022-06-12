@@ -6,6 +6,7 @@ public class Bullet extends Sprite{
   public Bullet(String img, float xcoor, float ycoor, int Width, int Height, int dmg){
     super(img, xcoor, ycoor, Width, Height);
     damage = dmg;
+    type = "";
   }
   
   void setType(String newType){

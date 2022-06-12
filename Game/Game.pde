@@ -4,12 +4,12 @@ Sprite cursor;
 Button retry, quit, mainMenu, nextLevel, previousLevel;
 void setup() {
   size(1400, 900);
-  cursor = new Sprite("Cursor.png",0,0, 40, 40);
+  cursor = new Sprite("Cursor.png", 0, 0, 40, 40);
   // ADD MORE LEVELS HERE:
   levels[0] = new MainMenu();
-  levels[1] = new DemoLevel2();
-  levels[2] = new DemoLevel();
-  
+  levels[1] = new DemoLevel();
+  levels[2] = new DemoLevel2();
+
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new Button("Retry.png", width/2 + 50, height/2 + 200, 100, 50, "RestartButton");
