@@ -11,6 +11,7 @@ void setup() {
   levels[1] = new LevelOne();
   levels[2] = new LevelTwo();
   levels[3] = new LevelThree();
+
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new Button("Retry.png", width/2 + 50, height/2 + 200, 100, 50, "RestartButton");
