@@ -106,3 +106,7 @@ Ivan Yeung: I reworked all the buttons that appear when player is on the gameOve
 6/10:
 
 Ivan Yeung: I created and pause and resume buttons and creating working paused screens for them. The positions are subject to change before the project in entirely due.
+
+6/12:
+
+Joshua Liu: I made the plants that shoot bullets only shoot when there is an enemy in front of it. I also added SnowPea.
