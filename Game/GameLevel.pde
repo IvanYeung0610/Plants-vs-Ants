@@ -7,7 +7,6 @@ public class GameLevel extends Level {
   SunList suns;
   TileMap tiles;
   AntList currentAnts;
-  HoverRectangle hover;
   LawnMower[] lawnMowers;
   Shovel shovel;
   Sprite shovelMouse;
@@ -15,10 +14,13 @@ public class GameLevel extends Level {
   ArrayList<Sprite> displayQueue;
   PFont Samdan;
   PFont shlop;
+  PImage sunCounter;
 
   GameLevel(ArrayList<Button> sceneButtons, int numOfWaves) {
     super(sceneButtons);
     initalizeALL(numOfWaves);
+    sunCounter = loadImage("SunCounter.png");
+    sunCounter.resize(50, 50);
   }
 
   // this ties all the classes together.
@@ -47,6 +49,7 @@ public class GameLevel extends Level {
     for (int i = 0; i < suns.size(); i++) {
       if (suns.get(i).overButton()) {
         suns.get(i).clickButton();
+        suns.get(i).collect();
       }
     }
 
@@ -81,7 +84,6 @@ public class GameLevel extends Level {
     bullets = new BulletList(new ArrayList<Bullet>());
     suns = new SunList();
     currentAnts = new AntList();
-    hover = new HoverRectangle(0, 0);
     shovel = new Shovel();
     waves = new Wave[NUMOFWAVES];
     displayQueue = new ArrayList<Sprite>();
@@ -122,8 +124,14 @@ public class GameLevel extends Level {
     shovel.display();
     displayExplosions();
     // Display Total SUN
+    fill(0, 100);
+    noStroke();
+    rect(1160, 20, 85, 30);
+    fill(255);
+    image(sunCounter, 1150, 10);
     textSize(25);
-    text("Sun: " + sun, 1200, 40);
+    text(sun, 1200, 45);
+    fill(0);
     displayCursor();
   }
   void displayCursor() {
@@ -385,9 +393,6 @@ public class GameLevel extends Level {
     //game over screen
     displayALL();
 
-    fill(0);
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
     //darkened screen
     fill(0, 100);
     noStroke();
@@ -409,9 +414,6 @@ public class GameLevel extends Level {
   void intermission() {
     displayALL();
 
-    fill(0);
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
     //darkened screen
     fill(0, 100);
     noStroke();
@@ -429,9 +431,6 @@ public class GameLevel extends Level {
   void pause() {
     displayALL();
 
-    fill(0);
-    textSize(25);
-    text("Sun: " + sun, 1200, 40);
     //darkened screen
     fill(0, 100);
     noStroke();
@@ -446,42 +445,4 @@ public class GameLevel extends Level {
     textAlign(LEFT);
   }
 
-  void updateHover() {
-    for (Tile[] t : tiles.tileArray) {
-      for (Tile tile : t) {
-        if (mouseX < tile.x && mouseX > tile.x + tile.Width && mouseY < tile.y && mouseY > tile.y + tile.Height) {
-          hover.x =  tile.x;
-          hover.y = tile.y;
-          for (int i = 0; i < tile.Height; i++) {
-            for (int j = 0; j < tile.Width; j++) {
-              color c = tile.image.get(i, j);
-              set(j, i, color(red(c) * 1/2, green(c) * 1/2, blue(c) * 1/2));
-            }
-          }
-          print("1");
-          hover.display(tile.Width, tile.Height);
-          return; //ends cuz it found the match
-        }
-      }
-    }
-
-    for (Button button : sceneButtons) {
-      if ((button.type).equals("PlantButton")) {
-        if (mouseX < button.x && mouseX > button.x + button.Width && mouseY < button.y && mouseY > button.y + button.Height) {
-          hover.x = button.x;
-          hover.y = button.y;
-          for (int i = 0; i < button.Height; i++) {
-            for (int j = 0; j < button.Width; j++) {
-              color c = button.image.get(i, j);
-              set(j, i, color(red(c) * 1/2, green(c) * 1/2, blue(c) * 1/2));
-            }
-          }
-          print("2");
-          hover.display(button.Width, button.Height);
-          return;
-        }
-      }
-    }
-    //for loop through plant buttons
-  }
 }

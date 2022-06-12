@@ -6,14 +6,13 @@ public class LevelThree extends GameLevel {
   final int ROW5 = 756;
 
   LevelThree() {
-    super(new ArrayList<Button>(), 2);
+    super(new ArrayList<Button>(), 3);
 
     sceneButtons.add(new PlantButton("SunflowerButton.png", 0, 0, 150, 100, "Sunflower"));
     sceneButtons.add(new PlantButton("PeashooterButton.png", 160, 0, 150, 100, "Peashooter"));
     sceneButtons.add(new PlantButton("WallnutButton.png", 320, 0, 150, 100, "Wallnut"));
     sceneButtons.add(new PlantButton("PotatoMineButton.png", 480, 0, 150, 100, "PotatoMine"));
     sceneButtons.add(new PlantButton("RepeaterButton.png", 640, 0, 150, 100, "Repeater"));
-    sceneButtons.add(new PlantButton("SnowPeaButton.png", 640, 0, 150, 100, "SnowPea"));
   }
 
   void run() {
@@ -37,6 +36,7 @@ public class LevelThree extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
+    ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
     ant.add(new Ant("Ant.png", 1150, ROW1, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
@@ -59,6 +59,6 @@ public class LevelThree extends GameLevel {
     ant.add(new Ant("Ant.png", 1650, ROW5, 100, 50, 15, 1));
 
     Wave W2 = new Wave(ant);
-    waves[1] = W2;
+    waves[2] = W2;
   }
 }
