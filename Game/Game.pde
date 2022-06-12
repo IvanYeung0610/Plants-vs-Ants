@@ -7,8 +7,8 @@ void setup() {
   cursor = new Sprite("Cursor.png", 0, 0, 40, 40);
   // ADD MORE LEVELS HERE:
   levels[0] = new MainMenu();
-  levels[1] = new DemoLevel2();
-  levels[2] = new DemoLevel();
+  levels[1] = new DemoLevel();
+  levels[2] = new DemoLevel2();
 
   // Set to levels to LevelManager;
   g = new LevelManager(levels);

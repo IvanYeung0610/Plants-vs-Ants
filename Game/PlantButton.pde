@@ -33,6 +33,10 @@ public class PlantButton extends Button {
       cost = 150;
       maxTimer = 1200;
       break;
+    case "SnowPea":
+      cost = 150;
+      maxTimer = 600;
+      break;
     }
   }
 
@@ -90,6 +94,11 @@ public class PlantButton extends Button {
       text("175", x + Width - 60, y + Height - 5);
       break;
     case "CherryBomb":
+      textSize(50);
+      fill(0);
+      text("150", x + Width - 60, y + Height - 5);
+      break;
+    case "SnowPea":
       textSize(50);
       fill(0);
       text("150", x + Width - 60, y + Height - 5);

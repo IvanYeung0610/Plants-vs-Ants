@@ -35,7 +35,7 @@ public class Tile extends Button {
         plant = null;
       } else {
         String type = plant.getType();
-        if (type.equals("Peashooter") || type.equals("Repeater")) {
+        if (type.equals("Peashooter") || type.equals("Repeater") || type.equals("SnowPea")) {
           return plant.action(ants);
         } else {
           return plant.action();
