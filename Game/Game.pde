@@ -1,5 +1,5 @@
 LevelManager g;
-Level[] levels = new Level[3];
+Level[] levels = new Level[4];
 Sprite cursor;
 Button retry, quit, mainMenu, nextLevel, previousLevel, setting, resume;
 
@@ -8,9 +8,9 @@ void setup() {
   cursor = new Sprite("Cursor.png", 0, 0, 40, 40);
   // ADD MORE LEVELS HERE:
   levels[0] = new MainMenu();
-  levels[1] = new DemoLevel2();
-  levels[2] = new DemoLevel();
-
+  levels[1] = new LevelOne();
+  levels[2] = new LevelTwo();
+  levels[3] = new LevelThree();
   // Set to levels to LevelManager;
   g = new LevelManager(levels);
   retry = new Button("Retry.png", width/2 + 50, height/2 + 200, 100, 50, "RestartButton");
@@ -25,8 +25,9 @@ void setup() {
 void reset() {
   // ADD MORE LEVELS HERE:
   g.levels[0] = new MainMenu();
-  g.levels[1] = new DemoLevel();
-  g.levels[2] = new DemoLevel2();
+  g.levels[1] = new LevelOne();
+  g.levels[2] = new LevelTwo();
+  g.levels[3] = new LevelThree();
 }
 
 void draw() {
