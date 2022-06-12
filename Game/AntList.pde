@@ -36,7 +36,7 @@ public class AntList {
     for (Ant x : ants) {
       if (x.checkCollision(bullet)) {
         if (bullet.getType().equals("snow")) {
-          x.getChilled();
+          if(x.getType().equals("Ant"))x.getChilled();
           x.takeDamage(bullet.damage);
         } else {
           x.takeDamage(bullet.damage);
