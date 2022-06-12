@@ -24,11 +24,11 @@ public class LevelTwo extends GameLevel {
   void SetWave() {
     AntList ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1600, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1800, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 2000, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 2000, ROW5, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1600, ROW5, 100, 50, 15, 1));
 
 
     Wave W0 = new Wave(ant);
@@ -36,16 +36,16 @@ public class LevelTwo extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1600, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW5, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1750, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1750, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1750, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1750, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1750, ROW5, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW5, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1650, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1650, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1650, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1650, ROW5, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1850, ROW1, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1850, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1850, ROW3, 100, 50, 15, 1));
@@ -56,23 +56,23 @@ public class LevelTwo extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1600, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW5, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW5, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1700, ROW1, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1700, ROW2, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1700, ROW3, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1700, ROW4, 100, 50, 15, 1));
     ant.add(new Ant("Ant.png", 1700, ROW5, 100, 50, 15, 1));
     //FOR CONE HAT:  5 above ant's row
-    ant.add(new HatAnt("Ant.png", 2000, ROW1, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW1 - 5, 25, 25, 10)));
-    ant.add(new HatAnt("Ant.png", 2000, ROW2, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW2 - 5, 25, 25, 10)));
+    ant.add(new HatAnt("Ant.png", 1900, ROW1, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW1 - 5, 25, 25, 10)));
+    ant.add(new HatAnt("Ant.png", 1900, ROW2, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW2 - 5, 25, 25, 10)));
     //FOR BUCKET HAT: 2 above ant's row
-    ant.add(new HatAnt("Ant.png", 2000, ROW3, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW3 - 2, 25, 25, 20))); 
-    ant.add(new HatAnt("Ant.png", 2000, ROW4, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW4 - 5, 25, 25, 10)));
-    ant.add(new HatAnt("Ant.png", 2000, ROW5, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW5 - 5, 25, 25, 10)));
+    ant.add(new HatAnt("Ant.png", 1900, ROW3, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW3 - 2, 25, 25, 20))); 
+    ant.add(new HatAnt("Ant.png", 1900, ROW4, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW4 - 5, 25, 25, 10)));
+    ant.add(new HatAnt("Ant.png", 1900, ROW5, 100, 50, 15, 1, new Hat("ConeHat.png", 1700, ROW5 - 5, 25, 25, 10)));
 
     Wave W2 = new Wave(ant);
     waves[2] = W2;

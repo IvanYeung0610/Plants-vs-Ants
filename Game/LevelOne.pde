@@ -33,27 +33,23 @@ public class LevelOne extends GameLevel {
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1650, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW5, 100, 50, 15, 1));
+    ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
 
     Wave W1 = new Wave(ant);
     waves[1] = W1;
 
     ant = new AntList();
     //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1600, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1600, ROW5, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1650, ROW5, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1550, ROW1, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1550, ROW2, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1550, ROW3, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1550, ROW4, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1400, ROW5, 100, 50, 15, 1));
+    ant.add(new Ant("Ant.png", 1550, ROW5, 100, 50, 15, 1));
 
     Wave W2 = new Wave(ant);
     waves[2] = W2;
