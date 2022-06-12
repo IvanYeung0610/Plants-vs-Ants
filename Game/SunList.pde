@@ -19,7 +19,7 @@ public class SunList {
     int counter = 0;
     int i = 0;
     while (i < suns.size()) {
-      if (suns.get(i).isClicked()) { 
+      if (suns.get(i).collected) { 
         if (suns.get(i).x >= 1000 && suns.get(i).x <= 1200 && suns.get(i).y <= 50 && suns.get(i).y >= 10) {
           counter += suns.get(i).getValue();
           suns.remove(i);

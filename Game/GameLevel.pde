@@ -7,7 +7,6 @@ public class GameLevel extends Level {
   SunList suns;
   TileMap tiles;
   AntList currentAnts;
-  HoverRectangle hover;
   LawnMower[] lawnMowers;
   Shovel shovel;
   Sprite shovelMouse;
@@ -50,6 +49,7 @@ public class GameLevel extends Level {
     for (int i = 0; i < suns.size(); i++) {
       if (suns.get(i).overButton()) {
         suns.get(i).clickButton();
+        suns.get(i).collect();
       }
     }
 
@@ -84,7 +84,6 @@ public class GameLevel extends Level {
     bullets = new BulletList(new ArrayList<Bullet>());
     suns = new SunList();
     currentAnts = new AntList();
-    hover = new HoverRectangle(0, 0);
     shovel = new Shovel();
     waves = new Wave[NUMOFWAVES];
     displayQueue = new ArrayList<Sprite>();
