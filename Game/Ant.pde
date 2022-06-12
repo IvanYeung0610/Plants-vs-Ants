@@ -20,6 +20,8 @@ public class Ant extends Sprite {
     chilled = true;
     velocity = .18;
     // CHANGE SPRITE HERE:
+    image = loadImage("ChilledAnt.png");
+    image.resize(Width, Height);
   }
   
   void display() {
