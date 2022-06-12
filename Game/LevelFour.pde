@@ -13,7 +13,7 @@ public class LevelFour extends GameLevel {
     sceneButtons.add(new PlantButton("WallnutButton.png", 320, 0, 150, 100, "Wallnut"));
     sceneButtons.add(new PlantButton("PotatoMineButton.png", 480, 0, 150, 100, "PotatoMine"));
     sceneButtons.add(new PlantButton("RepeaterButton.png", 640, 0, 150, 100, "Repeater"));
-    sceneButtons.add(new PlantButton("SnowPeaButton.png", 640, 0, 150, 100, "SnowPea"));
+    sceneButtons.add(new PlantButton("SnowPeaButton.png", 800, 0, 150, 100, "SnowPea"));
   }
 
   void run() {
@@ -26,8 +26,8 @@ public class LevelFour extends GameLevel {
     AntList ant = new AntList();
     ant.add(new FireAnt("FireAnt.png", 1800, ROW4, 100, 50, 15, 10000));
     ant.add(new FireAnt("FireAnt.png", 1950, ROW4, 100, 50, 15, 10000));
-    ant.add(new FireAnt("FireAnt.png", 1400, ROW2, 100, 50, 15, 10000));
-    ant.add(new FireAnt("FireAnt.png", 2150, ROW2, 100, 50, 15, 10000));
+    ant.add(new FireAnt("FireAnt.png", 1800, ROW2, 100, 50, 15, 10000));
+    ant.add(new FireAnt("FireAnt.png", 2950, ROW2, 100, 50, 15, 10000));
 
 
     Wave W0 = new Wave(ant);
@@ -67,6 +67,11 @@ public class LevelFour extends GameLevel {
     ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW3 - 20, 130, 100, 20, 0));
     ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW4 - 20, 130, 100, 20, 0));
     ant.add(new AntMound("AntMound.png", 104 + 144 * 6 + 10, ROW5 - 20, 130, 100, 20, 0));
+    ant.add(new HatAnt("Ant.png", 1850, ROW1, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW1 - 2, 25, 25, 20))); 
+    ant.add(new HatAnt("Ant.png", 1850, ROW2, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW2 - 2, 25, 25, 20))); 
+    ant.add(new HatAnt("Ant.png", 1850, ROW3, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW3 - 2, 25, 25, 20))); 
+    ant.add(new HatAnt("Ant.png", 1850, ROW4, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW4 - 2, 25, 25, 20))); 
+    ant.add(new HatAnt("Ant.png", 1850, ROW5, 100, 50, 15, 1, new Hat("BucketHat.png", 2200, ROW5 - 2, 25, 25, 20)));
     ant.add(new FireAnt("FireAnt.png", 2000, ROW1, 100, 50, 15, 10000));
     ant.add(new FireAnt("FireAnt.png", 2000, ROW2, 100, 50, 15, 10000));
     ant.add(new FireAnt("FireAnt.png", 2000, ROW3, 100, 50, 15, 10000));
