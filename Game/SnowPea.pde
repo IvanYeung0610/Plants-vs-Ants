@@ -16,7 +16,7 @@ public class SnowPea extends Plant {
     }
   }
   boolean checkLOS(AntList ants) {
-    print("hello");
+    //print("hello");
     for (int i = 0; i < ants.size(); i++) {
       if (ants.get(i).checkCollision(lineOfSight)) {
         return true;

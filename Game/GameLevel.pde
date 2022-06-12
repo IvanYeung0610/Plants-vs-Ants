@@ -287,7 +287,7 @@ public class GameLevel extends Level {
           if (currentTile.plant == null) { // IF there are no plants already on it,
             for (int x = 0; x < sceneButtons.size(); x++) { // Check which Plantbutton is clicked
               Button currentButton = sceneButtons.get(x); 
-              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost()) {
+              if (currentButton.getType().equals("PlantButton") && currentButton.isClicked() && sun >= ((PlantButton)currentButton).getCost() && currentTile.getOccupied() == false) {
                 setPlant(currentTile, currentButton.getName());
                 sun -= ((PlantButton)currentButton).getCost();
                 unCheck();

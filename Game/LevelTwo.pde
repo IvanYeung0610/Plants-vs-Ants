@@ -18,7 +18,6 @@ public class LevelTwo extends GameLevel {
     super.run();
 
     stroke(225);
-    text("DEMO", 1000, 50);
   }
 
   void SetWave() {
