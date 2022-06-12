@@ -106,3 +106,7 @@ Ivan Yeung: I reworked all the buttons that appear when player is on the gameOve
 6/10:
 
 Ivan Yeung: I created and pause and resume buttons and creating working paused screens for them. The positions are subject to change before the project in entirely due.
+
+6/11:
+
+Ivan Yeung: I fixed AntMound collision after discovering that the collsion with tile was removed during one of the merges. Also creating 2 levels for the game. FireAnt has also been implemented based on the SnowPea plant that was implemented by my partner.
