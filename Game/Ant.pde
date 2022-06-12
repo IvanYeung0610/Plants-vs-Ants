@@ -26,7 +26,7 @@ public class Ant extends Sprite {
   
   void display() {
     super.display();
-    text(health, x + Width / 2, y);
+    //text(health, x + Width / 2, y);
   }
 
   void move() {
