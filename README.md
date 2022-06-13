@@ -10,7 +10,7 @@ Repository for final project of APCS. We are doing a Plant VS Zombies-esque game
 The project that we will be working on is a Plants vs. Zombies-esque game. Instead of having zombies, they will be ants but their mechanics will be around the same. This project will consist of making various plant classes, ant classes, and tile classes. There will be a grid of 9 by 5 tiles. Each tile can hold one plant and these plants will stop the incoming enemies from reaching the other side of the grid by shooting at them. Placing plants will require energy(sunlight) that drops onto the map or produced by a plant. There will be a variety of plants and ants with their own unique traits.
 
 ## **Compile Instructions**
-Open up the files in processing and press the play button to begin the game.
+Open up the files in processing and press the play button to begin the game. The final level that you can click to in the main menu is the test/cheat level. There you will have unlimited sun and the plants will also have no cooldown. Additional, this level is endless and can only ended using the pause button or the cheat keys. The cheat keys are g, i, z, and x. The g key causes the game over screen. The i key causes the win scree. The z key causes the player to move on to the next level and the x key causes the player to move back to previous level (if conditions are met).
 
 LOG:
 ---
