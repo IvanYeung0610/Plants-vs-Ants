@@ -1,5 +1,4 @@
 public class Repeater extends Plant {
-  int timer;
   
   Repeater(float xcoor, float ycoor){
     super("Repeater.png", xcoor, ycoor, 100, 100, 7, 175);
@@ -33,5 +32,8 @@ public class Repeater extends Plant {
   
   String getType(){
     return "Repeater";
+  }
+  int getTimer(){
+    return timer;
   }
 }

@@ -21,6 +21,15 @@ public class Tile extends Button {
       }
     }
   }
+  void displayTester() {
+    if (plant != null) {
+      fill(0);
+      textSize(21);
+      text("Health: " + plant.health, x + 5, y - 14);
+      text("Timer:" + plant.getTimer(), x + 5, y + 7);
+    }
+  }
+
   Plant getPlant() {
     return plant;
   }
@@ -46,11 +55,11 @@ public class Tile extends Button {
     return null;
   }
 
-    boolean getOccupied() {
-      return occupied;
-    }
-
-    void setOccupied(boolean input) {
-      occupied = input;
-    }
+  boolean getOccupied() {
+    return occupied;
   }
+
+  void setOccupied(boolean input) {
+    occupied = input;
+  }
+}

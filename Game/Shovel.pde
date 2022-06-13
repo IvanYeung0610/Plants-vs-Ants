@@ -1,7 +1,7 @@
 public class Shovel extends Button{
   
   Shovel(){
-    super("Shovel.png", 1050, 10, 100, 100, "Shovel");
+    super("Shovel.png", 1300, 810, 80, 80, "Shovel");
   }
   void display(){
     super.display();

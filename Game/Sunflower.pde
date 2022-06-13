@@ -1,5 +1,4 @@
 public class Sunflower extends Plant{
-  int timer;
   
   public Sunflower(String img, float xcoor, float ycoor) {
     super(img, xcoor, ycoor, 100, 100, 6, 50);
@@ -22,6 +21,4 @@ public class Sunflower extends Plant{
   String getType(){
     return "Sunflower";
   }
-  
-
 }

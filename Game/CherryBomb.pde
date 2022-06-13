@@ -1,5 +1,4 @@
 public class CherryBomb extends Plant{
-  int timer;
   
   public CherryBomb(float xcoor, float ycoor){
     //width, height, health, and cost are predetermined

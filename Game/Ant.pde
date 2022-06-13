@@ -28,6 +28,11 @@ public class Ant extends Sprite {
     super.display();
     //text(health, x + Width / 2, y);
   }
+  void displayTester() {
+    textSize(21);
+    text("health: " + health, x + 10, y - 15);
+    text("attack: " + attacking, x + 10, y + 5);
+  }
 
   void move() {
     if (attacking == false) {
