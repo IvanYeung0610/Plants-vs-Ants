@@ -1,5 +1,4 @@
 public class Peashooter extends Plant {
-  int timer;
 
   public Peashooter(String img, float xcoor, float ycoor) {
     //width, height, health, and cost are predetermined

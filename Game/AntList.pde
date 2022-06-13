@@ -31,6 +31,11 @@ public class AntList {
       x.display();
     }
   }
+  void displayAllTester(){
+    for (Ant x : ants) {
+      x.displayTester();
+    }
+  }
 
   boolean takeDamage(Bullet bullet) {
     for (Ant x : ants) {

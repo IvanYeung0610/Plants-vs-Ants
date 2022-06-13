@@ -60,7 +60,9 @@ public class PlantButton extends Button {
   int getCost() {
     return cost;
   }
-
+  void setTimerTester(){
+    maxTimer = 0;
+  }
 
   //new display method that adds text on top as the price (using switch statement and basing it off the name that it was intialized with)
   void display() {

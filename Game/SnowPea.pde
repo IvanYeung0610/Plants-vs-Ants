@@ -1,5 +1,4 @@
 public class SnowPea extends Plant {
-  int timer;
   SnowPea(float xcoor, float ycoor) {
     super("SnowPea.png", xcoor, ycoor, 100, 100, 7, 150);
   }

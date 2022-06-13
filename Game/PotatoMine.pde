@@ -1,5 +1,4 @@
 public class PotatoMine extends Plant {
-  int timer;
   boolean primed;
 
   PotatoMine(float xcoor, float ycoor) {
