@@ -115,3 +115,6 @@ Joshua Liu: I made the plants that shoot bullets only shoot when there is an ene
 
 Ivan Yeung: I fixed AntMound collision after discovering that the collsion with tile was removed during one of the merges. Also creating 2 levels for the game. FireAnt has also been implemented based on the SnowPea plant that was implemented by my partner.
 
+6/12:
+
+Joshua Liu: I made the TesterLevel and playtested. I fixed any bugs found along the way.
