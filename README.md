@@ -118,3 +118,5 @@ Ivan Yeung: I fixed AntMound collision after discovering that the collsion with 
 6/12:
 
 Joshua Liu: I made the TesterLevel and playtested. I fixed any bugs found along the way.
+
+Ivan Yeung: I made the 5 levels that are in the game. I also added ants to the tester level. I fixed some bugs for the final product.
