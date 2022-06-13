@@ -7,7 +7,7 @@ public class Repeater extends Plant {
   }
   
   Sprite action(AntList ants){
-    if (timer == 0 && checkLOS(ants)){
+    if (timer <= 0 && checkLOS(ants)){
       timer = 90;
       return new Bullet("ProjectilePea.png", this.x + this.Width/2, this.y + this.Height/6, 30, 30, 1);
     } else if(timer == 10 && checkLOS(ants)){

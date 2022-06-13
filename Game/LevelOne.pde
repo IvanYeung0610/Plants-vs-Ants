@@ -6,7 +6,7 @@ public class LevelOne extends GameLevel {
   final int ROW5 = 756;
 
   LevelOne() {
-    super(new ArrayList<Button>(), 3);
+    super(new ArrayList<Button>(), 2);
 
     sceneButtons.add(new PlantButton("SunflowerButton.png", 0, 0, 150, 100, "Sunflower"));
     sceneButtons.add(new PlantButton("PeashooterButton.png", 160, 0, 150, 100, "Peashooter"));
@@ -40,21 +40,5 @@ public class LevelOne extends GameLevel {
 
     Wave W1 = new Wave(ant);
     waves[1] = W1;
-
-    ant = new AntList();
-    //ADD MORE ANTS HERE:
-    ant.add(new Ant("Ant.png", 1400, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1550, ROW1, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1400, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1550, ROW2, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1400, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1550, ROW3, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1400, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1550, ROW4, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1400, ROW5, 100, 50, 15, 1));
-    ant.add(new Ant("Ant.png", 1550, ROW5, 100, 50, 15, 1));
-
-    Wave W2 = new Wave(ant);
-    waves[2] = W2;
   }
 }

@@ -25,7 +25,7 @@ public class MainMenu extends GameLevel {
       if (levelSelected != 1) levelSelected--;
     }
     if (sceneButtons.get(1).overButton()) {
-      if (levelSelected < 3) levelSelected++;
+      if (levelSelected < 5) levelSelected++;
     }
     if (sceneButtons.get(2).overButton()) {
       started = true;
