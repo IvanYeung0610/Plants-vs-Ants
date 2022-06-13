@@ -186,7 +186,7 @@ public class GameLevel extends Level {
           currentAnts.get(i).takeDamage(b.getDamage());
         }
       }
-      displayQueue.add(new Explosion("Explosion2.png", x, y, 288, 288));
+      displayQueue.add(new Explosion("Explosion2.png", x, y, 320, 320));
     }
   }
   void processLawnMowers() {

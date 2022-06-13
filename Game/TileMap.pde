@@ -27,7 +27,16 @@ public class TileMap {
       }
     }
   }
-
+  void displayAllTester(){
+    for (Tile[] t : tileArray) {
+      for (Tile tile : t) {
+        if (tile != null) {
+          tile.displayTester();
+        }
+      }
+    }
+  }
+  
   boolean takeDamage(Ant ant) {
     for (Tile[] x : tileArray) {
       for (Tile t : x) {

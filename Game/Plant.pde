@@ -1,28 +1,31 @@
-public class Plant extends Sprite{
-  int health, cost;
+public class Plant extends Sprite {
+  int health, cost, timer;
   Sprite lineOfSight;
-  Plant(String img, float xcoor, float ycoor, int Width, int Height, int health, int cost){
+  Plant(String img, float xcoor, float ycoor, int Width, int Height, int health, int cost) {
     super(img, xcoor, ycoor, Width, Height);
     this.health = health;
     this.cost = cost;
     lineOfSight = new Sprite("ProjectilePea.png", x, y + 20, (int)(1400 - x), 50);
   }
-  Sprite action(AntList ants){
+  Sprite action(AntList ants) {
     // Individually determined.
     return null;
   }
-  Sprite action(){
+  Sprite action() {
     // Individually determined.
     return null;
   }
-  
-  void takeDamage(int damg){
+
+  void takeDamage(int damg) {
     health -= damg;
   }
-  int getCost(){
+  int getCost() {
     return cost;
   }
-  String getType(){
+  String getType() {
     return "";
+  }
+  int getTimer() {
+    return timer;
   }
 }

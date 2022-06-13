@@ -1,5 +1,4 @@
 public class Repeater extends Plant {
-  int timer;
   
   Repeater(float xcoor, float ycoor){
     super("Repeater.png", xcoor, ycoor, 100, 100, 7, 175);
@@ -7,7 +6,7 @@ public class Repeater extends Plant {
   }
   
   Sprite action(AntList ants){
-    if (timer == 0 && checkLOS(ants)){
+    if (timer <= 0 && checkLOS(ants)){
       timer = 90;
       return new Bullet("ProjectilePea.png", this.x + this.Width/2, this.y + this.Height/6, 30, 30, 1);
     } else if(timer == 10 && checkLOS(ants)){
@@ -33,5 +32,8 @@ public class Repeater extends Plant {
   
   String getType(){
     return "Repeater";
+  }
+  int getTimer(){
+    return timer;
   }
 }
